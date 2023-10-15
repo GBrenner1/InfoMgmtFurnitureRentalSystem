@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\torch\\OneDrive\\Documents\\Info Management\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj": {}
+    "C:\\Users\\Garrett\\Source\\Repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\torch\\OneDrive\\Documents\\Info Management\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj": {
+    "C:\\Users\\Garrett\\Source\\Repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\torch\\OneDrive\\Documents\\Info Management\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Garrett\\Source\\Repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
         "projectName": "InfoMgmtFurnitureRentalSystem",
-        "projectPath": "C:\\Users\\torch\\OneDrive\\Documents\\Info Management\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
-        "packagesPath": "C:\\Users\\torch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\torch\\OneDrive\\Documents\\Info Management\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\obj\\",
+        "projectPath": "C:\\Users\\Garrett\\Source\\Repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
+        "packagesPath": "C:\\Users\\Garrett\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Garrett\\Source\\Repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -19,29 +19,33 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\torch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Garrett\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "uap10.0.17763"
+          "uap10.0.19041"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "uap10.0.17763": {
+          "uap10.0.19041": {
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
-        "uap10.0.17763": {
+        "uap10.0.19041": {
           "dependencies": {
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.14, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.1.0, )"
             }
           },
           "imports": [
