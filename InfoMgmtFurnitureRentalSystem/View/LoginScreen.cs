@@ -42,6 +42,7 @@ public partial class LoginScreen : Form
             };
             var memberRegistration = new MemberRegistration(memberRegistrationController);
             memberRegistration.Show();
+            memberRegistration.Closed += (s, args) => Close();
             Hide();
         }
         else

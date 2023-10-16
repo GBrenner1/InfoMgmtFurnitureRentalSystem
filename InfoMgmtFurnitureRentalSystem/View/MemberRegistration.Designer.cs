@@ -47,6 +47,8 @@
             stateTextBox = new TextBox();
             zipTextBox = new TextBox();
             birthdayDateTimePicker = new DateTimePicker();
+            EmployeeLabel = new Label();
+            LogoutButton = new Button();
             SuspendLayout();
             // 
             // RegisterButton
@@ -71,10 +73,10 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new Point(116, 50);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new Size(206, 23);
-            this.firstNameTextBox.TabIndex = 2;
+            firstNameTextBox.Location = new Point(133, 71);
+            firstNameTextBox.Name = "firstNameTextBox";
+            firstNameTextBox.Size = new Size(235, 27);
+            firstNameTextBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -212,11 +214,32 @@
             birthdayDateTimePicker.Size = new Size(235, 27);
             birthdayDateTimePicker.TabIndex = 19;
             // 
+            // EmployeeLabel
+            // 
+            EmployeeLabel.AutoSize = true;
+            EmployeeLabel.Location = new Point(12, 9);
+            EmployeeLabel.Name = "EmployeeLabel";
+            EmployeeLabel.Size = new Size(58, 20);
+            EmployeeLabel.TabIndex = 20;
+            EmployeeLabel.Text = "label10";
+            // 
+            // LogoutButton
+            // 
+            LogoutButton.Location = new Point(329, 12);
+            LogoutButton.Name = "LogoutButton";
+            LogoutButton.Size = new Size(94, 29);
+            LogoutButton.TabIndex = 21;
+            LogoutButton.Text = "Logout";
+            LogoutButton.UseVisualStyleBackColor = true;
+            LogoutButton.Click += LogoutButton_Click;
+            // 
             // MemberRegistration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(435, 629);
+            Controls.Add(LogoutButton);
+            Controls.Add(EmployeeLabel);
             Controls.Add(birthdayDateTimePicker);
             Controls.Add(zipTextBox);
             Controls.Add(stateTextBox);
@@ -264,5 +287,7 @@
         private TextBox stateTextBox;
         private TextBox zipTextBox;
         private DateTimePicker birthdayDateTimePicker;
+        private Label EmployeeLabel;
+        private Button LogoutButton;
     }
 }
