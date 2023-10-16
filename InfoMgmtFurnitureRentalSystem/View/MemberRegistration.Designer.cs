@@ -28,206 +28,216 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RegisterButton = new Button();
-            this.label1 = new Label();
-            this.firstNameTextBox = new TextBox();
-            this.label2 = new Label();
-            this.lastNameTextBox = new TextBox();
-            this.label3 = new Label();
-            this.label5 = new Label();
-            this.label4 = new Label();
-            this.label6 = new Label();
-            this.label7 = new Label();
-            this.label8 = new Label();
-            this.label9 = new Label();
-            this.genderTextBox = new TextBox();
-            this.phoneNumberTextBox = new TextBox();
-            this.addressTextBox = new TextBox();
-            this.cityTextBox = new TextBox();
-            this.stateTextBox = new TextBox();
-            this.zipTextBox = new TextBox();
-            this.birthdayDateTimePicker = new DateTimePicker();
+            RegisterButton = new Button();
+            label1 = new Label();
+            firstNameTextBox = new TextBox();
+            label2 = new Label();
+            lastNameTextBox = new TextBox();
+            label3 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            genderTextBox = new TextBox();
+            phoneNumberTextBox = new TextBox();
+            addressTextBox = new TextBox();
+            cityTextBox = new TextBox();
+            stateTextBox = new TextBox();
+            zipTextBox = new TextBox();
+            birthdayDateTimePicker = new DateTimePicker();
             SuspendLayout();
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new Point(170, 423);
-            this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new Size(75, 23);
-            this.RegisterButton.TabIndex = 0;
-            this.RegisterButton.Text = "Register";
-            this.RegisterButton.UseVisualStyleBackColor = true;
-            this.RegisterButton.Click += this.RegisterButton_Click;
+            RegisterButton.Location = new Point(194, 564);
+            RegisterButton.Margin = new Padding(3, 4, 3, 4);
+            RegisterButton.Name = "RegisterButton";
+            RegisterButton.Size = new Size(86, 31);
+            RegisterButton.TabIndex = 0;
+            RegisterButton.Text = "Register";
+            RegisterButton.UseVisualStyleBackColor = true;
+            RegisterButton.Click += RegisterButton_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(37, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(65, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "First name:";
+            label1.AutoSize = true;
+            label1.Location = new Point(42, 71);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 20);
+            label1.TabIndex = 1;
+            label1.Text = "First name:";
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new Point(116, 50);
-            this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new Size(206, 23);
-            this.firstNameTextBox.TabIndex = 2;
-            this.firstNameTextBox.TextChanged += this.firstNameTextBox_TextChanged;
+            firstNameTextBox.Location = new Point(133, 67);
+            firstNameTextBox.Margin = new Padding(3, 4, 3, 4);
+            firstNameTextBox.Name = "firstNameTextBox";
+            firstNameTextBox.Size = new Size(235, 27);
+            firstNameTextBox.TabIndex = 2;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(38, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(64, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Last name:";
+            label2.AutoSize = true;
+            label2.Location = new Point(43, 124);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Last name:";
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new Point(116, 90);
-            this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new Size(206, 23);
-            this.lastNameTextBox.TabIndex = 4;
+            lastNameTextBox.Location = new Point(133, 120);
+            lastNameTextBox.Margin = new Padding(3, 4, 3, 4);
+            lastNameTextBox.Name = "lastNameTextBox";
+            lastNameTextBox.Size = new Size(235, 27);
+            lastNameTextBox.TabIndex = 4;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(54, 133);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(48, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Gender:";
+            label3.AutoSize = true;
+            label3.Location = new Point(62, 177);
+            label3.Name = "label3";
+            label3.Size = new Size(60, 20);
+            label3.TabIndex = 5;
+            label3.Text = "Gender:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(13, 173);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(89, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Phone number:";
+            label5.AutoSize = true;
+            label5.Location = new Point(15, 231);
+            label5.Name = "label5";
+            label5.Size = new Size(108, 20);
+            label5.TabIndex = 7;
+            label5.Text = "Phone number:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(50, 213);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(52, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Address:";
+            label4.AutoSize = true;
+            label4.Location = new Point(57, 284);
+            label4.Name = "label4";
+            label4.Size = new Size(65, 20);
+            label4.TabIndex = 8;
+            label4.Text = "Address:";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new Point(71, 253);
-            this.label6.Name = "label6";
-            this.label6.Size = new Size(31, 15);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "City:";
+            label6.AutoSize = true;
+            label6.Location = new Point(81, 337);
+            label6.Name = "label6";
+            label6.Size = new Size(37, 20);
+            label6.TabIndex = 9;
+            label6.Text = "City:";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new Point(66, 293);
-            this.label7.Name = "label7";
-            this.label7.Size = new Size(36, 15);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "State:";
+            label7.AutoSize = true;
+            label7.Location = new Point(75, 391);
+            label7.Name = "label7";
+            label7.Size = new Size(46, 20);
+            label7.TabIndex = 10;
+            label7.Text = "State:";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new Point(75, 333);
-            this.label8.Name = "label8";
-            this.label8.Size = new Size(27, 15);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Zip:";
+            label8.AutoSize = true;
+            label8.Location = new Point(86, 444);
+            label8.Name = "label8";
+            label8.Size = new Size(34, 20);
+            label8.TabIndex = 11;
+            label8.Text = "Zip:";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new Point(48, 374);
-            this.label9.Name = "label9";
-            this.label9.Size = new Size(54, 15);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Birthday:";
+            label9.AutoSize = true;
+            label9.Location = new Point(55, 499);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 20);
+            label9.TabIndex = 12;
+            label9.Text = "Birthday:";
             // 
             // genderTextBox
             // 
-            this.genderTextBox.Location = new Point(116, 130);
-            this.genderTextBox.Name = "genderTextBox";
-            this.genderTextBox.Size = new Size(206, 23);
-            this.genderTextBox.TabIndex = 13;
+            genderTextBox.Location = new Point(133, 173);
+            genderTextBox.Margin = new Padding(3, 4, 3, 4);
+            genderTextBox.Name = "genderTextBox";
+            genderTextBox.Size = new Size(235, 27);
+            genderTextBox.TabIndex = 13;
             // 
             // phoneNumberTextBox
             // 
-            this.phoneNumberTextBox.Location = new Point(116, 170);
-            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new Size(206, 23);
-            this.phoneNumberTextBox.TabIndex = 14;
+            phoneNumberTextBox.Location = new Point(133, 227);
+            phoneNumberTextBox.Margin = new Padding(3, 4, 3, 4);
+            phoneNumberTextBox.Name = "phoneNumberTextBox";
+            phoneNumberTextBox.Size = new Size(235, 27);
+            phoneNumberTextBox.TabIndex = 14;
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Location = new Point(116, 210);
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new Size(206, 23);
-            this.addressTextBox.TabIndex = 15;
+            addressTextBox.Location = new Point(133, 280);
+            addressTextBox.Margin = new Padding(3, 4, 3, 4);
+            addressTextBox.Name = "addressTextBox";
+            addressTextBox.Size = new Size(235, 27);
+            addressTextBox.TabIndex = 15;
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new Point(116, 250);
-            this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new Size(206, 23);
-            this.cityTextBox.TabIndex = 16;
+            cityTextBox.Location = new Point(133, 333);
+            cityTextBox.Margin = new Padding(3, 4, 3, 4);
+            cityTextBox.Name = "cityTextBox";
+            cityTextBox.Size = new Size(235, 27);
+            cityTextBox.TabIndex = 16;
             // 
             // stateTextBox
             // 
-            this.stateTextBox.Location = new Point(116, 290);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new Size(206, 23);
-            this.stateTextBox.TabIndex = 17;
+            stateTextBox.Location = new Point(133, 387);
+            stateTextBox.Margin = new Padding(3, 4, 3, 4);
+            stateTextBox.Name = "stateTextBox";
+            stateTextBox.Size = new Size(235, 27);
+            stateTextBox.TabIndex = 17;
             // 
             // zipTextBox
             // 
-            this.zipTextBox.Location = new Point(116, 330);
-            this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new Size(206, 23);
-            this.zipTextBox.TabIndex = 18;
+            zipTextBox.Location = new Point(133, 440);
+            zipTextBox.Margin = new Padding(3, 4, 3, 4);
+            zipTextBox.Name = "zipTextBox";
+            zipTextBox.Size = new Size(235, 27);
+            zipTextBox.TabIndex = 18;
             // 
             // birthdayDateTimePicker
             // 
-            this.birthdayDateTimePicker.Location = new Point(116, 370);
-            this.birthdayDateTimePicker.Name = "birthdayDateTimePicker";
-            this.birthdayDateTimePicker.Size = new Size(206, 23);
-            this.birthdayDateTimePicker.TabIndex = 19;
+            birthdayDateTimePicker.Location = new Point(133, 493);
+            birthdayDateTimePicker.Margin = new Padding(3, 4, 3, 4);
+            birthdayDateTimePicker.Name = "birthdayDateTimePicker";
+            birthdayDateTimePicker.Size = new Size(235, 27);
+            birthdayDateTimePicker.TabIndex = 19;
             // 
-            // Form1
+            // MemberRegistration
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(381, 472);
-            Controls.Add(this.birthdayDateTimePicker);
-            Controls.Add(this.zipTextBox);
-            Controls.Add(this.stateTextBox);
-            Controls.Add(this.cityTextBox);
-            Controls.Add(this.addressTextBox);
-            Controls.Add(this.phoneNumberTextBox);
-            Controls.Add(this.genderTextBox);
-            Controls.Add(this.label9);
-            Controls.Add(this.label8);
-            Controls.Add(this.label7);
-            Controls.Add(this.label6);
-            Controls.Add(this.label4);
-            Controls.Add(this.label5);
-            Controls.Add(this.label3);
-            Controls.Add(this.lastNameTextBox);
-            Controls.Add(this.label2);
-            Controls.Add(this.firstNameTextBox);
-            Controls.Add(this.label1);
-            Controls.Add(this.RegisterButton);
+            ClientSize = new Size(435, 629);
+            Controls.Add(birthdayDateTimePicker);
+            Controls.Add(zipTextBox);
+            Controls.Add(stateTextBox);
+            Controls.Add(cityTextBox);
+            Controls.Add(addressTextBox);
+            Controls.Add(phoneNumberTextBox);
+            Controls.Add(genderTextBox);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label4);
+            Controls.Add(label5);
+            Controls.Add(label3);
+            Controls.Add(lastNameTextBox);
+            Controls.Add(label2);
+            Controls.Add(firstNameTextBox);
+            Controls.Add(label1);
+            Controls.Add(RegisterButton);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MemberRegistration";
             Text = "Member Registration";
             ResumeLayout(false);

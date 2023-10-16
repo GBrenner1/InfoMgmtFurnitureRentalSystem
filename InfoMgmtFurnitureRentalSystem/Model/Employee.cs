@@ -5,7 +5,6 @@
 /// </summary>
 public class Employee
 {
-
     #region Properties
 
     /// <summary>
@@ -31,6 +30,14 @@ public class Employee
     ///     <c>true</c> if this instance is admin; otherwise, <c>false</c>.
     /// </value>
     public bool IsAdmin { get; set; }
+
+    /// <summary>
+    ///     Gets or sets the username.
+    /// </summary>
+    /// <value>
+    ///     The username.
+    /// </value>
+    public string? Username { get; set; }
 
     #endregion
 }

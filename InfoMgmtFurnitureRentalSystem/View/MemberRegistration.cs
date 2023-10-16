@@ -11,14 +11,16 @@ namespace InfoMgmtFurnitureRentalSystem.View
             this.memberRegistrationController = new MemberRegistrationController();
         }
 
+        public MemberRegistration(MemberRegistrationController memberRegistrationController)
+        {
+            this.InitializeComponent();
+            this.memberRegistrationController = memberRegistrationController;
+        }
+
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text, this.genderTextBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text, this.cityTextBox.Text, this.stateTextBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value);
         }
 
-        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

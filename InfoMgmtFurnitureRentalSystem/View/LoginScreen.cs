@@ -36,7 +36,11 @@ public partial class LoginScreen : Form
             LoginController.CheckLogin(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
         if (this.controller.CurrentEmployee != null)
         {
-            var memberRegistration = new MemberRegistration();
+            var memberRegistrationController = new MemberRegistrationController
+            {
+                CurrentEmployee = this.controller.CurrentEmployee
+            };
+            var memberRegistration = new MemberRegistration(memberRegistrationController);
             memberRegistration.Show();
             Hide();
         }

@@ -22,7 +22,7 @@ public class EmployeeDal
         using var connection = DalConnection.CreateConnection();
         connection.Open();
         const string query =
-            "select e_id, fname, lname, role from employee where username = @username and password = @password";
+            "select e_id, fname, lname, role, username from employee where username = @username and password = @password";
         using var command = new MySqlCommand(query, connection);
         command.Parameters.Add("@username", MySqlDbType.VarChar);
         command.Parameters["@username"].Value = username;
@@ -43,7 +43,8 @@ public class EmployeeDal
             {
                 EmployeeId = reader.GetInt32(0),
                 EmployeeName = reader.GetString(1) + " " + reader.GetString(2),
-                IsAdmin = isAdmin
+                IsAdmin = isAdmin,
+                Username = reader.GetString(4)
             };
             return employee;
         }
