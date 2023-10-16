@@ -21,6 +21,5 @@ namespace InfoMgmtFurnitureRentalSystem.View
         {
             MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text, this.genderTextBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text, this.cityTextBox.Text, this.stateTextBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value);
         }
-
     }
 }

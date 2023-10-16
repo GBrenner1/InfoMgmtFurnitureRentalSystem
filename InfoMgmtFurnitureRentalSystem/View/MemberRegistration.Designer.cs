@@ -71,11 +71,10 @@
             // 
             // firstNameTextBox
             // 
-            firstNameTextBox.Location = new Point(133, 67);
-            firstNameTextBox.Margin = new Padding(3, 4, 3, 4);
-            firstNameTextBox.Name = "firstNameTextBox";
-            firstNameTextBox.Size = new Size(235, 27);
-            firstNameTextBox.TabIndex = 2;
+            this.firstNameTextBox.Location = new Point(116, 50);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.Size = new Size(206, 23);
+            this.firstNameTextBox.TabIndex = 2;
             // 
             // label2
             // 
