@@ -22,7 +22,7 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         /// <param name="state">The state the member lives in</param>
         /// <param name="zip">The zip code of the member</param>
         /// <param name="birthdate">the members birthday</param>
-        public void addMember(string fName, string lName, string gender, string phone, string address, string city, string state, string zip, DateTime birthdate)
+        public static void AddMember(string fName, string lName, string gender, string phone, string address, string city, string state, string zip, DateTime birthdate)
         {
             Member member = new(fName, lName, gender, phone, address, city, state, zip, birthdate, DateTime.Now);
             MemberDal.InsertMember(member);
