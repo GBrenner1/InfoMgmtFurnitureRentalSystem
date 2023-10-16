@@ -1,14 +1,12 @@
 ﻿
 using InfoMgmtFurnitureRentalSystem.Model;
 using MySqlConnector;
-using System;
-using System.Linq;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL
 {
     public class MemberDal
     {
-        public static Boolean InsertMember(Member member)
+        public static bool InsertMember(Member member)
         {
             using (var connection = DalConnection.CreateConnection())
             {
