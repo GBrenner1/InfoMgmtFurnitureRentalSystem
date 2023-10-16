@@ -3,6 +3,9 @@ using InfoMgmtFurnitureRentalSystem.Model;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller
 {
+    /// <summary>
+    /// The member registration controller class
+    /// </summary>
     public class MemberRegistrationController
     {
         public Employee? CurrentEmployee { get; set; }
