@@ -23,12 +23,18 @@ public partial class LoginScreen : Form
     public LoginScreen()
     {
         this.InitializeComponent();
+        this.centerForm();
         this.controller = new LoginController();
     }
 
     #endregion
 
     #region Methods
+
+    private void centerForm()
+    {
+        StartPosition = FormStartPosition.CenterScreen;
+    }
 
     private void LoginButton_Click(object sender, EventArgs e)
     {
@@ -42,7 +48,7 @@ public partial class LoginScreen : Form
             };
             var memberRegistration = new MemberRegistration(memberRegistrationController);
             memberRegistration.Show();
-            memberRegistration.Closed += (s, args) => Close();
+            memberRegistration.Closed += (_, _) => Close();
             Hide();
         }
         else
