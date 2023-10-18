@@ -10,7 +10,7 @@ public partial class LoginScreen : Form
 {
     #region Data members
 
-    private const string InvalidLoginMessage = "Invalid username or password";
+    private const string InvalidLoginMessage = "Invalid Username or password";
     private readonly LoginController controller;
 
     #endregion
