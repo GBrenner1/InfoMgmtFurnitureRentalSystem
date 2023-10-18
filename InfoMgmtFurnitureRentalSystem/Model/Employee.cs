@@ -13,7 +13,7 @@ public class Employee
     /// <value>
     ///     The employee identifier.
     /// </value>
-    public int EmployeeId { get; set; }
+    public int EmployeeId { get; init; }
 
     /// <summary>
     ///     Gets or sets the name of the employee.
@@ -21,7 +21,7 @@ public class Employee
     /// <value>
     ///     The name of the employee with first and last name separated by a space.
     /// </value>
-    public string? EmployeeName { get; set; }
+    public string? EmployeeName { get; init; }
 
     /// <summary>
     ///     Gets or sets the value indicating whether this instance is admin.
@@ -32,10 +32,10 @@ public class Employee
     public bool IsAdmin { get; set; }
 
     /// <summary>
-    ///     Gets or sets the username.
+    ///     Gets or sets the Username.
     /// </summary>
     /// <value>
-    ///     The username.
+    ///     The Username.
     /// </value>
     public string? Username { get; set; }
 
