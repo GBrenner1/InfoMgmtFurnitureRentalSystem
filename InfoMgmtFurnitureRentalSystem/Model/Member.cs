@@ -5,7 +5,7 @@
         /// <summary>
         /// the members id
         /// </summary>
-        public string id { get; set; }
+        public string MemberId { get; set; }
         /// <summary>
         /// the members first name
         /// </summary>
@@ -63,7 +63,7 @@
         /// <param name="regestration_date">the date the member was registered</param>
         public Member(string id,string fname, string lname, string gender, string phone, string street_addr, string city, string state, string zip, DateTime birthday, DateTime regestration_date)
         {
-            this.id = id;
+            this.MemberId = id;
             this.Fname = fname;
             this.Lname = lname;
             this.Gender = gender;

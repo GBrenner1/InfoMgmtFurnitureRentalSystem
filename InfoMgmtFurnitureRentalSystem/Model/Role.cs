@@ -11,17 +11,13 @@
     {
         public static Role RoleFromChar(char role)
         {
-            switch (role)
+            return role switch
             {
-                case 'E':
-                    return Role.Employee;
-                case 'A':
-                    return Role.Admin;
-                case 'M':
-                    return Role.Member;
-                default:
-                    throw new ArgumentException("Invalid role character");
-            }
+                'E' => Role.Employee,
+                'A' => Role.Admin,
+                'M' => Role.Member,
+                _ => throw new ArgumentException("Invalid role character"),
+            };
         }
     }
 }
