@@ -11,7 +11,7 @@ namespace InfoMgmtFurnitureRentalSystem.DAL
     {
         public static bool AddRentalTransaction(RentalTransaction transaction)
         {
-
+            return false;
         }
     }
 }
