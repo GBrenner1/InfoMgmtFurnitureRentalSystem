@@ -1,7 +1,14 @@
 ﻿namespace InfoMgmtFurnitureRentalSystem.Model
 {
+    /// <summary>
+    /// The member model class
+    /// </summary>
     public class Member
     {
+        /// <summary>
+        /// the members id
+        /// </summary>
+        public string MemberId { get; set; }
         /// <summary>
         /// the members first name
         /// </summary>
@@ -46,6 +53,7 @@
         /// <summary>
         /// Creates a new member object
         /// </summary>
+        /// <param name="id"> The customers ID</param>
         /// <param name="fname">the first name of the member</param>
         /// <param name="lname">the last name of the member</param>
         /// <param name="gender">the gender of the member</param>
@@ -56,8 +64,9 @@
         /// <param name="zip">The zip code of the member</param>
         /// <param name="birthday">the members birthday</param>
         /// <param name="regestration_date">the date the member was registered</param>
-        public Member(string fname, string lname, string gender, string phone, string street_addr, string city, string state, string zip, DateTime birthday, DateTime regestration_date)
+        public Member(string id,string fname, string lname, string gender, string phone, string street_addr, string city, string state, string zip, DateTime birthday, DateTime regestration_date)
         {
+            this.MemberId = id;
             this.Fname = fname;
             this.Lname = lname;
             this.Gender = gender;

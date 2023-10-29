@@ -10,6 +10,11 @@ public class EmployeeDal
 {
     #region Methods
 
+    /// <summary>
+    ///     Gets the employee with.
+    /// </summary>
+    /// <param name="loginId">The login identifier.</param>
+    /// <returns>System.Nullable&lt;Employee&gt;.</returns>
     public static Employee? GetEmployeeWith(int loginId)
     {
         using var connection = DalConnection.CreateConnection();
