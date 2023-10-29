@@ -19,7 +19,7 @@ public partial class Mainpage : Form
 
         foreach (Member currMember in mainpageController.Members)
         {
-            ListViewItem newItem = new ListViewItem(currMember.id);
+            ListViewItem newItem = new ListViewItem(currMember.MemberId);
             newItem.SubItems.Add(currMember.Fname);
             newItem.SubItems.Add(currMember.Lname);
             newItem.SubItems.Add(currMember.Phone);
