@@ -21,10 +21,20 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         /// <param name="state">The state the member lives in</param>
         /// <param name="zip">The zip code of the member</param>
         /// <param name="birthdate">the members birthday</param>
-        public static void AddMember(string fName, string lName, string gender, string phone, string address, string city, string state, string zip, DateTime birthdate)
+        public static bool AddMember(string fName, string lName, string gender, string phone, string address, string city, string state, string zip, DateTime birthdate)
         {
+            if (string.IsNullOrWhiteSpace(fName) || string.IsNullOrWhiteSpace(lName) || string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address) 
+                || string.IsNullOrWhiteSpace(city) || string.IsNullOrWhiteSpace(state) || string.IsNullOrWhiteSpace(zip))
+            {
+                MessageBox.Show("Please fill out all information", "More info needed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             Member member = new(fName, lName, gender, phone, address, city, state, zip, birthdate, DateTime.Now);
-            MemberDal.InsertMember(member);
+            if (MemberDal.InsertMember(member))
+            {
+                MessageBox.Show("Member added successfully!", "Member added", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+            return true;
         }
     }
 }

@@ -72,11 +72,23 @@ public partial class MemberRegistration : Form
 
     private void zipTextBox_keyPressed(object sender, KeyPressEventArgs e)
     {
-        e.Handled = !char.IsDigit(e.KeyChar);
+        if (!char.IsDigit(e.KeyChar))
+        {
+            if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 
     private void phoneNumberTextBox_keyPressed(object sender, KeyPressEventArgs e)
     {
-        e.Handled = !char.IsDigit(e.KeyChar);
+        if (!char.IsDigit(e.KeyChar))
+        {
+            if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
