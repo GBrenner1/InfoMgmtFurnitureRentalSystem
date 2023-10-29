@@ -1,4 +1,5 @@
 ﻿using InfoMgmtFurnitureRentalSystem.Controller;
+using InfoMgmtFurnitureRentalSystem.Model;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
@@ -14,6 +15,15 @@ public partial class Mainpage : Form
             var employee = mainpageController.CurrentEmployee;
             this.EmployeeLabel.Text = employee.EmployeeName + Environment.NewLine + employee.Username + " " +
                                       employee.EmployeeId;
+        }
+
+        foreach (Member currMember in mainpageController.Members)
+        {
+            ListViewItem newItem = new ListViewItem(currMember.id);
+            newItem.SubItems.Add(currMember.Fname);
+            newItem.SubItems.Add(currMember.Lname);
+            newItem.SubItems.Add(currMember.Phone);
+            this.MembersListView.Items.Add(newItem);
         }
     }
 

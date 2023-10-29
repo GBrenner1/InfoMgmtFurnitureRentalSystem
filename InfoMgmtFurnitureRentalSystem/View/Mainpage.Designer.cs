@@ -32,8 +32,12 @@
             EmployeeLabel = new Label();
             AddMemberButton = new Button();
             RemoveMemberButton = new Button();
-            MembersListView = new ListView();
             FurnitureListView = new ListView();
+            MembersListView = new ListView();
+            FirstnameColumn = new ColumnHeader();
+            LastnameColumn = new ColumnHeader();
+            Phonecolumn = new ColumnHeader();
+            MemberIdColumn = new ColumnHeader();
             SuspendLayout();
             // 
             // LogoutButton
@@ -74,29 +78,50 @@
             RemoveMemberButton.Text = "Remove Member";
             RemoveMemberButton.UseVisualStyleBackColor = true;
             // 
-            // MembersListView
-            // 
-            MembersListView.Location = new Point(435, 34);
-            MembersListView.Name = "MembersListView";
-            MembersListView.Size = new Size(311, 404);
-            MembersListView.TabIndex = 4;
-            MembersListView.UseCompatibleStateImageBehavior = false;
-            // 
             // FurnitureListView
             // 
             FurnitureListView.Location = new Point(108, 34);
             FurnitureListView.Name = "FurnitureListView";
-            FurnitureListView.Size = new Size(321, 404);
+            FurnitureListView.Size = new Size(321, 394);
             FurnitureListView.TabIndex = 5;
             FurnitureListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // MembersListView
+            // 
+            MembersListView.Columns.AddRange(new ColumnHeader[] { MemberIdColumn, FirstnameColumn, LastnameColumn, Phonecolumn });
+            MembersListView.Location = new Point(435, 34);
+            MembersListView.Name = "MembersListView";
+            MembersListView.Size = new Size(311, 394);
+            MembersListView.TabIndex = 6;
+            MembersListView.UseCompatibleStateImageBehavior = false;
+            MembersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // FirstnameColumn
+            // 
+            FirstnameColumn.Text = "First name";
+            FirstnameColumn.Width = 80;
+            // 
+            // LastnameColumn
+            // 
+            LastnameColumn.Text = "Last name";
+            LastnameColumn.Width = 80;
+            // 
+            // Phonecolumn
+            // 
+            Phonecolumn.Text = "Phone";
+            Phonecolumn.Width = 88;
+            // 
+            // MemberIdColumn
+            // 
+            MemberIdColumn.Text = "ID";
             // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(871, 450);
-            Controls.Add(FurnitureListView);
             Controls.Add(MembersListView);
+            Controls.Add(FurnitureListView);
             Controls.Add(RemoveMemberButton);
             Controls.Add(AddMemberButton);
             Controls.Add(EmployeeLabel);
@@ -113,7 +138,11 @@
         private Label EmployeeLabel;
         private Button AddMemberButton;
         private Button RemoveMemberButton;
-        private ListView MembersListView;
         private ListView FurnitureListView;
+        private ListView MembersListView;
+        private ColumnHeader FirstnameColumn;
+        private ColumnHeader LastnameColumn;
+        private ColumnHeader Phonecolumn;
+        private ColumnHeader MemberIdColumn;
     }
 }

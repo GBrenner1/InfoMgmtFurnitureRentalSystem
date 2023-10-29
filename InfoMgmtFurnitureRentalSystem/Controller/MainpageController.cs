@@ -1,19 +1,17 @@
 ﻿using InfoMgmtFurnitureRentalSystem.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
+using InfoMgmtFurnitureRentalSystem.DAL;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller
 {
     public class MainpageController
     {
         public Employee? CurrentEmployee { get; set; }
+        public IList<Member> Members { get; set; }
 
         public MainpageController()
         {
-
+            this.Members = MainpageDAL.GetMembers();
         }
     }
 }
