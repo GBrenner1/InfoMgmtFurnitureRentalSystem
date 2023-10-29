@@ -30,5 +30,20 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         {
             this.Members = MemberDal.searchByPhone(phone);
         }
+
+        public void searchFurniture(string id, string category, string style)
+        {
+            this.Furnitures = FurnitureDal.searchFurniture(id, category, style);
+        }
+
+        public IList<String> getStyles()
+        {
+            return FurnitureDal.getStyles();
+        }
+
+        public IList<string> getCategories()
+        {
+            return FurnitureDal.getCategories();
+        }
     }
 }

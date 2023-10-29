@@ -32,7 +32,6 @@
             EmployeeLabel = new Label();
             AddMemberButton = new Button();
             RemoveMemberButton = new Button();
-            FurnitureListView = new ListView();
             MembersListView = new ListView();
             MemberIdColumn = new ColumnHeader();
             FirstnameColumn = new ColumnHeader();
@@ -45,9 +44,17 @@
             firstNameLabel = new Label();
             multiSearchLabel = new Label();
             label1 = new Label();
+            furnitureIdTextBox = new TextBox();
+            label2 = new Label();
+            funitureStyleComboBox = new ComboBox();
+            furnitureCategoryComboBox = new ComboBox();
+            label3 = new Label();
+            label4 = new Label();
+            furnitureIdSeachButton = new Button();
             funitureId = new ColumnHeader();
             styleColumn = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
+            FurnitureListView = new ListView();
             SuspendLayout();
             // 
             // LogoutButton
@@ -71,7 +78,7 @@
             // 
             // AddMemberButton
             // 
-            AddMemberButton.Location = new Point(752, 183);
+            AddMemberButton.Location = new Point(767, 183);
             AddMemberButton.Name = "AddMemberButton";
             AddMemberButton.Size = new Size(107, 23);
             AddMemberButton.TabIndex = 2;
@@ -81,27 +88,18 @@
             // 
             // RemoveMemberButton
             // 
-            RemoveMemberButton.Location = new Point(752, 212);
+            RemoveMemberButton.Location = new Point(767, 212);
             RemoveMemberButton.Name = "RemoveMemberButton";
             RemoveMemberButton.Size = new Size(107, 23);
             RemoveMemberButton.TabIndex = 3;
             RemoveMemberButton.Text = "Remove Member";
             RemoveMemberButton.UseVisualStyleBackColor = true;
             // 
-            // FurnitureListView
-            // 
-            FurnitureListView.Columns.AddRange(new ColumnHeader[] { funitureId, styleColumn, columnHeader1 });
-            FurnitureListView.Location = new Point(108, 34);
-            FurnitureListView.Name = "FurnitureListView";
-            FurnitureListView.Size = new Size(321, 394);
-            FurnitureListView.TabIndex = 5;
-            FurnitureListView.UseCompatibleStateImageBehavior = false;
-            FurnitureListView.View = System.Windows.Forms.View.Details;
-            // 
             // MembersListView
             // 
             MembersListView.Columns.AddRange(new ColumnHeader[] { MemberIdColumn, FirstnameColumn, LastnameColumn, Phonecolumn });
-            MembersListView.Location = new Point(435, 34);
+            MembersListView.FullRowSelect = true;
+            MembersListView.Location = new Point(450, 34);
             MembersListView.Name = "MembersListView";
             MembersListView.Size = new Size(311, 394);
             MembersListView.TabIndex = 6;
@@ -131,7 +129,7 @@
             // 
             memberSearchComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             memberSearchComboBox.FormattingEnabled = true;
-            memberSearchComboBox.Location = new Point(752, 376);
+            memberSearchComboBox.Location = new Point(767, 376);
             memberSearchComboBox.Name = "memberSearchComboBox";
             memberSearchComboBox.Size = new Size(107, 23);
             memberSearchComboBox.TabIndex = 7;
@@ -139,7 +137,7 @@
             // 
             // memberSearchButton
             // 
-            memberSearchButton.Location = new Point(752, 405);
+            memberSearchButton.Location = new Point(767, 405);
             memberSearchButton.Name = "memberSearchButton";
             memberSearchButton.Size = new Size(107, 23);
             memberSearchButton.TabIndex = 8;
@@ -149,14 +147,14 @@
             // 
             // multiSearchBox
             // 
-            multiSearchBox.Location = new Point(752, 331);
+            multiSearchBox.Location = new Point(767, 331);
             multiSearchBox.Name = "multiSearchBox";
             multiSearchBox.Size = new Size(107, 23);
             multiSearchBox.TabIndex = 9;
             // 
             // firstNameTextBox
             // 
-            firstNameTextBox.Location = new Point(752, 287);
+            firstNameTextBox.Location = new Point(767, 287);
             firstNameTextBox.Name = "firstNameTextBox";
             firstNameTextBox.Size = new Size(107, 23);
             firstNameTextBox.TabIndex = 10;
@@ -164,7 +162,7 @@
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new Point(752, 269);
+            firstNameLabel.Location = new Point(767, 269);
             firstNameLabel.Name = "firstNameLabel";
             firstNameLabel.Size = new Size(65, 15);
             firstNameLabel.TabIndex = 11;
@@ -173,7 +171,7 @@
             // multiSearchLabel
             // 
             multiSearchLabel.AutoSize = true;
-            multiSearchLabel.Location = new Point(753, 313);
+            multiSearchLabel.Location = new Point(767, 313);
             multiSearchLabel.Name = "multiSearchLabel";
             multiSearchLabel.Size = new Size(64, 15);
             multiSearchLabel.TabIndex = 12;
@@ -182,11 +180,73 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(752, 358);
+            label1.Location = new Point(767, 357);
             label1.Name = "label1";
             label1.Size = new Size(61, 15);
             label1.TabIndex = 13;
             label1.Text = "Search by:";
+            // 
+            // furnitureIdTextBox
+            // 
+            furnitureIdTextBox.Location = new Point(12, 288);
+            furnitureIdTextBox.Name = "furnitureIdTextBox";
+            furnitureIdTextBox.Size = new Size(100, 23);
+            furnitureIdTextBox.TabIndex = 14;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 270);
+            label2.Name = "label2";
+            label2.Size = new Size(20, 15);
+            label2.TabIndex = 15;
+            label2.Text = "Id:";
+            // 
+            // funitureStyleComboBox
+            // 
+            funitureStyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            funitureStyleComboBox.FormattingEnabled = true;
+            funitureStyleComboBox.Location = new Point(12, 332);
+            funitureStyleComboBox.Name = "funitureStyleComboBox";
+            funitureStyleComboBox.Size = new Size(100, 23);
+            funitureStyleComboBox.TabIndex = 16;
+            // 
+            // furnitureCategoryComboBox
+            // 
+            furnitureCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            furnitureCategoryComboBox.FormattingEnabled = true;
+            furnitureCategoryComboBox.Location = new Point(12, 376);
+            furnitureCategoryComboBox.Name = "furnitureCategoryComboBox";
+            furnitureCategoryComboBox.Size = new Size(100, 23);
+            furnitureCategoryComboBox.TabIndex = 17;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 314);
+            label3.Name = "label3";
+            label3.Size = new Size(35, 15);
+            label3.TabIndex = 18;
+            label3.Text = "Style:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 358);
+            label4.Name = "label4";
+            label4.Size = new Size(58, 15);
+            label4.TabIndex = 19;
+            label4.Text = "Category:";
+            // 
+            // furnitureIdSeachButton
+            // 
+            furnitureIdSeachButton.Location = new Point(12, 405);
+            furnitureIdSeachButton.Name = "furnitureIdSeachButton";
+            furnitureIdSeachButton.Size = new Size(100, 23);
+            furnitureIdSeachButton.TabIndex = 20;
+            furnitureIdSeachButton.Text = "Search";
+            furnitureIdSeachButton.UseVisualStyleBackColor = true;
+            furnitureIdSeachButton.Click += furnitureIdSeachButton_Click;
             // 
             // funitureId
             // 
@@ -203,11 +263,29 @@
             columnHeader1.Text = "Category";
             columnHeader1.Width = 180;
             // 
+            // FurnitureListView
+            // 
+            FurnitureListView.Columns.AddRange(new ColumnHeader[] { funitureId, styleColumn, columnHeader1 });
+            FurnitureListView.FullRowSelect = true;
+            FurnitureListView.Location = new Point(123, 34);
+            FurnitureListView.Name = "FurnitureListView";
+            FurnitureListView.Size = new Size(321, 394);
+            FurnitureListView.TabIndex = 5;
+            FurnitureListView.UseCompatibleStateImageBehavior = false;
+            FurnitureListView.View = System.Windows.Forms.View.Details;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(871, 450);
+            ClientSize = new Size(886, 450);
+            Controls.Add(furnitureIdSeachButton);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(furnitureCategoryComboBox);
+            Controls.Add(funitureStyleComboBox);
+            Controls.Add(label2);
+            Controls.Add(furnitureIdTextBox);
             Controls.Add(label1);
             Controls.Add(multiSearchLabel);
             Controls.Add(firstNameLabel);
@@ -233,7 +311,6 @@
         private Label EmployeeLabel;
         private Button AddMemberButton;
         private Button RemoveMemberButton;
-        private ListView FurnitureListView;
         private ListView MembersListView;
         private ColumnHeader FirstnameColumn;
         private ColumnHeader LastnameColumn;
@@ -246,8 +323,16 @@
         private Label firstNameLabel;
         private Label multiSearchLabel;
         private Label label1;
+        private TextBox furnitureIdTextBox;
+        private Label label2;
+        private ComboBox funitureStyleComboBox;
+        private ComboBox furnitureCategoryComboBox;
+        private Label label3;
+        private Label label4;
+        private Button furnitureIdSeachButton;
         private ColumnHeader funitureId;
         private ColumnHeader styleColumn;
         private ColumnHeader columnHeader1;
+        private ListView FurnitureListView;
     }
 }

@@ -29,6 +29,16 @@ public partial class Mainpage : Form
         this.memberSearchComboBox.Items.Add("Name");
         this.memberSearchComboBox.Items.Add("Id");
         this.memberSearchComboBox.Items.Add("Phone");
+
+        foreach (var style in mainpageController.getStyles())
+        {
+            this.funitureStyleComboBox.Items.Add(style);
+        }
+
+        foreach (var category in mainpageController.getCategories())
+        {
+            this.furnitureCategoryComboBox.Items.Add(category);
+        }
     }
 
     #endregion
@@ -110,11 +120,18 @@ public partial class Mainpage : Form
     {
         foreach (var currFurniture in this.mainpageController.Furnitures)
         {
-            var newItem = new ListViewItem(currFurniture.Id.ToString());
+            var newItem = new ListViewItem(currFurniture.FurnitureId.ToString());
             newItem.SubItems.Add(currFurniture.Style);
             newItem.SubItems.Add(currFurniture.Category);
             this.FurnitureListView.Items.Add(newItem);
         }
+    }
+
+    private void furnitureIdSeachButton_Click(object sender, EventArgs e)
+    {
+        this.FurnitureListView.Items.Clear();
+        this.mainpageController.searchFurniture(this.furnitureIdTextBox.Text, this.furnitureCategoryComboBox.Text, this.funitureStyleComboBox.Text);
+        this.reloadFurnitureList();
     }
 
     #endregion
