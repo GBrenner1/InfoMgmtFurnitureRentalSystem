@@ -134,7 +134,7 @@ public partial class Mainpage : Form
         }
     }
 
-    private void furnitureIdSeachButton_Click(object sender, EventArgs e)
+    private void furnitureIdSearchButton_Click(object sender, EventArgs e)
     {
         this.FurnitureListView.Items.Clear();
         this.mainpageController.searchFurniture(this.furnitureIdTextBox.Text, this.furnitureCategoryComboBox.Text,

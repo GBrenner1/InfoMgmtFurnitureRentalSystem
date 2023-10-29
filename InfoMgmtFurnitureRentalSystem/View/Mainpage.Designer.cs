@@ -236,7 +236,7 @@
             furnitureIdSeachButton.TabIndex = 20;
             furnitureIdSeachButton.Text = "Search";
             furnitureIdSeachButton.UseVisualStyleBackColor = true;
-            furnitureIdSeachButton.Click += furnitureIdSeachButton_Click;
+            furnitureIdSeachButton.Click += this.furnitureIdSearchButton_Click;
             // 
             // funitureId
             // 
