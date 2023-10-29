@@ -1,4 +1,5 @@
 ﻿using InfoMgmtFurnitureRentalSystem.Controller;
+using InfoMgmtFurnitureRentalSystem.DAL;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
@@ -22,6 +23,7 @@ public partial class Mainpage : Form
     public Mainpage(MainpageController mainpageController)
     {
         this.InitializeComponent();
+        this.centerForm();
         this.mainpageController = mainpageController;
         if (mainpageController.CurrentEmployee != null)
         {
@@ -51,6 +53,10 @@ public partial class Mainpage : Form
     #endregion
 
     #region Methods
+    private void centerForm()
+    {
+        StartPosition = FormStartPosition.CenterScreen;
+    }
 
     private void LogoutButton_Click(object sender, EventArgs e)
     {
@@ -66,6 +72,14 @@ public partial class Mainpage : Form
         var memberRegistration = new MemberRegistration(memberRegistrationController);
         memberRegistration.Show();
         memberRegistration.Closed += (s, args) => Close();
+        memberRegistration.VisibleChanged += MemberRegistrationOnVisibleChanged;
+    }
+
+    private void MemberRegistrationOnVisibleChanged(object? sender, EventArgs e)
+    {
+        this.MembersListView.Items.Clear();
+        this.mainpageController.refreshMembers();
+        this.reloadMembersList();
     }
 
     private void memberSearchComboBox_SelectedIndexChanged(object sender, EventArgs e)

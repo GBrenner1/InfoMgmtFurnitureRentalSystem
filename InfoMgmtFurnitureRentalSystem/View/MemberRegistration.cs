@@ -30,6 +30,7 @@ public partial class MemberRegistration : Form
     public MemberRegistration(MemberRegistrationController memberRegistrationController)
     {
         this.InitializeComponent();
+        this.centerForm();
         if (memberRegistrationController.CurrentEmployee != null)
         {
             var employee = memberRegistrationController.CurrentEmployee;
@@ -57,7 +58,10 @@ public partial class MemberRegistration : Form
     #endregion
 
     #region Methods
-
+    private void centerForm()
+    {
+        StartPosition = FormStartPosition.CenterScreen;
+    }
     private void RegisterButton_Click(object sender, EventArgs e)
     {
         if (MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,

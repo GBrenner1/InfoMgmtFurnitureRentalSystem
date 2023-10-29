@@ -71,6 +71,14 @@ public class MainpageController
     }
 
     /// <summary>
+    /// refreshes all members in list
+    /// </summary>
+    public void refreshMembers()
+    {
+        this.Members = MemberDal.GetMembers();
+    }
+
+    /// <summary>
     ///     Searches all furniture
     /// </summary>
     /// <param name="id"></param>
