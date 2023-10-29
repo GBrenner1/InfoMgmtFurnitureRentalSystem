@@ -163,6 +163,7 @@
             phoneNumberTextBox.Name = "phoneNumberTextBox";
             phoneNumberTextBox.Size = new Size(206, 23);
             phoneNumberTextBox.TabIndex = 14;
+            phoneNumberTextBox.KeyPress += phoneNumberTextBox_keyPressed;
             // 
             // addressTextBox
             // 
@@ -184,6 +185,7 @@
             zipTextBox.Name = "zipTextBox";
             zipTextBox.Size = new Size(206, 23);
             zipTextBox.TabIndex = 18;
+            zipTextBox.KeyPress += zipTextBox_keyPressed;
             // 
             // birthdayDateTimePicker
             // 
@@ -214,6 +216,7 @@
             // 
             // genderComboBox
             // 
+            genderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             genderComboBox.FormattingEnabled = true;
             genderComboBox.Location = new Point(116, 130);
             genderComboBox.Name = "genderComboBox";
@@ -222,6 +225,7 @@
             // 
             // stateComboBox
             // 
+            stateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             stateComboBox.FormattingEnabled = true;
             stateComboBox.Location = new Point(116, 290);
             stateComboBox.Name = "stateComboBox";
