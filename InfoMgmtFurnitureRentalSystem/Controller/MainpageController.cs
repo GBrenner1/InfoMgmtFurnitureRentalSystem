@@ -13,5 +13,20 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         {
             this.Members = MainpageDAL.GetMembers();
         }
+
+        public void searchByName(string fname, string lname)
+        {
+            this.Members = MainpageDAL.searchByName(fname, lname);
+        }
+
+        public void searchById(string id)
+        {
+            this.Members = MainpageDAL.searchById(id);
+        }
+
+        public void searchByPhone(string phone)
+        {
+            this.Members = MainpageDAL.searchByPhone(phone);
+        }
     }
 }

@@ -1,15 +1,21 @@
 ﻿using InfoMgmtFurnitureRentalSystem.Controller;
-using InfoMgmtFurnitureRentalSystem.Model;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
 public partial class Mainpage : Form
 {
+    #region Data members
+
+    private readonly MainpageController mainpageController;
+
+    #endregion
+
     #region Constructors
 
     public Mainpage(MainpageController mainpageController)
     {
         this.InitializeComponent();
+        this.mainpageController = mainpageController;
         if (mainpageController.CurrentEmployee != null)
         {
             var employee = mainpageController.CurrentEmployee;
@@ -17,14 +23,11 @@ public partial class Mainpage : Form
                                       employee.EmployeeId;
         }
 
-        foreach (Member currMember in mainpageController.Members)
-        {
-            ListViewItem newItem = new ListViewItem(currMember.id);
-            newItem.SubItems.Add(currMember.Fname);
-            newItem.SubItems.Add(currMember.Lname);
-            newItem.SubItems.Add(currMember.Phone);
-            this.MembersListView.Items.Add(newItem);
-        }
+        this.reloadMembersList();
+
+        this.memberSearchComboBox.Items.Add("Name");
+        this.memberSearchComboBox.Items.Add("Id");
+        this.memberSearchComboBox.Items.Add("Phone");
     }
 
     #endregion
@@ -45,6 +48,61 @@ public partial class Mainpage : Form
         var memberRegistration = new MemberRegistration(memberRegistrationController);
         memberRegistration.Show();
         memberRegistration.Closed += (s, args) => Close();
+    }
+
+    private void memberSearchComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (this.memberSearchComboBox.SelectedIndex != 0)
+        {
+            this.firstNameLabel.Hide();
+            this.firstNameTextBox.Hide();
+
+            if (this.memberSearchComboBox.SelectedIndex == 1)
+            {
+                this.multiSearchLabel.Text = "Id:";
+            }
+            else
+            {
+                this.multiSearchLabel.Text = "Phone:";
+            }
+        }
+        else
+        {
+            this.firstNameLabel.Show();
+            this.firstNameTextBox.Show();
+            this.multiSearchLabel.Text = "Last name:";
+        }
+    }
+
+    private void memberSearchButton_Click(object sender, EventArgs e)
+    {
+        this.MembersListView.Items.Clear();
+        switch (this.memberSearchComboBox.SelectedIndex)
+        {
+            case 0:
+                this.mainpageController.searchByName(this.firstNameTextBox.Text, this.multiSearchBox.Text);
+                break;
+            case 1:
+                this.mainpageController.searchById(this.multiSearchBox.Text);
+                break;
+            case 2:
+                this.mainpageController.searchByPhone(this.multiSearchBox.Text);
+                break;
+        }
+
+        this.reloadMembersList();
+    }
+
+    private void reloadMembersList()
+    {
+        foreach (var currMember in this.mainpageController.Members)
+        {
+            var newItem = new ListViewItem(currMember.id);
+            newItem.SubItems.Add(currMember.Fname);
+            newItem.SubItems.Add(currMember.Lname);
+            newItem.SubItems.Add(currMember.Phone);
+            this.MembersListView.Items.Add(newItem);
+        }
     }
 
     #endregion

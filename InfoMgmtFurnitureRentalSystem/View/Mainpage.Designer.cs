@@ -34,10 +34,17 @@
             RemoveMemberButton = new Button();
             FurnitureListView = new ListView();
             MembersListView = new ListView();
+            MemberIdColumn = new ColumnHeader();
             FirstnameColumn = new ColumnHeader();
             LastnameColumn = new ColumnHeader();
             Phonecolumn = new ColumnHeader();
-            MemberIdColumn = new ColumnHeader();
+            memberSearchComboBox = new ComboBox();
+            memberSearchButton = new Button();
+            multiSearchBox = new TextBox();
+            firstNameTextBox = new TextBox();
+            firstNameLabel = new Label();
+            multiSearchLabel = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // LogoutButton
@@ -96,6 +103,10 @@
             MembersListView.UseCompatibleStateImageBehavior = false;
             MembersListView.View = System.Windows.Forms.View.Details;
             // 
+            // MemberIdColumn
+            // 
+            MemberIdColumn.Text = "ID";
+            // 
             // FirstnameColumn
             // 
             FirstnameColumn.Text = "First name";
@@ -111,15 +122,79 @@
             Phonecolumn.Text = "Phone";
             Phonecolumn.Width = 88;
             // 
-            // MemberIdColumn
+            // memberSearchComboBox
             // 
-            MemberIdColumn.Text = "ID";
+            memberSearchComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            memberSearchComboBox.FormattingEnabled = true;
+            memberSearchComboBox.Location = new Point(752, 376);
+            memberSearchComboBox.Name = "memberSearchComboBox";
+            memberSearchComboBox.Size = new Size(107, 23);
+            memberSearchComboBox.TabIndex = 7;
+            memberSearchComboBox.SelectedIndexChanged += memberSearchComboBox_SelectedIndexChanged;
+            // 
+            // memberSearchButton
+            // 
+            memberSearchButton.Location = new Point(752, 405);
+            memberSearchButton.Name = "memberSearchButton";
+            memberSearchButton.Size = new Size(107, 23);
+            memberSearchButton.TabIndex = 8;
+            memberSearchButton.Text = "Search";
+            memberSearchButton.UseVisualStyleBackColor = true;
+            memberSearchButton.Click += memberSearchButton_Click;
+            // 
+            // multiSearchBox
+            // 
+            multiSearchBox.Location = new Point(752, 331);
+            multiSearchBox.Name = "multiSearchBox";
+            multiSearchBox.Size = new Size(107, 23);
+            multiSearchBox.TabIndex = 9;
+            // 
+            // firstNameTextBox
+            // 
+            firstNameTextBox.Location = new Point(752, 287);
+            firstNameTextBox.Name = "firstNameTextBox";
+            firstNameTextBox.Size = new Size(107, 23);
+            firstNameTextBox.TabIndex = 10;
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new Point(752, 269);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new Size(65, 15);
+            firstNameLabel.TabIndex = 11;
+            firstNameLabel.Text = "First name:";
+            // 
+            // multiSearchLabel
+            // 
+            multiSearchLabel.AutoSize = true;
+            multiSearchLabel.Location = new Point(753, 313);
+            multiSearchLabel.Name = "multiSearchLabel";
+            multiSearchLabel.Size = new Size(64, 15);
+            multiSearchLabel.TabIndex = 12;
+            multiSearchLabel.Text = "Last name:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(752, 358);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 15);
+            label1.TabIndex = 13;
+            label1.Text = "Search by:";
             // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(871, 450);
+            Controls.Add(label1);
+            Controls.Add(multiSearchLabel);
+            Controls.Add(firstNameLabel);
+            Controls.Add(firstNameTextBox);
+            Controls.Add(multiSearchBox);
+            Controls.Add(memberSearchButton);
+            Controls.Add(memberSearchComboBox);
             Controls.Add(MembersListView);
             Controls.Add(FurnitureListView);
             Controls.Add(RemoveMemberButton);
@@ -144,5 +219,12 @@
         private ColumnHeader LastnameColumn;
         private ColumnHeader Phonecolumn;
         private ColumnHeader MemberIdColumn;
+        private ComboBox memberSearchComboBox;
+        private Button memberSearchButton;
+        private TextBox multiSearchBox;
+        private TextBox firstNameTextBox;
+        private Label firstNameLabel;
+        private Label multiSearchLabel;
+        private Label label1;
     }
 }
