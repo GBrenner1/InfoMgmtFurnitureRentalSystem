@@ -16,19 +16,24 @@ public partial class MemberRegistration : Form
 
     #region Constructors
 
+    /// <summary>
+    /// The default constructor for the member registration class
+    /// </summary>
     public MemberRegistration()
     {
         this.InitializeComponent();
     }
-
+    /// <summary>
+    /// The single param constructor for the member registration class
+    /// </summary>
+    /// <param name="memberRegistrationController"></param>
     public MemberRegistration(MemberRegistrationController memberRegistrationController)
     {
         this.InitializeComponent();
+        this.centerForm();
         if (memberRegistrationController.CurrentEmployee != null)
         {
             var employee = memberRegistrationController.CurrentEmployee;
-            this.EmployeeLabel.Text = employee.EmployeeName + Environment.NewLine + employee.Username + Space +
-                                      employee.EmployeeId;
         }
 
         this.genderComboBox.Items.Add("M");
@@ -53,7 +58,10 @@ public partial class MemberRegistration : Form
     #endregion
 
     #region Methods
-
+    private void centerForm()
+    {
+        StartPosition = FormStartPosition.CenterScreen;
+    }
     private void RegisterButton_Click(object sender, EventArgs e)
     {
         if (MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
@@ -91,7 +99,10 @@ public partial class MemberRegistration : Form
             }
         }
     }
-
+    /// <summary>
+    /// Overrides the member registration close button
+    /// </summary>
+    /// <param name="e"></param>
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         e.Cancel = true;
