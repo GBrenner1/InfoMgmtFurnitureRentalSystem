@@ -1,3 +1,4 @@
+using System.Collections;
 using InfoMgmtFurnitureRentalSystem.Controller;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
@@ -69,5 +70,13 @@ public partial class MemberRegistration : Form
 
     #endregion
 
+    private void zipTextBox_keyPressed(object sender, KeyPressEventArgs e)
+    {
+        e.Handled = !char.IsDigit(e.KeyChar);
+    }
 
+    private void phoneNumberTextBox_keyPressed(object sender, KeyPressEventArgs e)
+    {
+        e.Handled = !char.IsDigit(e.KeyChar);
+    }
 }
