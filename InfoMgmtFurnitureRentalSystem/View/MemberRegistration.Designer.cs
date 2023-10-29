@@ -45,8 +45,7 @@
             cityTextBox = new TextBox();
             zipTextBox = new TextBox();
             birthdayDateTimePicker = new DateTimePicker();
-            EmployeeLabel = new Label();
-            LogoutButton = new Button();
+            CancelButton = new Button();
             genderComboBox = new ComboBox();
             stateComboBox = new ComboBox();
             SuspendLayout();
@@ -194,25 +193,16 @@
             birthdayDateTimePicker.Size = new Size(206, 23);
             birthdayDateTimePicker.TabIndex = 19;
             // 
-            // EmployeeLabel
+            // CancelButton
             // 
-            EmployeeLabel.AutoSize = true;
-            EmployeeLabel.Location = new Point(10, 7);
-            EmployeeLabel.Name = "EmployeeLabel";
-            EmployeeLabel.Size = new Size(44, 15);
-            EmployeeLabel.TabIndex = 20;
-            EmployeeLabel.Text = "label10";
-            // 
-            // LogoutButton
-            // 
-            LogoutButton.Location = new Point(288, 9);
-            LogoutButton.Margin = new Padding(3, 2, 3, 2);
-            LogoutButton.Name = "LogoutButton";
-            LogoutButton.Size = new Size(82, 22);
-            LogoutButton.TabIndex = 21;
-            LogoutButton.Text = "Logout";
-            LogoutButton.UseVisualStyleBackColor = true;
-            LogoutButton.Click += LogoutButton_Click;
+            CancelButton.Location = new Point(288, 9);
+            CancelButton.Margin = new Padding(3, 2, 3, 2);
+            CancelButton.Name = "CancelButton";
+            CancelButton.Size = new Size(82, 22);
+            CancelButton.TabIndex = 21;
+            CancelButton.Text = "Cancel";
+            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
             // 
             // genderComboBox
             // 
@@ -239,8 +229,7 @@
             ClientSize = new Size(381, 472);
             Controls.Add(stateComboBox);
             Controls.Add(genderComboBox);
-            Controls.Add(LogoutButton);
-            Controls.Add(EmployeeLabel);
+            Controls.Add(CancelButton);
             Controls.Add(birthdayDateTimePicker);
             Controls.Add(zipTextBox);
             Controls.Add(cityTextBox);
@@ -284,7 +273,7 @@
         private TextBox zipTextBox;
         private DateTimePicker birthdayDateTimePicker;
         private Label EmployeeLabel;
-        private Button LogoutButton;
+        private Button CancelButton;
         private ComboBox genderComboBox;
         private ComboBox stateComboBox;
     }

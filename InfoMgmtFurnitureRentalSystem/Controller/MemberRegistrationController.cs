@@ -24,7 +24,7 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         public static bool AddMember(string fName, string lName, string gender, string phone, string address, string city, string state, string zip, DateTime birthdate)
         {
             if (string.IsNullOrWhiteSpace(fName) || string.IsNullOrWhiteSpace(lName) || string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address) 
-                || string.IsNullOrWhiteSpace(city) || string.IsNullOrWhiteSpace(state) || string.IsNullOrWhiteSpace(zip))
+                || string.IsNullOrWhiteSpace(city) || string.IsNullOrWhiteSpace(state) || string.IsNullOrWhiteSpace(zip) || string.IsNullOrWhiteSpace(gender))
             {
                 MessageBox.Show("Please fill out all information", "More info needed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

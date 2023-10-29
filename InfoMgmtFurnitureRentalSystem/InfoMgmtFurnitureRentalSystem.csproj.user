@@ -4,6 +4,9 @@
     <Compile Update="View\LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Mainpage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\MemberRegistration.cs">
       <SubType>Form</SubType>
     </Compile>

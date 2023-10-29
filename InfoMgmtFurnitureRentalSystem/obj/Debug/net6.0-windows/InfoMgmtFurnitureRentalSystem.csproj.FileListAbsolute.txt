@@ -35,3 +35,4 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.pdb
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.genruntimeconfig.cache
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\ref\InfoMgmtFurnitureRentalSystem.dll
+C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.Mainpage.resources

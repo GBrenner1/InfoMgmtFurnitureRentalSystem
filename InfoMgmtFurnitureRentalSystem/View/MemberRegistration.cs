@@ -56,16 +56,16 @@ public partial class MemberRegistration : Form
 
     private void RegisterButton_Click(object sender, EventArgs e)
     {
-        MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
-            this.genderComboBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text, this.cityTextBox.Text,
-            this.stateComboBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value);
+        if (MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
+                this.genderComboBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text, this.cityTextBox.Text,
+                this.stateComboBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value))
+        {
+            this.Hide();
+        }
     }
-    private void LogoutButton_Click(object sender, EventArgs e)
+    private void CancelButton_Click(object sender, EventArgs e)
     {
-        var loginScreen = new LoginScreen();
-        loginScreen.Show();
-        loginScreen.Closed += (s, args) => Close();
-        Hide();
+        this.Hide();
     }
 
     #endregion
@@ -90,5 +90,11 @@ public partial class MemberRegistration : Form
                 e.Handled = true;
             }
         }
+    }
+
+    protected override void OnFormClosing(FormClosingEventArgs e)
+    {
+        e.Cancel = true;
+        this.Hide();
     }
 }
