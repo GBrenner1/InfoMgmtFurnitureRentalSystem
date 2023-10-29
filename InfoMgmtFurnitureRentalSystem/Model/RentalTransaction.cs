@@ -35,13 +35,13 @@ public class RentalTransaction
     ///     Gets the rental date.
     /// </summary>
     /// <value>The rental date.</value>
-    public DateTime RentalDate { get; private set; }
+    public DateTime RentalDate { get; set; }
 
     /// <summary>
     ///     Gets the due date.
     /// </summary>
     /// <value>The due date.</value>
-    public DateTime DueDate { get; private set; }
+    public DateTime DueDate { get; set; }
 
     private int DaysBetween => (this.DueDate - this.RentalDate).Days;
 
