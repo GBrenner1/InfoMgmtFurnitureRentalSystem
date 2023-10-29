@@ -273,7 +273,7 @@
         private TextBox zipTextBox;
         private DateTimePicker birthdayDateTimePicker;
         private Label EmployeeLabel;
-        private Button CancelButton;
+        private new Button CancelButton;
         private ComboBox genderComboBox;
         private ComboBox stateComboBox;
     }
