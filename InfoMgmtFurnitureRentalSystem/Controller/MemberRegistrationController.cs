@@ -29,7 +29,7 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
                 MessageBox.Show("Please fill out all information", "More info needed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            Member member = new(fName, lName, gender, phone, address, city, state, zip, birthdate, DateTime.Now);
+            Member member = new("0",fName, lName, gender, phone, address, city, state, zip, birthdate, DateTime.Now);
             if (MemberDal.InsertMember(member))
             {
                 MessageBox.Show("Member added successfully!", "Member added", MessageBoxButtons.OK, MessageBoxIcon.None);
