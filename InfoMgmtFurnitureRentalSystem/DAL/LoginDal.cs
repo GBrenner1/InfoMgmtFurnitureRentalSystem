@@ -2,6 +2,9 @@
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
 
+/// <summary>
+///     A class that handles all database access to the login table.
+/// </summary>
 public class LoginDal
 {
     #region Methods
