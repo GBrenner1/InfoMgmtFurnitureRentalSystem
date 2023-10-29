@@ -2,6 +2,9 @@
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
 
+/// <summary>
+///     The dal connection class
+/// </summary>
 public class DalConnection
 {
     #region Methods

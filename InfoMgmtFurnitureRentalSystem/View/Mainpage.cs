@@ -2,6 +2,9 @@
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
+/// <summary>
+///     The mainpage form
+/// </summary>
 public partial class Mainpage : Form
 {
     #region Data members
@@ -12,6 +15,10 @@ public partial class Mainpage : Form
 
     #region Constructors
 
+    /// <summary>
+    ///     the single param constructor for the mainpage
+    /// </summary>
+    /// <param name="mainpageController"></param>
     public Mainpage(MainpageController mainpageController)
     {
         this.InitializeComponent();
@@ -130,7 +137,8 @@ public partial class Mainpage : Form
     private void furnitureIdSeachButton_Click(object sender, EventArgs e)
     {
         this.FurnitureListView.Items.Clear();
-        this.mainpageController.searchFurniture(this.furnitureIdTextBox.Text, this.furnitureCategoryComboBox.Text, this.funitureStyleComboBox.Text);
+        this.mainpageController.searchFurniture(this.furnitureIdTextBox.Text, this.furnitureCategoryComboBox.Text,
+            this.funitureStyleComboBox.Text);
         this.reloadFurnitureList();
     }
 

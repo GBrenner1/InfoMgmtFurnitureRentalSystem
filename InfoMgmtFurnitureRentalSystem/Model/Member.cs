@@ -1,5 +1,8 @@
 ﻿namespace InfoMgmtFurnitureRentalSystem.Model
 {
+    /// <summary>
+    /// The member model class
+    /// </summary>
     public class Member
     {
         /// <summary>

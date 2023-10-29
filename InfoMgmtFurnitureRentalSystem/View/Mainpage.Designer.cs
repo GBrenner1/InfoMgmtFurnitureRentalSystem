@@ -31,7 +31,6 @@
             LogoutButton = new Button();
             EmployeeLabel = new Label();
             AddMemberButton = new Button();
-            RemoveMemberButton = new Button();
             MembersListView = new ListView();
             MemberIdColumn = new ColumnHeader();
             FirstnameColumn = new ColumnHeader();
@@ -78,22 +77,13 @@
             // 
             // AddMemberButton
             // 
-            AddMemberButton.Location = new Point(767, 183);
+            AddMemberButton.Location = new Point(767, 34);
             AddMemberButton.Name = "AddMemberButton";
             AddMemberButton.Size = new Size(107, 23);
             AddMemberButton.TabIndex = 2;
             AddMemberButton.Text = "Add Member";
             AddMemberButton.UseVisualStyleBackColor = true;
             AddMemberButton.Click += AddMemberButton_Click;
-            // 
-            // RemoveMemberButton
-            // 
-            RemoveMemberButton.Location = new Point(767, 212);
-            RemoveMemberButton.Name = "RemoveMemberButton";
-            RemoveMemberButton.Size = new Size(107, 23);
-            RemoveMemberButton.TabIndex = 3;
-            RemoveMemberButton.Text = "Remove Member";
-            RemoveMemberButton.UseVisualStyleBackColor = true;
             // 
             // MembersListView
             // 
@@ -295,7 +285,6 @@
             Controls.Add(memberSearchComboBox);
             Controls.Add(MembersListView);
             Controls.Add(FurnitureListView);
-            Controls.Add(RemoveMemberButton);
             Controls.Add(AddMemberButton);
             Controls.Add(EmployeeLabel);
             Controls.Add(LogoutButton);
@@ -310,7 +299,6 @@
         private Button LogoutButton;
         private Label EmployeeLabel;
         private Button AddMemberButton;
-        private Button RemoveMemberButton;
         private ListView MembersListView;
         private ColumnHeader FirstnameColumn;
         private ColumnHeader LastnameColumn;

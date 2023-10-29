@@ -3,10 +3,18 @@ using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
 
+/// <summary>
+///     The member DAL class
+/// </summary>
 public class MemberDal
 {
     #region Methods
 
+    /// <summary>
+    ///     the function to insert a new member into the DB
+    /// </summary>
+    /// <param name="member"></param>
+    /// <returns></returns>
     public static bool InsertMember(Member member)
     {
         using var connection = DalConnection.CreateConnection();
@@ -39,6 +47,11 @@ public class MemberDal
             return false;
         }
     }
+
+    /// <summary>
+    ///     Gets all members to be loaded on launch
+    /// </summary>
+    /// <returns></returns>
     public static IList<Member> GetMembers()
     {
         using var connection = DalConnection.CreateConnection();
@@ -50,7 +63,7 @@ public class MemberDal
         {
             connection.Open();
             command.ExecuteNonQuery();
-            MySqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
                 IList<Member> membersList = new List<Member>();
@@ -67,10 +80,11 @@ public class MemberDal
                     var zip = reader.GetString(8);
                     var birthdate = DateTime.Parse(reader.GetString(9));
                     var registration_date = DateTime.Parse(reader.GetString(10));
-                    Member member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
+                    var member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
                         birthdate, registration_date);
                     membersList.Add(member);
                 }
+
                 return membersList;
             }
         }
@@ -82,6 +96,12 @@ public class MemberDal
         return new List<Member>();
     }
 
+    /// <summary>
+    ///     Searches members by name
+    /// </summary>
+    /// <param name="fName"></param>
+    /// <param name="lName"></param>
+    /// <returns></returns>
     public static IList<Member> searchByName(string fName, string lName)
     {
         using var connection = DalConnection.CreateConnection();
@@ -95,7 +115,7 @@ public class MemberDal
         {
             connection.Open();
             command.ExecuteNonQuery();
-            MySqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
                 IList<Member> membersList = new List<Member>();
@@ -112,10 +132,11 @@ public class MemberDal
                     var zip = reader.GetString(8);
                     var birthdate = DateTime.Parse(reader.GetString(9));
                     var registration_date = DateTime.Parse(reader.GetString(10));
-                    Member member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
+                    var member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
                         birthdate, registration_date);
                     membersList.Add(member);
                 }
+
                 return membersList;
             }
         }
@@ -127,6 +148,11 @@ public class MemberDal
         return new List<Member>();
     }
 
+    /// <summary>
+    ///     Searches members by ID
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
     public static IList<Member> searchById(string Id)
     {
         using var connection = DalConnection.CreateConnection();
@@ -139,7 +165,7 @@ public class MemberDal
         {
             connection.Open();
             command.ExecuteNonQuery();
-            MySqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
                 IList<Member> membersList = new List<Member>();
@@ -156,10 +182,11 @@ public class MemberDal
                     var zip = reader.GetString(8);
                     var birthdate = DateTime.Parse(reader.GetString(9));
                     var registration_date = DateTime.Parse(reader.GetString(10));
-                    Member member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
+                    var member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
                         birthdate, registration_date);
                     membersList.Add(member);
                 }
+
                 return membersList;
             }
         }
@@ -171,6 +198,11 @@ public class MemberDal
         return new List<Member>();
     }
 
+    /// <summary>
+    ///     Searches members by Phone number
+    /// </summary>
+    /// <param name="phoneNum"></param>
+    /// <returns></returns>
     public static IList<Member> searchByPhone(string phoneNum)
     {
         using var connection = DalConnection.CreateConnection();
@@ -183,7 +215,7 @@ public class MemberDal
         {
             connection.Open();
             command.ExecuteNonQuery();
-            MySqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
                 IList<Member> membersList = new List<Member>();
@@ -200,10 +232,11 @@ public class MemberDal
                     var zip = reader.GetString(8);
                     var birthdate = DateTime.Parse(reader.GetString(9));
                     var registration_date = DateTime.Parse(reader.GetString(10));
-                    Member member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
+                    var member = new Member(id, fname, lname, gender, phone, street_addr, city, state, zip,
                         birthdate, registration_date);
                     membersList.Add(member);
                 }
+
                 return membersList;
             }
         }

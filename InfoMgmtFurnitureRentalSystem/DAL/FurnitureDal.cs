@@ -3,10 +3,17 @@ using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
 
+/// <summary>
+///     the furniture DAL class
+/// </summary>
 public class FurnitureDal
 {
     #region Methods
 
+    /// <summary>
+    ///     Gets all furniture for initial load
+    /// </summary>
+    /// <returns></returns>
     public static IList<Furniture> getFurniture()
     {
         using var connection = DalConnection.CreateConnection();
@@ -44,6 +51,10 @@ public class FurnitureDal
         return new List<Furniture>();
     }
 
+    /// <summary>
+    ///     Gets all furniture styles
+    /// </summary>
+    /// <returns></returns>
     public static IList<string> getStyles()
     {
         using var connection = DalConnection.CreateConnection();
@@ -75,6 +86,10 @@ public class FurnitureDal
         return new List<string>();
     }
 
+    /// <summary>
+    ///     Gets all furniture categories
+    /// </summary>
+    /// <returns></returns>
     public static IList<string> getCategories()
     {
         using var connection = DalConnection.CreateConnection();
@@ -106,6 +121,13 @@ public class FurnitureDal
         return new List<string>();
     }
 
+    /// <summary>
+    ///     Searches through furniture based on three parameters
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="furnitureCategory"></param>
+    /// <param name="furnitureStyle"></param>
+    /// <returns></returns>
     public static IList<Furniture> searchFurniture(string furnitureId, string furnitureCategory, string furnitureStyle)
     {
         if (string.IsNullOrWhiteSpace(furnitureId) && string.IsNullOrWhiteSpace(furnitureStyle) &&
