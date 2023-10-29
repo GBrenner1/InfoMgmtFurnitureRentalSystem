@@ -45,6 +45,9 @@
             firstNameLabel = new Label();
             multiSearchLabel = new Label();
             label1 = new Label();
+            funitureId = new ColumnHeader();
+            styleColumn = new ColumnHeader();
+            columnHeader1 = new ColumnHeader();
             SuspendLayout();
             // 
             // LogoutButton
@@ -87,11 +90,13 @@
             // 
             // FurnitureListView
             // 
+            FurnitureListView.Columns.AddRange(new ColumnHeader[] { funitureId, styleColumn, columnHeader1 });
             FurnitureListView.Location = new Point(108, 34);
             FurnitureListView.Name = "FurnitureListView";
             FurnitureListView.Size = new Size(321, 394);
             FurnitureListView.TabIndex = 5;
             FurnitureListView.UseCompatibleStateImageBehavior = false;
+            FurnitureListView.View = System.Windows.Forms.View.Details;
             // 
             // MembersListView
             // 
@@ -183,6 +188,21 @@
             label1.TabIndex = 13;
             label1.Text = "Search by:";
             // 
+            // funitureId
+            // 
+            funitureId.Text = "ID";
+            funitureId.Width = 90;
+            // 
+            // styleColumn
+            // 
+            styleColumn.Text = "Style";
+            styleColumn.Width = 90;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Category";
+            columnHeader1.Width = 180;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -226,5 +246,8 @@
         private Label firstNameLabel;
         private Label multiSearchLabel;
         private Label label1;
+        private ColumnHeader funitureId;
+        private ColumnHeader styleColumn;
+        private ColumnHeader columnHeader1;
     }
 }

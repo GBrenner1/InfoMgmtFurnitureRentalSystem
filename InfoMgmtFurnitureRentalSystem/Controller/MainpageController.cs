@@ -8,25 +8,27 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
     {
         public Employee? CurrentEmployee { get; set; }
         public IList<Member> Members { get; set; }
+        public IList<Furniture> Furnitures { get; set; }
 
         public MainpageController()
         {
-            this.Members = MainpageDAL.GetMembers();
+            this.Members = MemberDal.GetMembers();
+            this.Furnitures = FurnitureDal.getFurniture();
         }
 
         public void searchByName(string fname, string lname)
         {
-            this.Members = MainpageDAL.searchByName(fname, lname);
+            this.Members = MemberDal.searchByName(fname, lname);
         }
 
         public void searchById(string id)
         {
-            this.Members = MainpageDAL.searchById(id);
+            this.Members = MemberDal.searchById(id);
         }
 
         public void searchByPhone(string phone)
         {
-            this.Members = MainpageDAL.searchByPhone(phone);
+            this.Members = MemberDal.searchByPhone(phone);
         }
     }
 }

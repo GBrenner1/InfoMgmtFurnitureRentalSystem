@@ -24,6 +24,7 @@ public partial class Mainpage : Form
         }
 
         this.reloadMembersList();
+        this.reloadFurnitureList();
 
         this.memberSearchComboBox.Items.Add("Name");
         this.memberSearchComboBox.Items.Add("Id");
@@ -97,11 +98,22 @@ public partial class Mainpage : Form
     {
         foreach (var currMember in this.mainpageController.Members)
         {
-            var newItem = new ListViewItem(currMember.id);
+            var newItem = new ListViewItem(currMember.MemberId);
             newItem.SubItems.Add(currMember.Fname);
             newItem.SubItems.Add(currMember.Lname);
             newItem.SubItems.Add(currMember.Phone);
             this.MembersListView.Items.Add(newItem);
+        }
+    }
+
+    private void reloadFurnitureList()
+    {
+        foreach (var currFurniture in this.mainpageController.Furnitures)
+        {
+            var newItem = new ListViewItem(currFurniture.Id.ToString());
+            newItem.SubItems.Add(currFurniture.Style);
+            newItem.SubItems.Add(currFurniture.Category);
+            this.FurnitureListView.Items.Add(newItem);
         }
     }
 
