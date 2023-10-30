@@ -17,13 +17,13 @@ public class RentalTransaction
     ///     Gets the employee.
     /// </summary>
     /// <value>The employee.</value>
-    public Employee Employee { get; private set; }
+    public int EmployeeId { get; private set; }
 
     /// <summary>
     ///     Gets the member.
     /// </summary>
     /// <value>The member.</value>
-    public Member Member { get; private set; }
+    public int MemberId { get; private set; }
 
     /// <summary>
     ///     Gets the rental items.
@@ -35,13 +35,13 @@ public class RentalTransaction
     ///     Gets the rental date.
     /// </summary>
     /// <value>The rental date.</value>
-    public DateTime RentalDate { get; private set; }
+    public DateTime RentalDate { get; set; }
 
     /// <summary>
     ///     Gets the due date.
     /// </summary>
     /// <value>The due date.</value>
-    public DateTime DueDate { get; private set; }
+    public DateTime DueDate { get; set; }
 
     private int DaysBetween => (this.DueDate - this.RentalDate).Days;
 
@@ -58,13 +58,13 @@ public class RentalTransaction
     /// <summary>
     ///     Initializes a new instance of the <see cref="RentalTransaction" /> class.
     /// </summary>
-    /// <param name="employee">The employee.</param>
-    /// <param name="member">The member.</param>
+    /// <param name="employeeId">The Id associated with the current employee.</param>
+    /// <param name="memberId">The member Id for the transaction.</param>
     /// <param name="rentalItems">The rental items.</param>
-    public RentalTransaction(Employee employee, Member member, ICollection<Furniture> rentalItems)
+    public RentalTransaction(int employeeId, int memberId, ICollection<Furniture> rentalItems)
     {
-        this.Employee = employee;
-        this.Member = member;
+        this.EmployeeId = employeeId;
+        this.MemberId = memberId;
         this.RentalItems = rentalItems;
     }
 

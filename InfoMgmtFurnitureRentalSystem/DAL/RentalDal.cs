@@ -21,8 +21,8 @@ public class RentalDal
         var query = insertRentalTransactionQuery();
 
         using var command = new MySqlCommand(query, connection);
-        command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = transaction.Member.MemberId;
-        command.Parameters.Add("@employeeId", MySqlDbType.Int32).Value = transaction.Employee.EmployeeId;
+        command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = transaction.MemberId;
+        command.Parameters.Add("@employeeId", MySqlDbType.Int32).Value = transaction.EmployeeId;
         command.Parameters.Add("@start_date", MySqlDbType.Date).Value = transaction.RentalDate;
         command.Parameters.Add("@end_date", MySqlDbType.Date).Value = transaction.DueDate;
 
@@ -31,8 +31,9 @@ public class RentalDal
             connection.Open();
             command.ExecuteReader();
             transaction.RentalId = (int)command.LastInsertedId;
-            addRentalItems(transaction, connection);
+            command.Dispose();
             connection.Close();
+            addRentalItems(transaction, connection);
             return true;
         }
         catch (Exception e)
@@ -44,7 +45,7 @@ public class RentalDal
 
     private static string insertRentalTransactionQuery()
     {
-        var query = "INSERT INTO rental_transactions (employee_id, member_id, rental_date, due_date) ";
+        var query = "INSERT INTO rental (employee_id, member_id, start_date, end_date) ";
         query += "VALUES (@memberId, @employeeId, @start_date, @end_date);";
         return query;
     }
@@ -54,11 +55,14 @@ public class RentalDal
         var query = insertRentalItemQuery();
         foreach (var item in transaction.RentalItems)
         {
+            connection.Open();
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@rentalId", MySqlDbType.Int32).Value = transaction.RentalId;
             command.Parameters.Add("@furniture_Id", MySqlDbType.Int32).Value = item.FurnitureId;
             command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = item.Quantity;
             command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
         }
     }
 

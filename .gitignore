@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .vs/InfoMgmtFurnitureRentalSystem/v17/.suo
+InfoMgmtFurnitureRentalSystem/obj/Debug/net6.0-windows/InfoMgmtFurnitureRentalSystem.csproj.FileListAbsolute.txt
+.vs/InfoMgmtFurnitureRentalSystem/v17/.suo

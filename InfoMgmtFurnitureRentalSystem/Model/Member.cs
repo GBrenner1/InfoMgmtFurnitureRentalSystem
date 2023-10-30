@@ -28,7 +28,7 @@
         /// <summary>
         /// the members street address
         /// </summary>
-        public string Street_addr { get; set; }
+        public string StreetAddr { get; set; }
         /// <summary>
         /// the city the member lives in
         /// </summary>
@@ -48,7 +48,7 @@
         /// <summary>
         /// The date the member was registered
         /// </summary>
-        public DateTime Regestration_date { get; set; }
+        public DateTime RegestrationDate { get; set; }
 
         /// <summary>
         /// Creates a new member object
@@ -58,25 +58,25 @@
         /// <param name="lname">the last name of the member</param>
         /// <param name="gender">the gender of the member</param>
         /// <param name="phone">the phone number of the member</param>
-        /// <param name="street_addr"> the street address of the member</param>
+        /// <param name="streetAddr"> the street address of the member</param>
         /// <param name="city">The city the member lives in</param>
         /// <param name="state">The state the member lives in</param>
         /// <param name="zip">The zip code of the member</param>
         /// <param name="birthday">the members birthday</param>
-        /// <param name="regestration_date">the date the member was registered</param>
-        public Member(string id,string fname, string lname, string gender, string phone, string street_addr, string city, string state, string zip, DateTime birthday, DateTime regestration_date)
+        /// <param name="regestrationDate">the date the member was registered</param>
+        public Member(string id,string fname, string lname, string gender, string phone, string streetAddr, string city, string state, string zip, DateTime birthday, DateTime regestrationDate)
         {
             this.MemberId = id;
             this.Fname = fname;
             this.Lname = lname;
             this.Gender = gender;
             this.Phone = phone;
-            this.Street_addr = street_addr;
+            this.StreetAddr = streetAddr;
             this.City = city;
             this.State = state;
             this.Zip = zip;
             this.Birthday = birthday;
-            this.Regestration_date = regestration_date;
+            this.RegestrationDate = regestrationDate;
         }
     }
 }

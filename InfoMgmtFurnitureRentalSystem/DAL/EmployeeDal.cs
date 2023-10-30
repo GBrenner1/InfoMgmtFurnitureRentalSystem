@@ -35,9 +35,9 @@ public class EmployeeDal
                 IsAdmin = false,
                 Username = ""
             };
+            connection.Close();
             return employee;
         }
-
         return null;
     }
 
