@@ -182,7 +182,6 @@ public class FurnitureDal
                 connection.Open();
                 command.ExecuteNonQuery();
                 var reader = command.ExecuteReader();
-                connection.Close();
                 if (reader.HasRows)
                 {
                     IList<Furniture> furnitureList = new List<Furniture>();
@@ -197,6 +196,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }
@@ -219,7 +219,6 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             try
             {
                 if (reader.HasRows)
@@ -236,6 +235,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }
@@ -258,7 +258,6 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             try
             {
                 if (reader.HasRows)
@@ -275,6 +274,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }
@@ -297,7 +297,6 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             try
             {
                 if (reader.HasRows)
@@ -314,6 +313,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }
@@ -337,7 +337,6 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             try
             {
                 if (reader.HasRows)
@@ -354,6 +353,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }
@@ -377,7 +377,6 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             try
             {
                 if (reader.HasRows)
@@ -394,6 +393,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }
@@ -417,7 +417,6 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             try
             {
                 if (reader.HasRows)
@@ -434,6 +433,7 @@ public class FurnitureDal
                         furnitureList.Add(furniture);
                     }
 
+                    connection.Close();
                     return furnitureList;
                 }
             }

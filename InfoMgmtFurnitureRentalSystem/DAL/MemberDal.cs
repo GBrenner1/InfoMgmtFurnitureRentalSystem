@@ -220,7 +220,6 @@ public class MemberDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
-            connection.Close();
             if (reader.HasRows)
             {
                 IList<Member> membersList = new List<Member>();
@@ -242,6 +241,7 @@ public class MemberDal
                     membersList.Add(member);
                 }
 
+                connection.Close();
                 return membersList;
             }
         }

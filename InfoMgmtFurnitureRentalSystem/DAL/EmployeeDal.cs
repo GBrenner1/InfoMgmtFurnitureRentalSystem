@@ -26,7 +26,6 @@ public class EmployeeDal
         command.Parameters["@loginId"].Value = loginId;
 
         using var reader = command.ExecuteReader();
-        connection.Close();
         if (reader.Read())
         {
             var employee = new Employee
@@ -36,6 +35,7 @@ public class EmployeeDal
                 IsAdmin = false,
                 Username = ""
             };
+            connection.Close();
             return employee;
         }
         return null;
