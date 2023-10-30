@@ -42,6 +42,11 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
             {
                 throw new Exception("Failed to add rental transaction");
             }
+
+            if (!FurnitureDal.UpdateQuantities(this.RentalTransaction.RentalItems.ToList()))
+            {
+                throw new Exception("Failed to update furniture quantities");
+            }
         }
 
         public double CalculateTotalCost()
@@ -52,6 +57,16 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         public Furniture GetFurniture(int furnitureId)
         {
             return this.RentalTransaction.RentalItems.First(f => f.FurnitureId == furnitureId);
+        }
+
+        public void UpdateDueDate(DateTime dueDate)
+        {
+            this.RentalTransaction.DueDate = dueDate;
+        }
+
+        public void UpdateRentalDate(DateTime rentalDate)
+        {
+            this.RentalTransaction.RentalDate = rentalDate;
         }
 
         #endregion

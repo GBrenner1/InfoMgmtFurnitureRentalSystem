@@ -24,6 +24,8 @@ public partial class TransactionForm : Form
         this.itemAdded += this.updateTotalCost!;
         this.itemRemoved += this.updateTotalCost!;
         this.rentalTransactionConroller = rentalTransactionController;
+        this.rentalTransactionConroller.UpdateDueDate(this.DueDatePicker.Value);
+        this.rentalTransactionConroller.UpdateRentalDate(DateTime.Now);
     }
 
     #endregion
@@ -40,13 +42,13 @@ public partial class TransactionForm : Form
         try
         {
             var item = this.CartListView.SelectedItems[0];
+            this.CartListView.Items.Remove(item);
             var furnitureId = int.Parse(item.SubItems[0].Text);
             this.rentalTransactionConroller.RemoveItemFromCart(furnitureId);
             this.itemRemoved.Invoke(this, EventArgs.Empty);
         }
         catch (Exception)
         {
-
             MessageBox.Show("No item selected.");
         }
     }
@@ -86,24 +88,37 @@ public partial class TransactionForm : Form
         {
             MessageBox.Show("Item already in cart");
         }
-        
     }
 
     private void chngQtyButton_Click(object sender, EventArgs e)
     {
-        var item = this.CartListView.SelectedItems[0];
-        var furnitureId = int.Parse(item.SubItems[0].Text);
-        var furniture = this.rentalTransactionConroller.GetFurniture(furnitureId);
-        var quantity =
-            int.Parse(Interaction.InputBox("Enter the new quantity", "Change Quantity", furniture.Quantity.ToString()));
-        furniture.Quantity = quantity;
-        item.SubItems[2].Text = quantity.ToString();
+        try
+        {
+            var item = this.CartListView.SelectedItems[0];
+            var furnitureId = int.Parse(item.SubItems[0].Text);
+            var furniture = this.rentalTransactionConroller.GetFurniture(furnitureId);
+            var quantity =
+                int.Parse(Interaction.InputBox("Enter the new quantity", "Change Quantity",
+                    furniture.Quantity.ToString()));
+            furniture.Quantity = quantity;
+            item.SubItems[3].Text = quantity.ToString();
+        }
+        catch (Exception)
+        {
+            MessageBox.Show("No item selected.");
+        }
+    }
+
+    private void CancelButton_Click(object sender, EventArgs e)
+    {
+        Hide();
     }
 
     #endregion
 
-    private void CancelButton_Click(object sender, EventArgs e)
+    private void DueDatePicker_ValueChanged(object sender, EventArgs e)
     {
-        this.Hide();
+        this.rentalTransactionConroller.UpdateDueDate(this.DueDatePicker.Value);
+        this.updateTotalCost(this, EventArgs.Empty);
     }
 }

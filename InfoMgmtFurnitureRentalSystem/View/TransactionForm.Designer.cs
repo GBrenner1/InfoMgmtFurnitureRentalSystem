@@ -150,6 +150,7 @@
             DueDatePicker.Size = new Size(200, 23);
             DueDatePicker.TabIndex = 8;
             DueDatePicker.Value = new DateTime(2023, 12, 31, 0, 0, 0, 0);
+            DueDatePicker.ValueChanged += DueDatePicker_ValueChanged;
             // 
             // ChngQtyButton
             // 

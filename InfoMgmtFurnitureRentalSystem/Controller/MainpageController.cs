@@ -107,9 +107,9 @@ public class MainpageController
         return FurnitureDal.getCategories();
     }
 
-    internal void refreshFurnitures()
+    public void refreshFurnitures()
     {
-        throw new NotImplementedException();
+        this.Furnitures = FurnitureDal.getFurniture();
     }
 
     #endregion
