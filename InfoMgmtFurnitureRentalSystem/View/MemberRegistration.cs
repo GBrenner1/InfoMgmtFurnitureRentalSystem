@@ -1,10 +1,9 @@
-using System.Collections;
 using InfoMgmtFurnitureRentalSystem.Controller;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
 /// <summary>
-/// The member registration form
+///     The member registration form
 /// </summary>
 public partial class MemberRegistration : Form
 {
@@ -17,14 +16,15 @@ public partial class MemberRegistration : Form
     #region Constructors
 
     /// <summary>
-    /// The default constructor for the member registration class
+    ///     The default constructor for the member registration class
     /// </summary>
     public MemberRegistration()
     {
         this.InitializeComponent();
     }
+
     /// <summary>
-    /// The single param constructor for the member registration class
+    ///     The single param constructor for the member registration class
     /// </summary>
     /// <param name="memberRegistrationController"></param>
     public MemberRegistration(MemberRegistrationController memberRegistrationController)
@@ -58,25 +58,26 @@ public partial class MemberRegistration : Form
     #endregion
 
     #region Methods
+
     private void centerForm()
     {
         StartPosition = FormStartPosition.CenterScreen;
     }
+
     private void RegisterButton_Click(object sender, EventArgs e)
     {
         if (MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
                 this.genderComboBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text, this.cityTextBox.Text,
                 this.stateComboBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value))
         {
-            this.Hide();
+            Hide();
         }
     }
+
     private void CancelButton_Click(object sender, EventArgs e)
     {
-        this.Hide();
+        Hide();
     }
-
-    #endregion
 
     private void zipTextBox_keyPressed(object sender, KeyPressEventArgs e)
     {
@@ -99,13 +100,16 @@ public partial class MemberRegistration : Form
             }
         }
     }
+
     /// <summary>
-    /// Overrides the member registration close button
+    ///     Overrides the member registration close button
     /// </summary>
     /// <param name="e"></param>
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         e.Cancel = true;
-        this.Hide();
+        Hide();
     }
+
+    #endregion
 }
