@@ -10,6 +10,32 @@ public class FurnitureDal
 {
     #region Methods
 
+    public static bool UpdateQuantities(IEnumerable<Furniture> furnitures) {
+        using var connection = DalConnection.CreateConnection();
+        var query = "UPDATE furniture SET quantity = @quantity WHERE furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        foreach (var furniture in furnitures)
+        {
+            command.Parameters.Clear();
+            command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = furniture.Quantity;
+            command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furniture.FurnitureId;
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     /// <summary>
     ///     Gets all furniture for initial load
     /// </summary>
@@ -161,12 +187,7 @@ public class FurnitureDal
             return searchFurnitureIS(furnitureId, furnitureStyle);
         }
 
-        if (string.IsNullOrWhiteSpace(furnitureId))
-        {
-            return searchFurnitureSC(furnitureCategory, furnitureStyle);
-        }
-
-        return new List<Furniture>();
+        return string.IsNullOrWhiteSpace(furnitureId) ? searchFurnitureSC(furnitureCategory, furnitureStyle) : new List<Furniture>();
     }
 
     private static IList<Furniture> searchFurniture()
