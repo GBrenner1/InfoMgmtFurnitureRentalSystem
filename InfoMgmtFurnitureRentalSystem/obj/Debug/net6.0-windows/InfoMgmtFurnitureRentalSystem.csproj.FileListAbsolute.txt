@@ -79,3 +79,4 @@ D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\De
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.pdb
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.genruntimeconfig.cache
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\ref\InfoMgmtFurnitureRentalSystem.dll
+C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.TransactionForm.resources

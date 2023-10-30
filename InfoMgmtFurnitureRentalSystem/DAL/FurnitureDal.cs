@@ -51,6 +51,7 @@ public class FurnitureDal
         {
             connection.Open();
             command.ExecuteNonQuery();
+
             var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
@@ -65,7 +66,7 @@ public class FurnitureDal
                     var furniture = new Furniture(id, category, style, qty, rental_rate);
                     furnitureList.Add(furniture);
                 }
-
+                connection.Close();
                 return furnitureList;
             }
         }
@@ -101,6 +102,7 @@ public class FurnitureDal
                     styleList.Add(reader.GetString(0));
                 }
 
+                connection.Close();
                 return styleList;
             }
         }
@@ -136,6 +138,7 @@ public class FurnitureDal
                     CategoriesList.Add(reader.GetString(0));
                 }
 
+                connection.Close();
                 return CategoriesList;
             }
         }
@@ -202,6 +205,7 @@ public class FurnitureDal
             connection.Open();
             command.ExecuteNonQuery();
             var reader = command.ExecuteReader();
+            connection.Close();
             if (reader.HasRows)
             {
                 IList<Furniture> furnitureList = new List<Furniture>();
@@ -238,6 +242,7 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        connection.Close();
         try
         {
             if (reader.HasRows)
@@ -276,6 +281,7 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        connection.Close();
         try
         {
             if (reader.HasRows)
@@ -314,6 +320,7 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        connection.Close();
         try
         {
             if (reader.HasRows)
@@ -353,6 +360,7 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        connection.Close();
         try
         {
             if (reader.HasRows)
@@ -392,6 +400,7 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        connection.Close();
         try
         {
             if (reader.HasRows)
@@ -431,6 +440,7 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        connection.Close();
         try
         {
             if (reader.HasRows)
