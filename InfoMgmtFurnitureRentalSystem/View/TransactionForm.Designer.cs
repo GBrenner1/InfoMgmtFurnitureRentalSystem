@@ -191,7 +191,7 @@
         private Label TotalCostLabel;
         private TextBox TotalCostTextBox;
         private Button CheckoutButton;
-        private Button CancelButton;
+        private new Button CancelButton;
         private Label DueDateLabel;
         private DateTimePicker DueDatePicker;
         private Button ChngQtyButton;

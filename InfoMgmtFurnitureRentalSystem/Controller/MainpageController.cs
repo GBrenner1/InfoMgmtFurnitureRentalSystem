@@ -35,7 +35,7 @@ public class MainpageController
     public MainpageController()
     {
         this.Members = MemberDal.GetMembers();
-        this.Furnitures = FurnitureDal.getFurniture();
+        this.Furnitures = FurnitureDal.GetFurniture();
     }
 
     #endregion
@@ -47,33 +47,33 @@ public class MainpageController
     /// </summary>
     /// <param name="fname"></param>
     /// <param name="lname"></param>
-    public void searchByName(string fname, string lname)
+    public void SearchByName(string fname, string lname)
     {
-        this.Members = MemberDal.searchByName(fname, lname);
+        this.Members = MemberDal.SearchByName(fname, lname);
     }
 
     /// <summary>
     ///     Searches members by ID
     /// </summary>
     /// <param name="id"></param>
-    public void searchById(string id)
+    public void SearchById(string id)
     {
-        this.Members = MemberDal.searchById(id);
+        this.Members = MemberDal.SearchById(id);
     }
 
     /// <summary>
     ///     searches members by phone number
     /// </summary>
     /// <param name="phone"></param>
-    public void searchByPhone(string phone)
+    public void SearchByPhone(string phone)
     {
-        this.Members = MemberDal.searchByPhone(phone);
+        this.Members = MemberDal.SearchByPhone(phone);
     }
 
     /// <summary>
     /// refreshes all members in list
     /// </summary>
-    public void refreshMembers()
+    public void RefreshMembers()
     {
         this.Members = MemberDal.GetMembers();
     }
@@ -84,32 +84,35 @@ public class MainpageController
     /// <param name="id"></param>
     /// <param name="category"></param>
     /// <param name="style"></param>
-    public void searchFurniture(string id, string category, string style)
+    public void SearchFurniture(string id, string category, string style)
     {
-        this.Furnitures = FurnitureDal.searchFurniture(id, category, style);
+        this.Furnitures = FurnitureDal.SearchFurniture(id, category, style);
     }
 
     /// <summary>
     ///     gets all styles of furniture
     /// </summary>
     /// <returns></returns>
-    public IList<string> getStyles()
+    public IList<string> GetStyles()
     {
-        return FurnitureDal.getStyles();
+        return FurnitureDal.GetStyles();
     }
 
     /// <summary>
     ///     gets all categories of furniture
     /// </summary>
     /// <returns></returns>
-    public IList<string> getCategories()
+    public static IList<string> GetCategories()
     {
-        return FurnitureDal.getCategories();
+        return FurnitureDal.GetCategories();
     }
 
-    public void refreshFurnitures()
+    /// <summary>
+    /// Refreshes the furnitures.
+    /// </summary>
+    public void RefreshFurnitures()
     {
-        this.Furnitures = FurnitureDal.getFurniture();
+        this.Furnitures = FurnitureDal.GetFurniture();
     }
 
     #endregion

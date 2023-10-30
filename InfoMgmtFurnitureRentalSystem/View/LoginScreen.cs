@@ -42,13 +42,13 @@ public partial class LoginScreen : Form
             LoginController.CheckLogin(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
         if (this.controller.CurrentEmployee != null)
         {
-            var MainpageContgroller = new MainpageController
+            var mainpageContgroller = new MainpageController
             {
                 CurrentEmployee = this.controller.CurrentEmployee
             };
-            var Mainpage = new Mainpage(MainpageContgroller);
-            Mainpage.Show();
-            Mainpage.Closed += (_, _) => Close();
+            var mainpage = new Mainpage(mainpageContgroller);
+            mainpage.Show();
+            mainpage.Closed += (_, _) => Close();
             Hide();
         }
         else

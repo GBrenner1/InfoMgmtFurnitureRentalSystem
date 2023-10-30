@@ -33,7 +33,7 @@ public partial class MemberRegistration : Form
         this.centerForm();
         if (memberRegistrationController.CurrentEmployee != null)
         {
-            var employee = memberRegistrationController.CurrentEmployee;
+            _ = memberRegistrationController.CurrentEmployee;
         }
 
         this.genderComboBox.Items.Add("M");

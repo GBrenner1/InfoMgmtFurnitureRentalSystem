@@ -12,7 +12,7 @@ public partial class Mainpage : Form
 
     private readonly MainpageController mainpageController;
 
-    private TransactionForm transactionForm;
+    private TransactionForm? transactionForm;
 
     #endregion
 
@@ -41,12 +41,12 @@ public partial class Mainpage : Form
         this.memberSearchComboBox.Items.Add("Id");
         this.memberSearchComboBox.Items.Add("Phone");
 
-        foreach (var style in mainpageController.getStyles())
+        foreach (var style in mainpageController.GetStyles())
         {
             this.funitureStyleComboBox.Items.Add(style);
         }
 
-        foreach (var category in mainpageController.getCategories())
+        foreach (var category in MainpageController.GetCategories())
         {
             this.furnitureCategoryComboBox.Items.Add(category);
         }
@@ -80,7 +80,7 @@ public partial class Mainpage : Form
     private void MemberRegistrationOnVisibleChanged(object? sender, EventArgs e)
     {
         this.MembersListView.Items.Clear();
-        this.mainpageController.refreshMembers();
+        this.mainpageController.RefreshMembers();
         this.reloadMembersList();
     }
 
@@ -114,13 +114,13 @@ public partial class Mainpage : Form
         switch (this.memberSearchComboBox.SelectedIndex)
         {
             case 0:
-                this.mainpageController.searchByName(this.firstNameTextBox.Text, this.multiSearchBox.Text);
+                this.mainpageController.SearchByName(this.firstNameTextBox.Text, this.multiSearchBox.Text);
                 break;
             case 1:
-                this.mainpageController.searchById(this.multiSearchBox.Text);
+                this.mainpageController.SearchById(this.multiSearchBox.Text);
                 break;
             case 2:
-                this.mainpageController.searchByPhone(this.multiSearchBox.Text);
+                this.mainpageController.SearchByPhone(this.multiSearchBox.Text);
                 break;
         }
 
@@ -153,7 +153,7 @@ public partial class Mainpage : Form
     private void furnitureIdSearchButton_Click(object sender, EventArgs e)
     {
         this.FurnitureListView.Items.Clear();
-        this.mainpageController.searchFurniture(this.furnitureIdTextBox.Text, this.furnitureCategoryComboBox.Text,
+        this.mainpageController.SearchFurniture(this.furnitureIdTextBox.Text, this.furnitureCategoryComboBox.Text,
             this.funitureStyleComboBox.Text);
         this.reloadFurnitureList();
     }
@@ -167,7 +167,7 @@ public partial class Mainpage : Form
         {
             selectedMemberId = this.MembersListView.SelectedItems[0].Text;
         }
-        catch (Exception exception)
+        catch (Exception)
         {
             MessageBox.Show("Please select a member");
             return;
@@ -192,13 +192,13 @@ public partial class Mainpage : Form
     private void TransactionFormOnVisibleChanged(object? sender, EventArgs e)
     {
         this.FurnitureListView.Items.Clear();
-        this.mainpageController.refreshFurnitures();
+        this.mainpageController.RefreshFurnitures();
         this.reloadFurnitureList();
         this.AddItemButton.Visible = false;
     }
 
     private void AddItemButton_Click(object sender, EventArgs e)
     {
-        this.transactionForm.AddItemToCart(this.mainpageController.Furnitures[this.FurnitureListView.SelectedIndices[0]]);
+        this.transactionForm?.AddItemToCart(this.mainpageController.Furnitures[this.FurnitureListView.SelectedIndices[0]]);
     }
 }

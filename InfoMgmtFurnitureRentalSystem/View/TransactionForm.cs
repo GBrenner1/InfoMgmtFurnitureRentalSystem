@@ -5,6 +5,11 @@ using Microsoft.VisualBasic;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
+/// <summary>
+///     A form for handling transactions.
+///     Implements the <see cref="System.Windows.Forms.Form" />
+/// </summary>
+/// <seealso cref="System.Windows.Forms.Form" />
 public partial class TransactionForm : Form
 {
     #region Data members
@@ -17,6 +22,10 @@ public partial class TransactionForm : Form
 
     #region Constructors
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TransactionForm" /> class.
+    /// </summary>
+    /// <param name="rentalTransactionController">The rental transaction controller.</param>
     public TransactionForm(RentalTransactionController rentalTransactionController)
     {
         this.InitializeComponent();
@@ -73,6 +82,10 @@ public partial class TransactionForm : Form
         Hide();
     }
 
+    /// <summary>
+    ///     Adds the item to cart.
+    /// </summary>
+    /// <param name="furniture">The furniture.</param>
     public void AddItemToCart(Furniture furniture)
     {
         if (this.rentalTransactionConroller.AddItemToCart(furniture))
@@ -114,11 +127,11 @@ public partial class TransactionForm : Form
         Hide();
     }
 
-    #endregion
-
     private void DueDatePicker_ValueChanged(object sender, EventArgs e)
     {
         this.rentalTransactionConroller.UpdateDueDate(this.DueDatePicker.Value);
         this.updateTotalCost(this, EventArgs.Empty);
     }
+
+    #endregion
 }
