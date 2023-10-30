@@ -1,61 +1,109 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Globalization;
 using InfoMgmtFurnitureRentalSystem.Controller;
+using InfoMgmtFurnitureRentalSystem.Model;
+using Microsoft.VisualBasic;
 
-namespace InfoMgmtFurnitureRentalSystem.View
+namespace InfoMgmtFurnitureRentalSystem.View;
+
+public partial class TransactionForm : Form
 {
-    public partial class TransactionForm : Form
+    #region Data members
+
+    private readonly RentalTransactionController rentalTransactionConroller;
+    private readonly EventHandler itemAdded;
+    private readonly EventHandler itemRemoved;
+
+    #endregion
+
+    #region Constructors
+
+    public TransactionForm(RentalTransactionController rentalTransactionController)
     {
-        private RentalTransactionConroller rentalTransactionConroller;
-        private EventHandler itemAdded;
-        private readonly EventHandler itemRemoved;
+        this.InitializeComponent();
+        this.centerForm();
+        this.itemAdded += this.updateTotalCost!;
+        this.itemRemoved += this.updateTotalCost!;
+        this.rentalTransactionConroller = rentalTransactionController;
+    }
 
+    #endregion
 
-        public TransactionForm(RentalTransactionConroller rentalTransactionController)
+    #region Methods
+
+    private void centerForm()
+    {
+        StartPosition = FormStartPosition.CenterScreen;
+    }
+
+    private void RemoveButton_Click(object sender, EventArgs e)
+    {
+        try
         {
-            this.InitializeComponent();
-            this.centerForm();
-            this.itemAdded += this.updateTotalCost!;
-            this.itemRemoved += this.updateTotalCost!;
-            this.rentalTransactionConroller = rentalTransactionController;
-        }
-
-        private void centerForm()
-        {
-            this.StartPosition = FormStartPosition.CenterScreen;
-        }
-
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-            this.CartListView.SelectedItems[0].Remove();
+            var item = this.CartListView.SelectedItems[0];
+            var furnitureId = int.Parse(item.SubItems[0].Text);
+            this.rentalTransactionConroller.RemoveItemFromCart(furnitureId);
             this.itemRemoved.Invoke(this, EventArgs.Empty);
         }
-
-        private void updateTotalCost(object sender, EventArgs e)
+        catch (Exception)
         {
-            throw new NotImplementedException();
+
+            MessageBox.Show("No item selected.");
+        }
+    }
+
+    private void updateTotalCost(object sender, EventArgs e)
+    {
+        var totalCost = this.rentalTransactionConroller.CalculateTotalCost();
+        this.TotalCostTextBox.Text = totalCost.ToString("C", CultureInfo.CurrentCulture);
+    }
+
+    private void CheckoutButton_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            this.rentalTransactionConroller.Checkout(this.DueDatePicker.Value);
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message);
         }
 
-        private void CheckoutButton_Click(object sender, EventArgs e)
-        {
+        Hide();
+    }
 
-        }
-
-        public void AddItemToCart(string[] item)
+    public void AddItemToCart(Furniture furniture)
+    {
+        if (this.rentalTransactionConroller.AddItemToCart(furniture))
         {
-            var newItem = new ListViewItem(item);
-            this.CartListView.Items.Add(newItem);
+            var item = new ListViewItem(furniture.FurnitureId.ToString());
+            item.SubItems.Add(furniture.Style);
+            item.SubItems.Add(furniture.Category);
+            item.SubItems.Add(furniture.Quantity.ToString());
+            this.CartListView.Items.Add(item);
             this.itemAdded.Invoke(this, EventArgs.Empty);
         }
+        else
+        {
+            MessageBox.Show("Item already in cart");
+        }
+        
+    }
 
+    private void chngQtyButton_Click(object sender, EventArgs e)
+    {
+        var item = this.CartListView.SelectedItems[0];
+        var furnitureId = int.Parse(item.SubItems[0].Text);
+        var furniture = this.rentalTransactionConroller.GetFurniture(furnitureId);
+        var quantity =
+            int.Parse(Interaction.InputBox("Enter the new quantity", "Change Quantity", furniture.Quantity.ToString()));
+        furniture.Quantity = quantity;
+        item.SubItems[2].Text = quantity.ToString();
+    }
 
+    #endregion
+
+    private void CancelButton_Click(object sender, EventArgs e)
+    {
+        this.Hide();
     }
 }

@@ -54,6 +54,8 @@
             styleColumn = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             FurnitureListView = new ListView();
+            StartTransactionButton = new Button();
+            AddItemButton = new Button();
             SuspendLayout();
             // 
             // LogoutButton
@@ -236,7 +238,7 @@
             furnitureIdSeachButton.TabIndex = 20;
             furnitureIdSeachButton.Text = "Search";
             furnitureIdSeachButton.UseVisualStyleBackColor = true;
-            furnitureIdSeachButton.Click += this.furnitureIdSearchButton_Click;
+            furnitureIdSeachButton.Click += furnitureIdSearchButton_Click;
             // 
             // funitureId
             // 
@@ -264,11 +266,34 @@
             FurnitureListView.UseCompatibleStateImageBehavior = false;
             FurnitureListView.View = System.Windows.Forms.View.Details;
             // 
+            // StartTransactionButton
+            // 
+            StartTransactionButton.Location = new Point(12, 53);
+            StartTransactionButton.Name = "StartTransactionButton";
+            StartTransactionButton.Size = new Size(75, 44);
+            StartTransactionButton.TabIndex = 21;
+            StartTransactionButton.Text = "Start Transaction";
+            StartTransactionButton.UseVisualStyleBackColor = true;
+            StartTransactionButton.Click += StartTransactionButton_Click;
+            // 
+            // AddItemButton
+            // 
+            AddItemButton.Location = new Point(12, 115);
+            AddItemButton.Name = "AddItemButton";
+            AddItemButton.Size = new Size(75, 23);
+            AddItemButton.TabIndex = 22;
+            AddItemButton.Text = "Add Item";
+            AddItemButton.UseVisualStyleBackColor = true;
+            AddItemButton.Visible = false;
+            AddItemButton.Click += AddItemButton_Click;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(886, 450);
+            Controls.Add(AddItemButton);
+            Controls.Add(StartTransactionButton);
             Controls.Add(furnitureIdSeachButton);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -322,5 +347,7 @@
         private ColumnHeader styleColumn;
         private ColumnHeader columnHeader1;
         private ListView FurnitureListView;
+        private Button StartTransactionButton;
+        private Button AddItemButton;
     }
 }

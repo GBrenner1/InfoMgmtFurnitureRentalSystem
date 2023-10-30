@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             CartListView = new ListView();
+            ID = new ColumnHeader();
+            Style = new ColumnHeader();
+            Category = new ColumnHeader();
+            Qty = new ColumnHeader();
             CartLabel = new Label();
             RemoveButton = new Button();
             TotalCostLabel = new Label();
@@ -37,16 +41,39 @@
             CancelButton = new Button();
             DueDateLabel = new Label();
             DueDatePicker = new DateTimePicker();
+            ChngQtyButton = new Button();
             SuspendLayout();
             // 
             // CartListView
             // 
+            CartListView.Columns.AddRange(new ColumnHeader[] { ID, Style, Category, Qty });
             CartListView.FullRowSelect = true;
             CartListView.Location = new Point(12, 24);
             CartListView.Name = "CartListView";
             CartListView.Size = new Size(421, 277);
             CartListView.TabIndex = 0;
             CartListView.UseCompatibleStateImageBehavior = false;
+            CartListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            ID.Width = 90;
+            // 
+            // Style
+            // 
+            Style.Text = "Style";
+            Style.Width = 90;
+            // 
+            // Category
+            // 
+            Category.Text = "Category";
+            Category.Width = 90;
+            // 
+            // Qty
+            // 
+            Qty.Text = "Qty";
+            Qty.Width = 90;
             // 
             // CartLabel
             // 
@@ -94,6 +121,7 @@
             CheckoutButton.TabIndex = 5;
             CheckoutButton.Text = "Checkout";
             CheckoutButton.UseVisualStyleBackColor = true;
+            CheckoutButton.Click += CheckoutButton_Click;
             // 
             // CancelButton
             // 
@@ -104,6 +132,7 @@
             CancelButton.TabIndex = 6;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
             // 
             // DueDateLabel
             // 
@@ -120,12 +149,24 @@
             DueDatePicker.Name = "DueDatePicker";
             DueDatePicker.Size = new Size(200, 23);
             DueDatePicker.TabIndex = 8;
+            DueDatePicker.Value = new DateTime(2023, 12, 31, 0, 0, 0, 0);
+            // 
+            // ChngQtyButton
+            // 
+            ChngQtyButton.Location = new Point(93, 307);
+            ChngQtyButton.Name = "ChngQtyButton";
+            ChngQtyButton.Size = new Size(83, 23);
+            ChngQtyButton.TabIndex = 9;
+            ChngQtyButton.Text = "Change Qty";
+            ChngQtyButton.UseVisualStyleBackColor = true;
+            ChngQtyButton.Click += chngQtyButton_Click;
             // 
             // TransactionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(445, 547);
+            Controls.Add(ChngQtyButton);
             Controls.Add(DueDatePicker);
             Controls.Add(DueDateLabel);
             Controls.Add(CancelButton);
@@ -152,5 +193,10 @@
         private Button CancelButton;
         private Label DueDateLabel;
         private DateTimePicker DueDatePicker;
+        private Button ChngQtyButton;
+        private ColumnHeader ID;
+        private ColumnHeader Style;
+        private ColumnHeader Category;
+        private ColumnHeader Qty;
     }
 }

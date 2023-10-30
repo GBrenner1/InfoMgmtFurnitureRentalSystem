@@ -21,8 +21,8 @@ public class RentalDal
         var query = insertRentalTransactionQuery();
 
         using var command = new MySqlCommand(query, connection);
-        command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = transaction.Member.MemberId;
-        command.Parameters.Add("@employeeId", MySqlDbType.Int32).Value = transaction.Employee.EmployeeId;
+        command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = transaction.MemberId;
+        command.Parameters.Add("@employeeId", MySqlDbType.Int32).Value = transaction.EmployeeId;
         command.Parameters.Add("@start_date", MySqlDbType.Date).Value = transaction.RentalDate;
         command.Parameters.Add("@end_date", MySqlDbType.Date).Value = transaction.DueDate;
 
