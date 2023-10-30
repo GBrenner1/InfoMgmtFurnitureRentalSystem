@@ -1,4 +1,4 @@
-﻿using InfoMgmtFurnitureRentalSystem.Model;
+using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
@@ -54,6 +54,7 @@ public class FurnitureDal
         {
             connection.Open();
             command.ExecuteNonQuery();
+
             var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
@@ -68,7 +69,7 @@ public class FurnitureDal
                     var furniture = new Furniture(id, category, style, qty, rental_rate);
                     furnitureList.Add(furniture);
                 }
-
+                connection.Close();
                 return furnitureList;
             }
         }
@@ -104,6 +105,7 @@ public class FurnitureDal
                     styleList.Add(reader.GetString(0));
                 }
 
+                connection.Close();
                 return styleList;
             }
         }
@@ -139,6 +141,7 @@ public class FurnitureDal
                     CategoriesList.Add(reader.GetString(0));
                 }
 
+                connection.Close();
                 return CategoriesList;
             }
         }
@@ -167,24 +170,25 @@ public class FurnitureDal
 
             using var command = new MySqlCommand(query, connection);
 
-            try
+        try
+        {
+            connection.Open();
+            command.ExecuteNonQuery();
+            var reader = command.ExecuteReader();
+            connection.Close();
+            if (reader.HasRows)
             {
-                connection.Open();
-                command.ExecuteNonQuery();
-                var reader = command.ExecuteReader();
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
@@ -205,24 +209,25 @@ public class FurnitureDal
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
 
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        connection.Close();
+        try
+        {
+            if (reader.HasRows)
             {
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
@@ -243,24 +248,25 @@ public class FurnitureDal
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
 
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        connection.Close();
+        try
+        {
+            if (reader.HasRows)
             {
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
@@ -281,24 +287,25 @@ public class FurnitureDal
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
 
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        connection.Close();
+        try
+        {
+            if (reader.HasRows)
             {
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
@@ -320,24 +327,25 @@ public class FurnitureDal
             command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
             command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
 
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        connection.Close();
+        try
+        {
+            if (reader.HasRows)
             {
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
@@ -359,24 +367,25 @@ public class FurnitureDal
             command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
             command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
 
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        connection.Close();
+        try
+        {
+            if (reader.HasRows)
             {
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
@@ -398,24 +407,25 @@ public class FurnitureDal
             command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
             command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
 
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        connection.Close();
+        try
+        {
+            if (reader.HasRows)
             {
-                if (reader.HasRows)
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
                 {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rental_rate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rental_rate);
-                        furnitureList.Add(furniture);
-                    }
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rental_rate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rental_rate);
+                    furnitureList.Add(furniture);
+                }
 
                     return furnitureList;
                 }
