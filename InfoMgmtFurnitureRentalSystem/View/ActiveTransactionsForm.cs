@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Globalization;
 using InfoMgmtFurnitureRentalSystem.Controller;
+using InfoMgmtFurnitureRentalSystem.Model;
 
 namespace InfoMgmtFurnitureRentalSystem.View
 {
@@ -17,6 +10,9 @@ namespace InfoMgmtFurnitureRentalSystem.View
     public partial class ActiveTransactionsForm : Form
     {
         private ActiveTransactionsController ActiveTransactionsController { get; }
+
+        private ReturnFurniturePage ReturnFurniturePage { get; set; }
+
         /// <summary>
         /// Created a new active transactions form
         /// </summary>
@@ -24,8 +20,14 @@ namespace InfoMgmtFurnitureRentalSystem.View
         public ActiveTransactionsForm(ActiveTransactionsController activeTransactionsController)
         {
             this.InitializeComponent();
+            this.centerForm();
             this.ActiveTransactionsController = activeTransactionsController;
-            reloadFurnitureList();
+            this.reloadFurnitureList();
+        }
+
+        private void centerForm()
+        {
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -45,16 +47,39 @@ namespace InfoMgmtFurnitureRentalSystem.View
 
         private void returnButton_Click(object sender, EventArgs e)
         {
+            IList<Furniture> selectedFurnitureList = new List<Furniture>();
+            foreach (ListViewItem curFurniture in this.ActiveRentedFurnitureList.Items)
+            {
+                if (curFurniture.Checked)
+                {
+                    var furnitureId = int.Parse(curFurniture.Text);
+                    var category = curFurniture.SubItems[2].Text;
+                    var style = curFurniture.SubItems[1].Text;
+                    var quantity = int.Parse(curFurniture.SubItems[4].Text);
+                    var rentalRate = double.Parse(curFurniture.SubItems[3].Text);
+                    var dueDate = curFurniture.SubItems[5].Text;
+                    selectedFurnitureList.Add(new Furniture(furnitureId, category, style, quantity, rentalRate, dueDate));
+                }
+            }
 
+            var returnController = new ReturnController(this.ActiveTransactionsController.currMember,
+                this.ActiveTransactionsController.currEmployee, selectedFurnitureList);
+
+            this.ReturnFurniturePage = new ReturnFurniturePage(returnController);
+            this.ReturnFurniturePage.Show();
         }
 
         private void reloadFurnitureList()
         {
-            foreach (var currFurniture in this.ActiveTransactionsController.Furniture!)
+            foreach (var curFurniture in this.ActiveTransactionsController.Furniture!)
             {
-                var newItem = new ListViewItem(currFurniture.FurnitureId.ToString());
-                newItem.SubItems.Add(currFurniture.Style);
-                newItem.SubItems.Add(currFurniture.Category);
+                var newItem = new ListViewItem(curFurniture.FurnitureId.ToString());
+                newItem.SubItems.Add(curFurniture.Style);
+                newItem.SubItems.Add(curFurniture.Category);
+                newItem.SubItems.Add(curFurniture.RentalRate.ToString(CultureInfo.CurrentCulture));
+                newItem.SubItems.Add(curFurniture.Quantity.ToString());
+                newItem.SubItems.Add(curFurniture.DueDate);
+
                 this.ActiveRentedFurnitureList.Items.Add(newItem);
             }
         }

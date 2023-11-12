@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             ActiveRentedFurnitureList = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
+            Id = new ColumnHeader();
+            Style = new ColumnHeader();
+            Category = new ColumnHeader();
+            rentalRate = new ColumnHeader();
+            Qty = new ColumnHeader();
+            dueDate = new ColumnHeader();
             returnButton = new Button();
             BackButton = new Button();
             SuspendLayout();
@@ -39,28 +42,43 @@
             // ActiveRentedFurnitureList
             // 
             ActiveRentedFurnitureList.CheckBoxes = true;
-            ActiveRentedFurnitureList.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            ActiveRentedFurnitureList.Location = new Point(100, 12);
+            ActiveRentedFurnitureList.Columns.AddRange(new ColumnHeader[] { Id, Style, Category, rentalRate, Qty, dueDate });
+            ActiveRentedFurnitureList.Location = new Point(93, 12);
             ActiveRentedFurnitureList.Name = "ActiveRentedFurnitureList";
             ActiveRentedFurnitureList.Size = new Size(375, 426);
             ActiveRentedFurnitureList.TabIndex = 0;
             ActiveRentedFurnitureList.UseCompatibleStateImageBehavior = false;
             ActiveRentedFurnitureList.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // Id
             // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 125;
+            Id.Text = "ID";
+            Id.Width = 45;
             // 
-            // columnHeader2
+            // Style
             // 
-            columnHeader2.Text = "Style";
-            columnHeader2.Width = 125;
+            Style.Text = "Style";
+            Style.Width = 75;
             // 
-            // columnHeader3
+            // Category
             // 
-            columnHeader3.Text = "Category";
-            columnHeader3.Width = 125;
+            Category.Text = "Category";
+            Category.Width = 75;
+            // 
+            // rentalRate
+            // 
+            rentalRate.Text = "Rate";
+            rentalRate.Width = 65;
+            // 
+            // Qty
+            // 
+            Qty.Text = "Qty";
+            Qty.Width = 40;
+            // 
+            // dueDate
+            // 
+            dueDate.Text = "Due date";
+            dueDate.Width = 85;
             // 
             // returnButton
             // 
@@ -98,10 +116,13 @@
         #endregion
 
         private ListView ActiveRentedFurnitureList;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
+        private ColumnHeader Id;
+        private ColumnHeader Style;
+        private ColumnHeader Category;
         private Button returnButton;
         private Button BackButton;
+        private ColumnHeader Qty;
+        private ColumnHeader dueDate;
+        private ColumnHeader rentalRate;
     }
 }
