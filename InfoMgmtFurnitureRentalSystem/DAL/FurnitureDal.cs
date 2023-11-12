@@ -325,7 +325,7 @@ public class FurnitureDal
     /// </summary>
     /// <param name="memberId"></param>
     /// <returns></returns>
-    public static IList<Furniture>? GetMembersCurrentRentedFurniture(int memberId)
+    public static IList<Furniture> GetMembersCurrentRentedFurniture(int memberId)
     {
         using var connection = DalConnection.CreateConnection();
         var query = "SELECT f.furniture_id, f.category_name, f.style_name, f.quantity, f.rental_rate FROM rental_item ri JOIN rental r ON ri.rental_id = r.rental_id JOIN furniture f ON ri.furniture_id = f.furniture_id WHERE r.member_id = @member_id";

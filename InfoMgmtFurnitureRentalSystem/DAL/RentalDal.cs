@@ -46,7 +46,7 @@ public class RentalDal
     private static string insertRentalTransactionQuery()
     {
         var query = "INSERT INTO rental (employee_id, member_id, start_date, end_date) ";
-        query += "VALUES (@memberId, @employeeId, @start_date, @end_date);";
+        query += "VALUES (@employeeId, @memberId, @start_date, @end_date);";
         return query;
     }
 
