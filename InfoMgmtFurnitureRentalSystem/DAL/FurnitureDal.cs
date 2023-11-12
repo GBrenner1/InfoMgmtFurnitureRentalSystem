@@ -320,6 +320,49 @@ public class FurnitureDal
         return new List<Furniture>();
     }
 
+    /// <summary>
+    /// gets all active rentals for a member
+    /// </summary>
+    /// <param name="memberId"></param>
+    /// <returns></returns>
+    public static IList<Furniture>? GetMembersCurrentRentedFurniture(int memberId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT f.furniture_id, f.category_name, f.style_name, f.quantity, f.rental_rate FROM rental_item ri JOIN rental r ON ri.rental_id = r.rental_id JOIN furniture f ON ri.furniture_id = f.furniture_id WHERE r.member_id = @member_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@member_id", MySqlDbType.VarChar).Value = memberId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        try
+        {
+            if (reader.HasRows)
+            {
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
+                {
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rentalRate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rentalRate);
+                    furnitureList.Add(furniture);
+                }
+
+                connection.Close();
+                return furnitureList;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return new List<Furniture>();
+    }
 
     #endregion
 }

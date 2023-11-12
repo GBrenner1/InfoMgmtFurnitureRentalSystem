@@ -56,6 +56,7 @@
             FurnitureListView = new ListView();
             StartTransactionButton = new Button();
             AddItemButton = new Button();
+            ActiveRentalsButton = new Button();
             SuspendLayout();
             // 
             // LogoutButton
@@ -287,11 +288,22 @@
             AddItemButton.Visible = false;
             AddItemButton.Click += AddItemButton_Click;
             // 
+            // ActiveRentalsButton
+            // 
+            ActiveRentalsButton.Location = new Point(767, 63);
+            ActiveRentalsButton.Name = "ActiveRentalsButton";
+            ActiveRentalsButton.Size = new Size(107, 45);
+            ActiveRentalsButton.TabIndex = 23;
+            ActiveRentalsButton.Text = "See Active Rentals";
+            ActiveRentalsButton.UseVisualStyleBackColor = true;
+            ActiveRentalsButton.Click += ActiveRentalsButton_Click;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(886, 450);
+            Controls.Add(ActiveRentalsButton);
             Controls.Add(AddItemButton);
             Controls.Add(StartTransactionButton);
             Controls.Add(furnitureIdSeachButton);
@@ -349,5 +361,6 @@
         private ListView FurnitureListView;
         private Button StartTransactionButton;
         private Button AddItemButton;
+        private Button ActiveRentalsButton;
     }
 }

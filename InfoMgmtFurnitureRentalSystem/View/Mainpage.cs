@@ -14,6 +14,8 @@ public partial class Mainpage : Form
 
     private TransactionForm? transactionForm;
 
+    private ActiveTransactionsForm? ActiveTransactionsForm;
+
     #endregion
 
     #region Constructors
@@ -162,7 +164,7 @@ public partial class Mainpage : Form
 
     private void StartTransactionButton_Click(object sender, EventArgs e)
     {
-        string? selectedMemberId = null;
+        string? selectedMemberId;
         try
         {
             selectedMemberId = this.MembersListView.SelectedItems[0].Text;
@@ -200,5 +202,31 @@ public partial class Mainpage : Form
     private void AddItemButton_Click(object sender, EventArgs e)
     {
         this.transactionForm?.AddItemToCart(this.mainpageController.Furnitures[this.FurnitureListView.SelectedIndices[0]]);
+    }
+
+    private void ActiveRentalsButton_Click(object sender, EventArgs e)
+    {
+        string? selectedMemberId;
+        try
+        {
+            selectedMemberId = this.MembersListView.SelectedItems[0].Text;
+        }
+        catch (Exception)
+        {
+            MessageBox.Show("Please select a member");
+            return;
+        }
+
+        if (selectedMemberId == null)
+        {
+            MessageBox.Show("Please select a member");
+            return;
+        }
+
+        var activeTransactionsController = new ActiveTransactionsController(int.Parse(selectedMemberId),
+            this.mainpageController.CurrentEmployee!.EmployeeId);
+
+        this.ActiveTransactionsForm = new ActiveTransactionsForm(activeTransactionsController);
+        this.ActiveTransactionsForm.Show();
     }
 }
