@@ -36,6 +36,10 @@ public class Furniture
     /// </summary>
     /// <value>The rental rate.</value>
     public double RentalRate { get; set; }
+    /// <summary>
+    /// The date a piece of furniture is due
+    /// </summary>
+    public string DueDate { get; set; }
 
     #endregion
 
@@ -49,13 +53,15 @@ public class Furniture
     /// <param name="style">The style.</param>
     /// <param name="quantity">The quantity.</param>
     /// <param name="rentalRate">The rental rate.</param>
-    public Furniture(int id, string category, string style, int quantity, double rentalRate)
+    /// <param name="dueDate">The date the furniture is due. Left blank in most cases to be used in furniture return process.</param>
+    public Furniture(int id, string category, string style, int quantity, double rentalRate, string dueDate = "")
     {
         this.FurnitureId = id;
         this.Category = category;
         this.Style = style;
         this.Quantity = quantity;
         this.RentalRate = rentalRate;
+        this.DueDate = dueDate;
     }
 
     #endregion

@@ -1,3 +1,4 @@
+using System.Globalization;
 using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
@@ -328,7 +329,7 @@ public class FurnitureDal
     public static IList<Furniture> GetMembersCurrentRentedFurniture(int memberId)
     {
         using var connection = DalConnection.CreateConnection();
-        var query = "SELECT f.furniture_id, f.category_name, f.style_name, f.quantity, f.rental_rate FROM rental_item ri JOIN rental r ON ri.rental_id = r.rental_id JOIN furniture f ON ri.furniture_id = f.furniture_id WHERE r.member_id = @member_id";
+        var query = "SELECT f.furniture_id, f.category_name, f.style_name, f.quantity, f.rental_rate, r.end_date FROM rental_item ri JOIN rental r ON ri.rental_id = r.rental_id JOIN furniture f ON ri.furniture_id = f.furniture_id WHERE r.member_id = @member_id";
 
         using var command = new MySqlCommand(query, connection);
         command.Parameters.Add("@member_id", MySqlDbType.VarChar).Value = memberId;
@@ -348,7 +349,9 @@ public class FurnitureDal
                     var style = reader.GetString(2);
                     var qty = reader.GetInt32(3);
                     var rentalRate = reader.GetDouble(4);
-                    var furniture = new Furniture(id, category, style, qty, rentalRate);
+                    var dueDateWithTime = reader.GetDateTime(5).ToString(CultureInfo.CurrentCulture);
+                    var dueDate = dueDateWithTime.Split(' ')[0];
+                    var furniture = new Furniture(id, category, style, qty, rentalRate, dueDate);
                     furnitureList.Add(furniture);
                 }
 
