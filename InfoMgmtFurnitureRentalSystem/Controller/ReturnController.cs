@@ -42,7 +42,7 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         /// Calculates fees on items that are past due
         /// </summary>
         /// <returns>The total fees incurred</returns>
-        public Double CalculateFees()
+        public string CalculateFees()
         {
             var fees = 0.0;
 
@@ -56,8 +56,8 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
                     fees += incurredFees;
                 }
             }
-
-            return fees;
+            var returnFees = $"{Convert.ToDecimal(fees):#0.00}";
+            return returnFees;
         }
     }
 }

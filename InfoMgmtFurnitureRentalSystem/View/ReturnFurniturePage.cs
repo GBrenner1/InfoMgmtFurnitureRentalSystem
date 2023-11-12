@@ -17,7 +17,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
     {
         private ReturnController ReturnController { get; }
 
-        private double incurredFees { get; set; }
+        private string incurredFees { get; set; }
 
         /// <summary>
         /// the controller for the return page
@@ -32,7 +32,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
 
             this.reloadFurnitureList();
             this.incurredFees = this.ReturnController.CalculateFees();
-            this.FeesTextBox.Text = this.incurredFees.ToString(CultureInfo.CurrentCulture);
+            this.FeesTextBox.Text = this.incurredFees;
         }
         private void centerForm()
         {
@@ -53,7 +53,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
                 item.SubItems[4].Text = quantity.ToString();
 
                 this.incurredFees = this.ReturnController.CalculateFees();
-                this.FeesTextBox.Text = this.incurredFees.ToString(CultureInfo.CurrentCulture);
+                this.FeesTextBox.Text = this.incurredFees;
             }
             catch (Exception)
             {
