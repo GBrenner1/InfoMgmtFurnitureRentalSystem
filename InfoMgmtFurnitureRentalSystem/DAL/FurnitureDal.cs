@@ -172,281 +172,154 @@ public class FurnitureDal
         if (string.IsNullOrWhiteSpace(furnitureId) && string.IsNullOrWhiteSpace(furnitureStyle) &&
             string.IsNullOrWhiteSpace(furnitureCategory))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture";
-
-            using var command = new MySqlCommand(query, connection);
-
-            try
-            {
-                connection.Open();
-                command.ExecuteNonQuery();
-                var reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchAllValuesEmpty();
         }
 
         if (string.IsNullOrWhiteSpace(furnitureId) && string.IsNullOrWhiteSpace(furnitureCategory))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture WHERE style_name = @style_name";
-
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
-            {
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchFurnitureByStyle(furnitureStyle);
         }
 
         if (string.IsNullOrWhiteSpace(furnitureId) && string.IsNullOrWhiteSpace(furnitureStyle))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture WHERE category_name = @cat_name";
-
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
-            {
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchFurnitureByCategory(furnitureCategory);
         }
 
         if (string.IsNullOrWhiteSpace(furnitureCategory) && string.IsNullOrWhiteSpace(furnitureStyle))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture WHERE furniture_id = @furn_id";
-
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
-            {
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchFurnitureById(furnitureId);
         }
 
         if (string.IsNullOrWhiteSpace(furnitureStyle))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture WHERE furniture_id = @furn_id AND category_name = @cat_name";
-
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
-            command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
-            {
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchFurnitureByIdAndCategory(furnitureId, furnitureCategory);
         }
 
         if (string.IsNullOrWhiteSpace(furnitureCategory))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture WHERE furniture_id = @furn_id AND style_name = @style_name";
-
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
-            command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
-            {
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchFurnitureByIdAndStyle(furnitureId, furnitureStyle);
         }
 
         if (string.IsNullOrWhiteSpace(furnitureId))
         {
-            using var connection = DalConnection.CreateConnection();
-            var query = "SELECT * FROM furniture WHERE category_name = @cat_name AND style_name = @style_name";
-
-            using var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
-            command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            try
-            {
-                if (reader.HasRows)
-                {
-                    IList<Furniture> furnitureList = new List<Furniture>();
-                    while (reader.Read())
-                    {
-                        var id = reader.GetInt32(0);
-                        var category = reader.GetString(1);
-                        var style = reader.GetString(2);
-                        var qty = reader.GetInt32(3);
-                        var rentalRate = reader.GetDouble(4);
-                        var furniture = new Furniture(id, category, style, qty, rentalRate);
-                        furnitureList.Add(furniture);
-                    }
-
-                    connection.Close();
-                    return furnitureList;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return new List<Furniture>();
+            return SearchFurnitureByStyleAndCategory(furnitureCategory, furnitureStyle);
         }
 
         return new List<Furniture>();
     }
+
+    private static IList<Furniture> SearchFurnitureByStyleAndCategory(string furnitureCategory, string furnitureStyle)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture WHERE category_name = @cat_name AND style_name = @style_name";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
+        command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> SearchFurnitureByIdAndStyle(string furnitureId, string furnitureStyle)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture WHERE furniture_id = @furn_id AND style_name = @style_name";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
+        command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> SearchFurnitureByIdAndCategory(string furnitureId, string furnitureCategory)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture WHERE furniture_id = @furn_id AND category_name = @cat_name";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
+        command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> SearchFurnitureById(string furnitureId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture WHERE furniture_id = @furn_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@furn_id", MySqlDbType.VarChar).Value = furnitureId;
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> SearchFurnitureByCategory(string furnitureCategory)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture WHERE category_name = @cat_name";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@cat_name", MySqlDbType.VarChar).Value = furnitureCategory;
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> SearchFurnitureByStyle(string furnitureStyle)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture WHERE style_name = @style_name";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@style_name", MySqlDbType.VarChar).Value = furnitureStyle;
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> SearchAllValuesEmpty()
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT * FROM furniture";
+
+        using var command = new MySqlCommand(query, connection);
+
+        return runSearchConnection(connection, command);
+    }
+
+    private static IList<Furniture> runSearchConnection(MySqlConnection connection, MySqlCommand command)
+    {
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        try
+        {
+            if (reader.HasRows)
+            {
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
+                {
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rentalRate = reader.GetDouble(4);
+                    var furniture = new Furniture(id, category, style, qty, rentalRate);
+                    furnitureList.Add(furniture);
+                }
+
+                connection.Close();
+                return furnitureList;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return new List<Furniture>();
+    }
+
 
     #endregion
 }
