@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InfoMgmtFurnitureRentalSystem.DAL;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller
 {
@@ -56,8 +57,18 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
                     fees += incurredFees;
                 }
             }
-            var returnFees = $"{Convert.ToDecimal(fees):#0.00}";
+            var returnFees = "$" + $"{Convert.ToDecimal(fees):#0.00}";
             return returnFees;
+        }
+
+        public void compleateReturnTransaction(string fees)
+        {
+            var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee);
+            var doubleFees = double.Parse(fees.Replace("$",String.Empty));
+            foreach (var curFurniture in this.Furniture)
+            {
+                RentalReturnsDal.addFurnitureReturn(returnId, curFurniture, doubleFees);
+            }
         }
     }
 }

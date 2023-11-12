@@ -40,6 +40,10 @@ public class Furniture
     /// The date a piece of furniture is due
     /// </summary>
     public string DueDate { get; set; }
+    /// <summary>
+    /// the rental ID a piece of furniture is associated with. Using in the return process
+    /// </summary>
+    public string RentalId { get; set; }
 
     #endregion
 
@@ -54,7 +58,8 @@ public class Furniture
     /// <param name="quantity">The quantity.</param>
     /// <param name="rentalRate">The rental rate.</param>
     /// <param name="dueDate">The date the furniture is due. Left blank in most cases to be used in furniture return process.</param>
-    public Furniture(int id, string category, string style, int quantity, double rentalRate, string dueDate = "")
+    /// <param name="rentalId">The rental id the furniture is matched to. Using in the return process</param>
+    public Furniture(int id, string category, string style, int quantity, double rentalRate, string dueDate = "", string rentalId="")
     {
         this.FurnitureId = id;
         this.Category = category;
@@ -62,6 +67,7 @@ public class Furniture
         this.Quantity = quantity;
         this.RentalRate = rentalRate;
         this.DueDate = dueDate;
+        this.RentalId = rentalId;
     }
 
     #endregion

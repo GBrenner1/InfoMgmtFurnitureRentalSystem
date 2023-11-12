@@ -58,7 +58,8 @@ namespace InfoMgmtFurnitureRentalSystem.View
                     var quantity = int.Parse(curFurniture.SubItems[4].Text);
                     var rentalRate = double.Parse(curFurniture.SubItems[3].Text);
                     var dueDate = curFurniture.SubItems[5].Text;
-                    selectedFurnitureList.Add(new Furniture(furnitureId, category, style, quantity, rentalRate, dueDate));
+                    var rentalId = curFurniture.SubItems[6].Text;
+                    selectedFurnitureList.Add(new Furniture(furnitureId, category, style, quantity, rentalRate, dueDate, rentalId));
                 }
             }
 
@@ -79,6 +80,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
                 newItem.SubItems.Add(curFurniture.RentalRate.ToString(CultureInfo.CurrentCulture));
                 newItem.SubItems.Add(curFurniture.Quantity.ToString());
                 newItem.SubItems.Add(curFurniture.DueDate);
+                newItem.SubItems.Add(curFurniture.RentalId);
 
                 this.ActiveRentedFurnitureList.Items.Add(newItem);
             }

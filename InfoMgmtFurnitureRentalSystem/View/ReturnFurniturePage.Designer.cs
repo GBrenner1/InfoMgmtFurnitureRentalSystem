@@ -40,11 +40,12 @@
             qtyChangeButton = new Button();
             FeesTextBox = new TextBox();
             label1 = new Label();
+            columnHeader7 = new ColumnHeader();
             SuspendLayout();
             // 
             // furnitureList
             // 
-            furnitureList.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            furnitureList.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
             furnitureList.FullRowSelect = true;
             furnitureList.Location = new Point(100, 12);
             furnitureList.Name = "furnitureList";
@@ -101,6 +102,7 @@
             ReturnButton.TabIndex = 2;
             ReturnButton.Text = "Confirm Return";
             ReturnButton.UseVisualStyleBackColor = true;
+            ReturnButton.Click += ReturnButton_Click;
             // 
             // qtyChangeButton
             // 
@@ -128,6 +130,11 @@
             label1.Size = new Size(33, 15);
             label1.TabIndex = 5;
             label1.Text = "Fees:";
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "transaction ID";
+            columnHeader7.Width = 0;
             // 
             // ReturnFurniturePage
             // 
@@ -160,5 +167,6 @@
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
     }
 }

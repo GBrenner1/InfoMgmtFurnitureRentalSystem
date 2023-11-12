@@ -37,12 +37,13 @@
             dueDate = new ColumnHeader();
             returnButton = new Button();
             BackButton = new Button();
+            columnHeader1 = new ColumnHeader();
             SuspendLayout();
             // 
             // ActiveRentedFurnitureList
             // 
             ActiveRentedFurnitureList.CheckBoxes = true;
-            ActiveRentedFurnitureList.Columns.AddRange(new ColumnHeader[] { Id, Style, Category, rentalRate, Qty, dueDate });
+            ActiveRentedFurnitureList.Columns.AddRange(new ColumnHeader[] { Id, Style, Category, rentalRate, Qty, dueDate, columnHeader1 });
             ActiveRentedFurnitureList.Location = new Point(93, 12);
             ActiveRentedFurnitureList.Name = "ActiveRentedFurnitureList";
             ActiveRentedFurnitureList.Size = new Size(375, 426);
@@ -100,6 +101,11 @@
             BackButton.UseVisualStyleBackColor = true;
             BackButton.Click += BackButton_Click;
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "transactionId";
+            columnHeader1.Width = 0;
+            // 
             // ActiveTransactionsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -124,5 +130,6 @@
         private ColumnHeader Qty;
         private ColumnHeader dueDate;
         private ColumnHeader rentalRate;
+        private ColumnHeader columnHeader1;
     }
 }

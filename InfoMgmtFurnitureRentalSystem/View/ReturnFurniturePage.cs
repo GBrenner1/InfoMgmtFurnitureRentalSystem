@@ -76,9 +76,27 @@ namespace InfoMgmtFurnitureRentalSystem.View
                 newItem.SubItems.Add(curFurniture.RentalRate.ToString(CultureInfo.CurrentCulture));
                 newItem.SubItems.Add(curFurniture.Quantity.ToString());
                 newItem.SubItems.Add(curFurniture.DueDate);
+                newItem.SubItems.Add(curFurniture.RentalId);
 
                 this.furnitureList.Items.Add(newItem);
             }
+        }
+
+        private void ReturnButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to return these items?",
+                "Confirm return",
+                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                this.ReturnController.compleateReturnTransaction(this.FeesTextBox.Text);
+            }
+            else
+            {
+                return;
+            }
+
+            Hide();
         }
     }
 }
