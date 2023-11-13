@@ -18,16 +18,19 @@ public class FurnitureDal
     /// <returns><c>true</c> if the quantities are updated, <c>false</c> otherwise.</returns>
     public static bool UpdateQuantities(IList<Furniture> furnitureList)
     {
+        using var connection = DalConnection.CreateConnection();
+        connection.Open();
+        using var transaction = connection.BeginTransaction();
         try
         {
             var quantitiesRented = furnitureList.Select(f => f.Quantity);
-            var quantitiesAvailable = GetFurniture().Select(f => f.Quantity);
-            var quantities = quantitiesAvailable.Zip(quantitiesRented, (available, rented) => available - rented)
-                .ToArray();
-            using var connection = DalConnection.CreateConnection();
-            connection.Open();
+            var quantitiesAvailable = getQuantitiesAvailable(furnitureList);
+            var quantities = quantitiesAvailable.Zip(quantitiesRented, (available, rented) => available - rented).ToArray();
+
             const string query = "UPDATE furniture SET quantity = @qty WHERE furniture_id = @furnitureId";
-            var command = new MySqlCommand(query, connection);
+            var command = connection.CreateCommand();
+            command.CommandText = query;
+            command.Transaction = transaction;
             command.Parameters.Add("@qty", MySqlDbType.Int32);
             command.Parameters.Add("@furnitureId", MySqlDbType.Int32);
             for (var i = 0; i < furnitureList.Count; i++)
@@ -36,14 +39,21 @@ public class FurnitureDal
                 command.Parameters["@furnitureId"].Value = furnitureList[i].FurnitureId;
                 command.ExecuteNonQuery();
             }
-
+            transaction.Commit();
             connection.Close();
             return true;
         }
         catch (Exception)
         {
+            transaction.Rollback();
             return false;
         }
+    }
+
+    private static IEnumerable<int> getQuantitiesAvailable(IList<Furniture> furnitureList)
+    {
+        var furnitureRented = GetFurniture().Where(f => furnitureList.Any(f2 => f2.FurnitureId == f.FurnitureId));
+        return furnitureRented.Select(f => f.Quantity);
     }
 
     /// <summary>
