@@ -65,9 +65,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // LogoutButton
             // 
-            LogoutButton.Location = new Point(108, 5);
+            LogoutButton.Location = new Point(141, 7);
+            LogoutButton.Margin = new Padding(3, 4, 3, 4);
             LogoutButton.Name = "LogoutButton";
-            LogoutButton.Size = new Size(67, 23);
+            LogoutButton.Size = new Size(77, 31);
             LogoutButton.TabIndex = 0;
             LogoutButton.Text = "Logout";
             LogoutButton.UseVisualStyleBackColor = true;
@@ -76,17 +77,18 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // EmployeeLabel
             // 
             EmployeeLabel.AutoSize = true;
-            EmployeeLabel.Location = new Point(12, 9);
+            EmployeeLabel.Location = new Point(14, 12);
             EmployeeLabel.Name = "EmployeeLabel";
-            EmployeeLabel.Size = new Size(38, 15);
+            EmployeeLabel.Size = new Size(50, 20);
             EmployeeLabel.TabIndex = 1;
             EmployeeLabel.Text = "label1";
             // 
             // AddMemberButton
             // 
-            AddMemberButton.Location = new Point(767, 34);
+            AddMemberButton.Location = new Point(877, 45);
+            AddMemberButton.Margin = new Padding(3, 4, 3, 4);
             AddMemberButton.Name = "AddMemberButton";
-            AddMemberButton.Size = new Size(107, 23);
+            AddMemberButton.Size = new Size(122, 31);
             AddMemberButton.TabIndex = 2;
             AddMemberButton.Text = "Add Member";
             AddMemberButton.UseVisualStyleBackColor = true;
@@ -96,9 +98,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             MembersListView.Columns.AddRange(new ColumnHeader[] { MemberIdColumn, FirstnameColumn, LastnameColumn, Phonecolumn });
             MembersListView.FullRowSelect = true;
-            MembersListView.Location = new Point(450, 34);
+            MembersListView.Location = new Point(514, 45);
+            MembersListView.Margin = new Padding(3, 4, 3, 4);
             MembersListView.Name = "MembersListView";
-            MembersListView.Size = new Size(311, 394);
+            MembersListView.Size = new Size(355, 524);
             MembersListView.TabIndex = 6;
             MembersListView.UseCompatibleStateImageBehavior = false;
             MembersListView.View = System.Windows.Forms.View.Details;
@@ -127,17 +130,19 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             memberSearchComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             memberSearchComboBox.FormattingEnabled = true;
-            memberSearchComboBox.Location = new Point(767, 350);
+            memberSearchComboBox.Location = new Point(877, 467);
+            memberSearchComboBox.Margin = new Padding(3, 4, 3, 4);
             memberSearchComboBox.Name = "memberSearchComboBox";
-            memberSearchComboBox.Size = new Size(107, 23);
+            memberSearchComboBox.Size = new Size(122, 28);
             memberSearchComboBox.TabIndex = 7;
             memberSearchComboBox.SelectedIndexChanged += memberSearchComboBox_SelectedIndexChanged;
             // 
             // memberSearchButton
             // 
-            memberSearchButton.Location = new Point(767, 379);
+            memberSearchButton.Location = new Point(877, 505);
+            memberSearchButton.Margin = new Padding(3, 4, 3, 4);
             memberSearchButton.Name = "memberSearchButton";
-            memberSearchButton.Size = new Size(107, 23);
+            memberSearchButton.Size = new Size(122, 31);
             memberSearchButton.TabIndex = 8;
             memberSearchButton.Text = "Search";
             memberSearchButton.UseVisualStyleBackColor = true;
@@ -145,58 +150,61 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // multiSearchBox
             // 
-            multiSearchBox.Location = new Point(767, 305);
+            multiSearchBox.Location = new Point(877, 407);
+            multiSearchBox.Margin = new Padding(3, 4, 3, 4);
             multiSearchBox.Name = "multiSearchBox";
-            multiSearchBox.Size = new Size(107, 23);
+            multiSearchBox.Size = new Size(122, 27);
             multiSearchBox.TabIndex = 9;
             // 
             // firstNameTextBox
             // 
-            firstNameTextBox.Location = new Point(767, 261);
+            firstNameTextBox.Location = new Point(877, 348);
+            firstNameTextBox.Margin = new Padding(3, 4, 3, 4);
             firstNameTextBox.Name = "firstNameTextBox";
-            firstNameTextBox.Size = new Size(107, 23);
+            firstNameTextBox.Size = new Size(122, 27);
             firstNameTextBox.TabIndex = 10;
             // 
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new Point(767, 243);
+            firstNameLabel.Location = new Point(877, 324);
             firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new Size(65, 15);
+            firstNameLabel.Size = new Size(80, 20);
             firstNameLabel.TabIndex = 11;
             firstNameLabel.Text = "First name:";
             // 
             // multiSearchLabel
             // 
             multiSearchLabel.AutoSize = true;
-            multiSearchLabel.Location = new Point(767, 287);
+            multiSearchLabel.Location = new Point(877, 383);
             multiSearchLabel.Name = "multiSearchLabel";
-            multiSearchLabel.Size = new Size(64, 15);
+            multiSearchLabel.Size = new Size(79, 20);
             multiSearchLabel.TabIndex = 12;
             multiSearchLabel.Text = "Last name:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(767, 331);
+            label1.Location = new Point(877, 441);
             label1.Name = "label1";
-            label1.Size = new Size(61, 15);
+            label1.Size = new Size(76, 20);
             label1.TabIndex = 13;
             label1.Text = "Search by:";
             // 
             // furnitureIdTextBox
             // 
-            furnitureIdTextBox.Location = new Point(12, 261);
+            furnitureIdTextBox.Location = new Point(14, 348);
+            furnitureIdTextBox.Margin = new Padding(3, 4, 3, 4);
             furnitureIdTextBox.Name = "furnitureIdTextBox";
-            furnitureIdTextBox.Size = new Size(100, 23);
+            furnitureIdTextBox.Size = new Size(114, 27);
             furnitureIdTextBox.TabIndex = 14;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 243);
+            label2.Location = new Point(14, 324);
             label2.Name = "label2";
-            label2.Size = new Size(20, 15);
+            label2.Size = new Size(25, 20);
             label2.TabIndex = 15;
             label2.Text = "Id:";
             // 
@@ -204,43 +212,46 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             funitureStyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             funitureStyleComboBox.FormattingEnabled = true;
-            funitureStyleComboBox.Location = new Point(12, 305);
+            funitureStyleComboBox.Location = new Point(14, 407);
+            funitureStyleComboBox.Margin = new Padding(3, 4, 3, 4);
             funitureStyleComboBox.Name = "funitureStyleComboBox";
-            funitureStyleComboBox.Size = new Size(100, 23);
+            funitureStyleComboBox.Size = new Size(114, 28);
             funitureStyleComboBox.TabIndex = 16;
             // 
             // furnitureCategoryComboBox
             // 
             furnitureCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             furnitureCategoryComboBox.FormattingEnabled = true;
-            furnitureCategoryComboBox.Location = new Point(12, 349);
+            furnitureCategoryComboBox.Location = new Point(14, 465);
+            furnitureCategoryComboBox.Margin = new Padding(3, 4, 3, 4);
             furnitureCategoryComboBox.Name = "furnitureCategoryComboBox";
-            furnitureCategoryComboBox.Size = new Size(100, 23);
+            furnitureCategoryComboBox.Size = new Size(114, 28);
             furnitureCategoryComboBox.TabIndex = 17;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 287);
+            label3.Location = new Point(14, 383);
             label3.Name = "label3";
-            label3.Size = new Size(35, 15);
+            label3.Size = new Size(44, 20);
             label3.TabIndex = 18;
             label3.Text = "Style:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 331);
+            label4.Location = new Point(14, 441);
             label4.Name = "label4";
-            label4.Size = new Size(58, 15);
+            label4.Size = new Size(72, 20);
             label4.TabIndex = 19;
             label4.Text = "Category:";
             // 
             // furnitureIdSeachButton
             // 
-            furnitureIdSeachButton.Location = new Point(12, 378);
+            furnitureIdSeachButton.Location = new Point(14, 504);
+            furnitureIdSeachButton.Margin = new Padding(3, 4, 3, 4);
             furnitureIdSeachButton.Name = "furnitureIdSeachButton";
-            furnitureIdSeachButton.Size = new Size(100, 23);
+            furnitureIdSeachButton.Size = new Size(114, 31);
             furnitureIdSeachButton.TabIndex = 20;
             furnitureIdSeachButton.Text = "Search";
             furnitureIdSeachButton.UseVisualStyleBackColor = true;
@@ -254,19 +265,21 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // styleColumn
             // 
             styleColumn.Text = "Style";
+            styleColumn.Width = 65;
             // 
             // categoryColumn
             // 
             categoryColumn.Text = "Category";
-            categoryColumn.Width = 90;
+            categoryColumn.Width = 75;
             // 
             // FurnitureListView
             // 
             FurnitureListView.Columns.AddRange(new ColumnHeader[] { funitureId, styleColumn, categoryColumn, qtyColumn, rateColumn });
             FurnitureListView.FullRowSelect = true;
-            FurnitureListView.Location = new Point(123, 34);
+            FurnitureListView.Location = new Point(141, 45);
+            FurnitureListView.Margin = new Padding(3, 4, 3, 4);
             FurnitureListView.Name = "FurnitureListView";
-            FurnitureListView.Size = new Size(321, 394);
+            FurnitureListView.Size = new Size(366, 524);
             FurnitureListView.TabIndex = 5;
             FurnitureListView.UseCompatibleStateImageBehavior = false;
             FurnitureListView.View = System.Windows.Forms.View.Details;
@@ -283,9 +296,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // StartTransactionButton
             // 
-            StartTransactionButton.Location = new Point(12, 53);
+            StartTransactionButton.Location = new Point(14, 71);
+            StartTransactionButton.Margin = new Padding(3, 4, 3, 4);
             StartTransactionButton.Name = "StartTransactionButton";
-            StartTransactionButton.Size = new Size(75, 44);
+            StartTransactionButton.Size = new Size(94, 59);
             StartTransactionButton.TabIndex = 21;
             StartTransactionButton.Text = "Start Transaction";
             StartTransactionButton.UseVisualStyleBackColor = true;
@@ -293,9 +307,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // AddItemButton
             // 
-            AddItemButton.Location = new Point(12, 115);
+            AddItemButton.Location = new Point(14, 153);
+            AddItemButton.Margin = new Padding(3, 4, 3, 4);
             AddItemButton.Name = "AddItemButton";
-            AddItemButton.Size = new Size(75, 23);
+            AddItemButton.Size = new Size(86, 31);
             AddItemButton.TabIndex = 22;
             AddItemButton.Text = "Add Item";
             AddItemButton.UseVisualStyleBackColor = true;
@@ -304,9 +319,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // ActiveRentalsButton
             // 
-            ActiveRentalsButton.Location = new Point(767, 63);
+            ActiveRentalsButton.Location = new Point(877, 84);
+            ActiveRentalsButton.Margin = new Padding(3, 4, 3, 4);
             ActiveRentalsButton.Name = "ActiveRentalsButton";
-            ActiveRentalsButton.Size = new Size(107, 45);
+            ActiveRentalsButton.Size = new Size(122, 60);
             ActiveRentalsButton.TabIndex = 23;
             ActiveRentalsButton.Text = "See Active Rentals";
             ActiveRentalsButton.UseVisualStyleBackColor = true;
@@ -314,9 +330,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // ClearMemberSearchButton
             // 
-            ClearMemberSearchButton.Location = new Point(767, 408);
+            ClearMemberSearchButton.Location = new Point(877, 544);
+            ClearMemberSearchButton.Margin = new Padding(3, 4, 3, 4);
             ClearMemberSearchButton.Name = "ClearMemberSearchButton";
-            ClearMemberSearchButton.Size = new Size(107, 23);
+            ClearMemberSearchButton.Size = new Size(122, 31);
             ClearMemberSearchButton.TabIndex = 24;
             ClearMemberSearchButton.Text = "Clear search";
             ClearMemberSearchButton.UseVisualStyleBackColor = true;
@@ -324,9 +341,10 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // clearFurnitureSearchButton
             // 
-            clearFurnitureSearchButton.Location = new Point(12, 408);
+            clearFurnitureSearchButton.Location = new Point(14, 544);
+            clearFurnitureSearchButton.Margin = new Padding(3, 4, 3, 4);
             clearFurnitureSearchButton.Name = "clearFurnitureSearchButton";
-            clearFurnitureSearchButton.Size = new Size(100, 23);
+            clearFurnitureSearchButton.Size = new Size(114, 31);
             clearFurnitureSearchButton.TabIndex = 25;
             clearFurnitureSearchButton.Text = "Clear search";
             clearFurnitureSearchButton.UseVisualStyleBackColor = true;
@@ -334,9 +352,9 @@ namespace InfoMgmtFurnitureRentalSystem.View
             // 
             // Mainpage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(886, 450);
+            ClientSize = new Size(1013, 600);
             Controls.Add(clearFurnitureSearchButton);
             Controls.Add(ClearMemberSearchButton);
             Controls.Add(ActiveRentalsButton);
@@ -361,6 +379,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
             Controls.Add(AddMemberButton);
             Controls.Add(EmployeeLabel);
             Controls.Add(LogoutButton);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Mainpage";
             Text = "Mainpage";
             ResumeLayout(false);

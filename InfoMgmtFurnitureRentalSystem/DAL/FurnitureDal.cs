@@ -303,8 +303,8 @@ public class FurnitureDal
                     var id = reader.GetInt32(0);
                     var category = reader.GetString(1);
                     var style = reader.GetString(2);
-                    var qty = reader.GetInt32(3);
-                    var rentalRate = reader.GetDouble(4);
+                    var qty = reader.GetInt32(4);
+                    var rentalRate = reader.GetDouble(3);
                     var furniture = new Furniture(id, category, style, qty, rentalRate);
                     furnitureList.Add(furniture);
                 }
@@ -347,8 +347,8 @@ public class FurnitureDal
                     var id = reader.GetInt32(0);
                     var category = reader.GetString(1);
                     var style = reader.GetString(2);
-                    var qty = reader.GetInt32(3);
-                    var rentalRate = reader.GetDouble(4);
+                    var qty = reader.GetInt32(4);
+                    var rentalRate = reader.GetDouble(3);
                     var dueDateWithTime = reader.GetDateTime(5).ToString(CultureInfo.CurrentCulture);
                     var dueDate = dueDateWithTime.Split(' ')[0];
                     var rentalId = reader.GetString(6);
