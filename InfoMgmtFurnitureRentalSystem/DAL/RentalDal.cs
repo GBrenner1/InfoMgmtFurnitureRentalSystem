@@ -29,16 +29,22 @@ public class RentalDal
         try
         {
             connection.Open();
+            var sqlTransaction = connection.BeginTransaction();
+            connection.Close();
+            connection.Open();
             command.ExecuteReader();
             transaction.RentalId = (int)command.LastInsertedId;
             command.Dispose();
             connection.Close();
-            addRentalItems(transaction, connection);
+            addRentalItems(transaction, connection, sqlTransaction);
+            connection.Open();
+            sqlTransaction.Commit();
+            connection.Close();
             return true;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            MessageBox.Show(e.Message);
             return false;
         }
     }
@@ -50,7 +56,7 @@ public class RentalDal
         return query;
     }
 
-    private static void addRentalItems(RentalTransaction transaction, MySqlConnection connection)
+    private static void addRentalItems(RentalTransaction transaction, MySqlConnection connection, MySqlTransaction sqlTransaction)
     {
         var query = insertRentalItemQuery();
         foreach (var item in transaction.RentalItems)
@@ -63,6 +69,7 @@ public class RentalDal
             command.ExecuteNonQuery();
             command.Dispose();
             connection.Close();
+            
         }
     }
 

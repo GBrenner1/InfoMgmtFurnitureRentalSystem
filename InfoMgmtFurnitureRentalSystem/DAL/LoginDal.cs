@@ -23,7 +23,7 @@ public class LoginDal
         var connection = DalConnection.CreateConnection();
         connection.Open();
         const string query =
-            "select role, l_id from login where username = @username and password = @password";
+            "call `check_login`(@username, @password);";
         var command = new MySqlCommand(query, connection);
         command.Parameters.Add("@username", MySqlDbType.VarChar);
         command.Parameters["@username"].Value = username;
