@@ -46,11 +46,7 @@
           "dependencies": {
             "MySql.Data": {
               "target": "Package",
-              "version": "[8.1.0, )"
-            },
-            "MySqlConnector": {
-              "target": "Package",
-              "version": "[2.2.7, )"
+              "version": "[8.2.0, )"
             }
           },
           "imports": [

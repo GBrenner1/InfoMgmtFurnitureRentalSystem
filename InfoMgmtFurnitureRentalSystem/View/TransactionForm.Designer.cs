@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             CartListView = new ListView();
-            ID = new ColumnHeader();
-            Style = new ColumnHeader();
-            Category = new ColumnHeader();
-            Qty = new ColumnHeader();
+            idColumn = new ColumnHeader();
+            styleColumn = new ColumnHeader();
+            categoryColumn = new ColumnHeader();
+            qtyColumn = new ColumnHeader();
             CartLabel = new Label();
             RemoveButton = new Button();
             TotalCostLabel = new Label();
@@ -42,11 +42,12 @@
             DueDateLabel = new Label();
             DueDatePicker = new DateTimePicker();
             ChngQtyButton = new Button();
+            rateColumn = new ColumnHeader();
             SuspendLayout();
             // 
             // CartListView
             // 
-            CartListView.Columns.AddRange(new ColumnHeader[] { ID, Style, Category, Qty });
+            CartListView.Columns.AddRange(new ColumnHeader[] { idColumn, styleColumn, categoryColumn, qtyColumn, rateColumn });
             CartListView.FullRowSelect = true;
             CartListView.Location = new Point(12, 24);
             CartListView.Name = "CartListView";
@@ -55,25 +56,24 @@
             CartListView.UseCompatibleStateImageBehavior = false;
             CartListView.View = System.Windows.Forms.View.Details;
             // 
-            // ID
+            // idColumn
             // 
-            ID.Text = "ID";
-            ID.Width = 90;
+            idColumn.Text = "ID";
             // 
-            // Style
+            // styleColumn
             // 
-            Style.Text = "Style";
-            Style.Width = 90;
+            styleColumn.Text = "Style";
+            styleColumn.Width = 90;
             // 
-            // Category
+            // categoryColumn
             // 
-            Category.Text = "Category";
-            Category.Width = 90;
+            categoryColumn.Text = "Category";
+            categoryColumn.Width = 90;
             // 
-            // Qty
+            // qtyColumn
             // 
-            Qty.Text = "Qty";
-            Qty.Width = 90;
+            qtyColumn.Text = "Qty";
+            qtyColumn.Width = 90;
             // 
             // CartLabel
             // 
@@ -162,6 +162,10 @@
             ChngQtyButton.UseVisualStyleBackColor = true;
             ChngQtyButton.Click += chngQtyButton_Click;
             // 
+            // rateColumn
+            // 
+            rateColumn.Text = "Rate";
+            // 
             // TransactionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -195,9 +199,10 @@
         private Label DueDateLabel;
         private DateTimePicker DueDatePicker;
         private Button ChngQtyButton;
-        private ColumnHeader ID;
-        private ColumnHeader Style;
-        private ColumnHeader Category;
-        private ColumnHeader Qty;
+        private ColumnHeader idColumn;
+        private ColumnHeader styleColumn;
+        private ColumnHeader categoryColumn;
+        private ColumnHeader qtyColumn;
+        private ColumnHeader rateColumn;
     }
 }

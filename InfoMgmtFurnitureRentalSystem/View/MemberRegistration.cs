@@ -9,7 +9,9 @@ public partial class MemberRegistration : Form
 {
     #region Data members
 
-    private const string Space = " ";
+    private readonly bool isEdit;
+
+    private MemberEditController? memberEditController;
 
     #endregion
 
@@ -36,6 +38,11 @@ public partial class MemberRegistration : Form
             _ = memberRegistrationController.CurrentEmployee;
         }
 
+        this.setUpComboBoxes();
+    }
+
+    private void setUpComboBoxes()
+    {
         this.genderComboBox.Items.Add("M");
         this.genderComboBox.Items.Add("F");
         this.genderComboBox.Items.Add("O");
@@ -55,9 +62,39 @@ public partial class MemberRegistration : Form
         }
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MemberRegistration"/> class For editing a member.
+    /// </summary>
+    /// <param name="memberEditController"></param>
+    public MemberRegistration(MemberEditController memberEditController)
+    {
+        this.isEdit = true;
+        this.memberEditController = memberEditController;
+        this.InitializeComponent();
+        this.centerForm();
+
+        this.setUpComboBoxes();
+
+        this.setMemberInfo();
+    }
+
     #endregion
 
     #region Methods
+
+    private void setMemberInfo()
+    {
+        this.RegisterButton.Text = "Save";
+        this.firstNameTextBox.Text = this.memberEditController?.Member.Fname;
+        this.lastNameTextBox.Text = this.memberEditController?.Member.Lname;
+        this.genderComboBox.SelectedIndex = this.genderComboBox.Items.IndexOf(this.memberEditController!.Member.Gender);
+        this.phoneNumberTextBox.Text = this.memberEditController?.Member.Phone;
+        this.addressTextBox.Text = this.memberEditController?.Member.StreetAddr;
+        this.cityTextBox.Text = this.memberEditController?.Member.City;
+        this.stateComboBox.SelectedIndex = this.stateComboBox.Items.IndexOf(this.memberEditController!.Member.State);
+        this.zipTextBox.Text = this.memberEditController?.Member.Zip;
+        this.birthdayDateTimePicker.Value = this.memberEditController!.Member.Birthday;
+    }
 
     private void centerForm()
     {
@@ -66,11 +103,35 @@ public partial class MemberRegistration : Form
 
     private void RegisterButton_Click(object sender, EventArgs e)
     {
-        if (MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
-                this.genderComboBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text, this.cityTextBox.Text,
-                this.stateComboBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value))
+        switch (this.isEdit)
         {
-            Hide();
+            case true:
+                this.editMember();
+                break;
+            case false:
+                if (MemberRegistrationController.AddMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
+                        this.genderComboBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text,
+                        this.cityTextBox.Text,
+                        this.stateComboBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value))
+                {
+                    Hide();
+                }
+
+                break;
+        }
+    }
+
+    private void editMember()
+    {
+        if (this.memberEditController != null)
+        {
+            if (this.memberEditController.EditMember(this.firstNameTextBox.Text, this.lastNameTextBox.Text,
+                    this.genderComboBox.Text, this.phoneNumberTextBox.Text, this.addressTextBox.Text,
+                    this.cityTextBox.Text,
+                    this.stateComboBox.Text, this.zipTextBox.Text, this.birthdayDateTimePicker.Value))
+            {
+                Hide();
+            }
         }
     }
 

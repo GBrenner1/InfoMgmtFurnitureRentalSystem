@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Security.Cryptography;
+using System.Text;
+using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
 
@@ -27,7 +29,7 @@ public class LoginDal
         command.Parameters["@username"].Value = username;
 
         command.Parameters.Add("@password", MySqlDbType.VarChar);
-        command.Parameters["@password"].Value = password;
+        command.Parameters["@password"].Value = hashPassword(password);
 
         using var reader = command.ExecuteReader();
         if (reader.Read())
@@ -39,6 +41,19 @@ public class LoginDal
         }
 
         return null;
+    }
+
+    private static string hashPassword(string password)
+    {
+        var md5 = HashAlgorithm.Create("MD5")!;
+        md5.ComputeHash(Encoding.ASCII.GetBytes(password));
+        byte[] result = md5.Hash!;
+        var strBuilder = new StringBuilder();
+        foreach (var t in result)
+        {
+            strBuilder.Append(t.ToString("x2"));
+        }
+        return strBuilder.ToString();
     }
 
     #endregion

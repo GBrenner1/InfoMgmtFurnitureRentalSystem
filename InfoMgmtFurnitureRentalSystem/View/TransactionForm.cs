@@ -72,6 +72,17 @@ public partial class TransactionForm : Form
     {
         try
         {
+            if (this.CartListView.Items.Count == 0)
+            {
+                MessageBox.Show("No items in cart.");
+                return;
+            }
+
+            if (!this.confirmCheckout())
+            {
+                return;
+            }
+
             this.rentalTransactionConroller.Checkout(this.DueDatePicker.Value);
         }
         catch (Exception exception)
@@ -82,18 +93,33 @@ public partial class TransactionForm : Form
         Hide();
     }
 
+    private bool confirmCheckout()
+    {
+        var dialogResult = MessageBox.Show("Are you sure you want to checkout?", "Checkout",
+            MessageBoxButtons.YesNo);
+        return dialogResult == DialogResult.Yes;
+    }
+
     /// <summary>
     ///     Adds the item to cart.
     /// </summary>
     /// <param name="furniture">The furniture.</param>
     public void AddItemToCart(Furniture furniture)
     {
+        if (furniture.Quantity <= 0)
+        {
+            MessageBox.Show("No more items in stock.");
+            return;
+        }
+
+        furniture.Quantity = 1;
         if (this.rentalTransactionConroller.AddItemToCart(furniture))
         {
             var item = new ListViewItem(furniture.FurnitureId.ToString());
             item.SubItems.Add(furniture.Style);
             item.SubItems.Add(furniture.Category);
             item.SubItems.Add(furniture.Quantity.ToString());
+            item.SubItems.Add(furniture.RentalRate.ToString(CultureInfo.CurrentCulture));
             this.CartListView.Items.Add(item);
             this.itemAdded.Invoke(this, EventArgs.Empty);
         }

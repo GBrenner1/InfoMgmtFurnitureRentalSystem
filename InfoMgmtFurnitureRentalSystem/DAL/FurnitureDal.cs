@@ -1,3 +1,4 @@
+using System.Globalization;
 using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
@@ -70,8 +71,8 @@ public class FurnitureDal
                     var id = reader.GetInt32(0);
                     var category = reader.GetString(1);
                     var style = reader.GetString(2);
-                    var qty = reader.GetInt32(3);
-                    var rentalRate = reader.GetDouble(4);
+                    var qty = reader.GetInt32(4);
+                    var rentalRate = reader.GetDouble(3);
                     var furniture = new Furniture(id, category, style, qty, rentalRate);
                     furnitureList.Add(furniture);
                 }
@@ -320,6 +321,160 @@ public class FurnitureDal
         return new List<Furniture>();
     }
 
+    /// <summary>
+    /// gets all active rentals for a member
+    /// </summary>
+    /// <param name="memberId"></param>
+    /// <returns></returns>
+    public static IList<Furniture> GetMembersCurrentRentedFurniture(int memberId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "CALL getMembersCurrentFurniture(@member_id)";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@member_id", MySqlDbType.VarChar).Value = memberId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        try
+        {
+            if (reader.HasRows)
+            {
+                IList<Furniture> furnitureList = new List<Furniture>();
+                while (reader.Read())
+                {
+                    var id = reader.GetInt32(0);
+                    var category = reader.GetString(1);
+                    var style = reader.GetString(2);
+                    var qty = reader.GetInt32(3);
+                    var rentalRate = reader.GetDouble(4);
+                    var dueDateWithTime = reader.GetDateTime(5).ToString(CultureInfo.CurrentCulture);
+                    var dueDate = dueDateWithTime.Split(' ')[0];
+                    var rentalId = reader.GetString(6);
+                    var furniture = new Furniture(id, category, style, qty, rentalRate, dueDate, rentalId);
+                    furnitureList.Add(furniture);
+                }
+
+                connection.Close();
+                return furnitureList;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return new List<Furniture>();
+    }
+
+    /// <summary>
+    /// gets the rental furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="rentalId"></param>
+    /// <returns></returns>
+    public static int GetRentalFurnitureQuantity(int furnitureId, int rentalId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT quantity FROM rental_item WHERE rental_id = @rental_id AND furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@rental_id", MySqlDbType.VarChar).Value = rentalId;
+        command.Parameters.Add("@furniture_id", MySqlDbType.VarChar).Value = furnitureId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        reader.Read();
+        try
+        {
+            var quantity = reader.GetInt32(0);
+
+            connection.Close();
+            return quantity;
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return 0;
+    }
+
+    /// <summary>
+    /// updates the rental furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="rentalId"></param>
+    /// <param name="newQuantity"></param>
+    public static void UpdateRentalFurnitureQuantity(int furnitureId, int rentalId, int newQuantity)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "UPDATE rental_item SET quantity = @quantity WHERE furniture_id = @furniture_id AND rental_id = @rental_id";
+
+        using var command = new MySqlCommand( query, connection);
+        command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = newQuantity;
+        command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furnitureId;
+        command.Parameters.Add("@rental_id", MySqlDbType.Int32).Value = rentalId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+
+    /// <summary>
+    /// gets furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <returns></returns>
+    public static int GetFurnitureQuantity(int furnitureId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT quantity FROM furniture WHERE furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@furniture_id", MySqlDbType.VarChar).Value = furnitureId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        reader.Read();
+        try
+        {
+            var quantity = reader.GetInt32(0);
+
+            connection.Close();
+            return quantity;
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return 0;
+    }
+
+    /// <summary>
+    /// updates main furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="newQuantity"></param>
+    public static void UpdateFurnitureQuantity(int furnitureId, int newQuantity)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "UPDATE furniture SET quantity = @quantity WHERE furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = newQuantity;
+        command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furnitureId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
 
     #endregion
 }

@@ -1,4 +1,5 @@
-﻿using InfoMgmtFurnitureRentalSystem.DAL;
+﻿using System.Text;
+using InfoMgmtFurnitureRentalSystem.DAL;
 using InfoMgmtFurnitureRentalSystem.Model;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller;
@@ -76,6 +77,37 @@ public class RentalTransactionController
         {
             throw new Exception("Failed to update furniture quantities");
         }
+
+        MessageBox.Show(this.generateReceipt(), "Receipt");
+    }
+
+    private string generateReceipt()
+    {
+        var receipt = new StringBuilder();
+        receipt.AppendLine("Receipt:");
+        receipt.AppendLine($"Member Id: {this.RentalTransaction.MemberId}");
+        receipt.AppendLine();
+        receipt.AppendLine($"Employee Id: {this.RentalTransaction.EmployeeId}");
+        receipt.AppendLine();
+        receipt.AppendLine($"Total: {this.RentalTransaction.TotalCost}");
+        receipt.AppendLine();
+        receipt.AppendLine($"Rental Date: {this.RentalTransaction.RentalDate}");
+        receipt.AppendLine();
+        receipt.AppendLine($"Due Date: {this.RentalTransaction.DueDate}");
+        receipt.AppendLine();
+        receipt.AppendLine("Items:");
+        receipt.AppendLine();
+        foreach (var item in this.RentalTransaction.RentalItems)
+        {
+            receipt.AppendLine($"Furniture Id: {item.FurnitureId}");
+            receipt.AppendLine($"Quantity: {item.Quantity}");
+            receipt.AppendLine($"Rental Rate: {item.RentalRate}");
+            receipt.AppendLine($"Style: {item.Style}");
+            receipt.AppendLine($"Category: {item.Category}");
+            receipt.AppendLine();
+        }
+
+        return receipt.ToString();
     }
 
     /// <summary>
