@@ -74,8 +74,13 @@ namespace InfoMgmtFurnitureRentalSystem.View
 
                 this.ReturnFurniturePage = new ReturnFurniturePage(returnController);
                 this.ReturnFurniturePage.Show();
-                Hide();
+                this.ReturnFurniturePage.VisibleChanged += this.returnFurniturePageVisibilityChange;
             }
+        }
+
+        private void returnFurniturePageVisibilityChange(object? sender, EventArgs e)
+        {
+            Hide();
         }
 
         private void reloadFurnitureList()

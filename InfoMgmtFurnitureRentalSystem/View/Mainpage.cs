@@ -226,6 +226,13 @@ public partial class Mainpage : Form
 
         this.ActiveTransactionsForm = new ActiveTransactionsForm(activeTransactionsController);
         this.ActiveTransactionsForm.Show();
+        this.ActiveTransactionsForm.VisibleChanged += this.activeTransactionsFormVisibilityChanged;
+    }
+
+    private void activeTransactionsFormVisibilityChanged(object? sender, EventArgs e)
+    {
+        this.mainpageController.RefreshFurnitures();
+        this.reloadFurnitureList();
     }
 
     private void clearFurnitureSearchButton_Click(object sender, EventArgs e)
@@ -241,24 +248,24 @@ public partial class Mainpage : Form
         this.multiSearchBox.Text = string.Empty;
     }
 
-        private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
+    private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+        string? selectedMemberId;
+        try
         {
-            string? selectedMemberId;
-            try
-            {
-                selectedMemberId = this.MembersListView.SelectedItems[0].Text;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Please select a member");
-                return;
-            }
+            selectedMemberId = this.MembersListView.SelectedItems[0].Text;
+        }
+        catch (Exception)
+        {
+            MessageBox.Show("Please select a member");
+            return;
+        }
 
-            if (selectedMemberId == null)
-            {
-                MessageBox.Show("Please select a member");
-                return;
-            }
+        if (selectedMemberId == null)
+        {
+            MessageBox.Show("Please select a member");
+            return;
+        }
 
         var selectedMember = this.mainpageController.Members.First(member => member.MemberId == selectedMemberId);
         var memberEditController = new MemberEditController(selectedMember);

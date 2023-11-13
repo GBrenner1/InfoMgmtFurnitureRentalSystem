@@ -92,17 +92,22 @@ namespace InfoMgmtFurnitureRentalSystem.View
             if (confirmResult == DialogResult.Yes)
             {
                 var transactionId = this.ReturnController.CompleteReturnTransaction(this.FeesTextBox.Text);
-                Hide();
 
                 var receiptController = new ReciptController(this.FeesTextBox.Text, transactionId, this.ReturnController.Furniture);
 
                 this.receiptForm = new receiptForm(receiptController);
                 this.receiptForm.Show();
+                this.receiptForm.VisibleChanged += this.receiptFormVisibilityChanged;
             }
             else
             {
                 return;
             }
+        }
+
+        private void receiptFormVisibilityChanged(object? sender, EventArgs e)
+        {
+            Hide();
         }
     }
 }
