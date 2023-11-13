@@ -156,7 +156,7 @@
         #endregion
 
         private ListView furnitureList;
-        private Button CancelButton;
+        private new Button CancelButton;
         private Button ReturnButton;
         private Button qtyChangeButton;
         private TextBox FeesTextBox;

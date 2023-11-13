@@ -9,8 +9,19 @@ using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL
 {
+    /// <summary>
+    /// the rental returns dal
+    /// </summary>
     public class RentalReturnsDal
     {
+        /// <summary>
+        /// creates a return transaction
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="employee"></param>
+        /// <param name="furniture"></param>
+        /// <param name="fees"></param>
+        /// <returns></returns>
         public static int CreateReturnTransaction(int member, int employee, IList<Furniture> furniture, double fees)
         {
             using var connection = DalConnection.CreateConnection();

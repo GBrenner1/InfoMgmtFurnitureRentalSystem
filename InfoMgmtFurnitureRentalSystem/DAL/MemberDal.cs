@@ -42,7 +42,7 @@ public class MemberDal
             connection.Close();
             return true;
         }
-        catch (Exception e)
+        catch
         {
             return false;
         }
@@ -105,38 +105,32 @@ public class MemberDal
         command.Parameters.Add("@fname", MySqlDbType.VarChar).Value = fName;
         command.Parameters.Add("@lname", MySqlDbType.VarChar).Value = lName;
 
-        try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        if (reader.HasRows)
         {
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            if (reader.HasRows)
+            IList<Member> membersList = new List<Member>();
+            while (reader.Read())
             {
-                IList<Member> membersList = new List<Member>();
-                while (reader.Read())
-                {
-                    var id = reader.GetString(0);
-                    var fname = reader.GetString(1);
-                    var lname = reader.GetString(2);
-                    var gender = reader.GetString(3);
-                    var phone = reader.GetString(4);
-                    var streetAddr = reader.GetString(5);
-                    var city = reader.GetString(6);
-                    var state = reader.GetString(7);
-                    var zip = reader.GetString(8);
-                    var birthdate = DateTime.Parse(reader.GetString(9));
-                    var registrationDate = DateTime.Parse(reader.GetString(10));
-                    var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
-                        birthdate, registrationDate);
-                    membersList.Add(member);
-                }
-
-                connection.Close();
-                return membersList;
+                var id = reader.GetString(0);
+                var fname = reader.GetString(1);
+                var lname = reader.GetString(2);
+                var gender = reader.GetString(3);
+                var phone = reader.GetString(4);
+                var streetAddr = reader.GetString(5);
+                var city = reader.GetString(6);
+                var state = reader.GetString(7);
+                var zip = reader.GetString(8);
+                var birthdate = DateTime.Parse(reader.GetString(9));
+                var registrationDate = DateTime.Parse(reader.GetString(10));
+                var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
+                    birthdate, registrationDate);
+                membersList.Add(member);
             }
-        }
-        catch (Exception e)
-        {
+
+            connection.Close();
+            return membersList;
         }
 
         return new List<Member>();
@@ -259,7 +253,7 @@ public class MemberDal
             connection.Close();
             return true;
         }
-        catch (Exception e)
+        catch
         {
             return false;
         }

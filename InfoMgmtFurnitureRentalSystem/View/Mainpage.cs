@@ -140,6 +140,7 @@ public partial class Mainpage : Form
 
     private void reloadFurnitureList()
     {
+        this.FurnitureListView.Items.Clear();
         foreach (var currFurniture in this.mainpageController.Furnitures)
         {
             var newItem = new ListViewItem(currFurniture.FurnitureId.ToString());
@@ -240,12 +241,28 @@ public partial class Mainpage : Form
         this.furnitureIdTextBox.Text = string.Empty;
         this.funitureStyleComboBox.SelectedIndex = -1;
         this.furnitureCategoryComboBox.SelectedIndex = -1;
+        this.refreshFurnitureList();
+    }
+
+    private void refreshFurnitureList()
+    {
+        this.FurnitureListView.Items.Clear();
+        this.mainpageController.RefreshFurnitures();
+        this.reloadFurnitureList();
     }
 
     private void ClearMemberSearchButton_Click(object sender, EventArgs e)
     {
         this.firstNameTextBox.Text = string.Empty;
         this.multiSearchBox.Text = string.Empty;
+        this.refreshMembersList();
+    }
+
+    private void refreshMembersList()
+    {
+        this.MembersListView.Items.Clear();
+        this.mainpageController.RefreshMembers();
+        this.reloadMembersList();
     }
 
     private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)

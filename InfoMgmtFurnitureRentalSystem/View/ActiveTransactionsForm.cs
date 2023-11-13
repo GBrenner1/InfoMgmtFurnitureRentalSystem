@@ -11,7 +11,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
     {
         private ActiveTransactionsController ActiveTransactionsController { get; }
 
-        private ReturnFurniturePage ReturnFurniturePage { get; set; }
+        private ReturnFurniturePage? ReturnFurniturePage { get; set; }
 
         /// <summary>
         /// Created a new active transactions form

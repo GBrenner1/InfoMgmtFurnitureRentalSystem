@@ -368,7 +368,13 @@ public class FurnitureDal
         return new List<Furniture>();
     }
 
-    public static int getRentalFurnitureQuantity(int furnitureId, int rentalId)
+    /// <summary>
+    /// gets the rental furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="rentalId"></param>
+    /// <returns></returns>
+    public static int GetRentalFurnitureQuantity(int furnitureId, int rentalId)
     {
         using var connection = DalConnection.CreateConnection();
         var query = "SELECT quantity FROM rental_item WHERE rental_id = @rental_id AND furniture_id = @furniture_id";
@@ -397,7 +403,13 @@ public class FurnitureDal
         return 0;
     }
 
-    public static void updateRentalFurnitureQuantity(int furnitureId, int rentalId, int newQuantity)
+    /// <summary>
+    /// updates the rental furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="rentalId"></param>
+    /// <param name="newQuantity"></param>
+    public static void UpdateRentalFurnitureQuantity(int furnitureId, int rentalId, int newQuantity)
     {
         using var connection = DalConnection.CreateConnection();
         var query = "UPDATE rental_item SET quantity = @quantity WHERE furniture_id = @furniture_id AND rental_id = @rental_id";
@@ -412,7 +424,12 @@ public class FurnitureDal
         connection.Close();
     }
 
-    public static int getFurnitureQuantity(int furnitureId)
+    /// <summary>
+    /// gets furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <returns></returns>
+    public static int GetFurnitureQuantity(int furnitureId)
     {
         using var connection = DalConnection.CreateConnection();
         var query = "SELECT quantity FROM furniture WHERE furniture_id = @furniture_id";
@@ -440,7 +457,12 @@ public class FurnitureDal
         return 0;
     }
 
-    public static void updateFurnitureQuantity(int furnitureId, int newQuantity)
+    /// <summary>
+    /// updates main furniture quantity
+    /// </summary>
+    /// <param name="furnitureId"></param>
+    /// <param name="newQuantity"></param>
+    public static void UpdateFurnitureQuantity(int furnitureId, int newQuantity)
     {
         using var connection = DalConnection.CreateConnection();
         var query = "UPDATE furniture SET quantity = @quantity WHERE furniture_id = @furniture_id";

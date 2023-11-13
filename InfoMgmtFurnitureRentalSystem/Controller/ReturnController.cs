@@ -8,6 +8,9 @@ using InfoMgmtFurnitureRentalSystem.DAL;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller
 {
+    /// <summary>
+    /// the returns controller
+    /// </summary>
     public class ReturnController
     {
         /// <summary>
@@ -22,6 +25,12 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         ///     Selected furniture to be returned
         /// </summary>
         public IList<Furniture>? Furniture { get; set; }
+        /// <summary>
+        /// the constructor for the return controller
+        /// </summary>
+        /// <param name="curMember"></param>
+        /// <param name="curEmployee"></param>
+        /// <param name="selectedFurniture"></param>
         public ReturnController(int curMember, int curEmployee, IList<Furniture> selectedFurniture)
         {
             this.CurMember = curMember;
@@ -36,7 +45,7 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         /// <returns>The furniture object associated with the given ID</returns>
         public Furniture GetFurniture(int furnitureId)
         {
-            return this.Furniture.First(f => f.FurnitureId == furnitureId);
+            return (this.Furniture ?? throw new InvalidOperationException()).First(f => f.FurnitureId == furnitureId);
         }
 
         /// <summary>
@@ -48,15 +57,20 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
             var fees = 0.0;
 
             var curDate = DateTime.Now;
-            foreach (var curFurniture in this.Furniture)
+            var curFurnitures = this.Furniture;
+            if (curFurnitures != null)
             {
-                var pastDue = (int)(curDate - DateTime.Parse(curFurniture.DueDate)).TotalDays;
-                if (pastDue > 0)
+                foreach (var curFurniture in curFurnitures)
                 {
-                    var incurredFees = curFurniture.RentalRate * pastDue * curFurniture.Quantity;
-                    fees += incurredFees;
+                    var pastDue = (int)(curDate - DateTime.Parse(curFurniture.DueDate)).TotalDays;
+                    if (pastDue > 0)
+                    {
+                        var incurredFees = curFurniture.RentalRate * pastDue * curFurniture.Quantity;
+                        fees += incurredFees;
+                    }
                 }
             }
+
             var returnFees = "$" + $"{Convert.ToDecimal(fees):#0.00}";
             return returnFees;
         }
@@ -69,21 +83,21 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         public int CompleteReturnTransaction(string fees)
         {
             var doubleFees = double.Parse(fees.Replace("$", String.Empty));
-            var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee, this.Furniture, doubleFees);
+            var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee, this.Furniture ?? throw new InvalidOperationException(), doubleFees);
 
             foreach (var curFurniture in Furniture)
             {
-                var currentQuantity = FurnitureDal.getRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId));
+                var currentQuantity = FurnitureDal.GetRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId));
                 var newQuantity = currentQuantity - curFurniture.Quantity;
-                FurnitureDal.updateRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId), newQuantity);
+                FurnitureDal.UpdateRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId), newQuantity);
             }
             
 
             foreach (var curFurniture in Furniture)
             {
-                var currentQuantity = FurnitureDal.getFurnitureQuantity(curFurniture.FurnitureId);
+                var currentQuantity = FurnitureDal.GetFurnitureQuantity(curFurniture.FurnitureId);
                 var newQuantity = currentQuantity + curFurniture.Quantity;
-                FurnitureDal.updateFurnitureQuantity(curFurniture.FurnitureId, newQuantity);
+                FurnitureDal.UpdateFurnitureQuantity(curFurniture.FurnitureId, newQuantity);
             }
 
             return returnId;

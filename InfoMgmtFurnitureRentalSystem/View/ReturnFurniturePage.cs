@@ -13,11 +13,14 @@ using Microsoft.VisualBasic;
 
 namespace InfoMgmtFurnitureRentalSystem.View
 {
+    /// <summary>
+    /// the return furniture page class
+    /// </summary>
     public partial class ReturnFurniturePage : Form
     {
         private ReturnController ReturnController { get; }
 
-        private receiptForm receiptForm { get; set; }
+        private receiptForm? receiptForm { get; set; }
 
         private string incurredFees { get; set; }
 
@@ -93,7 +96,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
             {
                 var transactionId = this.ReturnController.CompleteReturnTransaction(this.FeesTextBox.Text);
 
-                var receiptController = new ReciptController(this.FeesTextBox.Text, transactionId, this.ReturnController.Furniture);
+                var receiptController = new ReceiptController(this.FeesTextBox.Text, transactionId, this.ReturnController.Furniture ?? throw new InvalidOperationException());
 
                 this.receiptForm = new receiptForm(receiptController);
                 this.receiptForm.Show();
