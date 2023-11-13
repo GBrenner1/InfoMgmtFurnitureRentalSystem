@@ -52,6 +52,8 @@ public partial class Mainpage : Form
         {
             this.furnitureCategoryComboBox.Items.Add(category);
         }
+
+        this.memberSearchComboBox.SelectedIndex = 0;
     }
 
     #endregion
@@ -228,5 +230,18 @@ public partial class Mainpage : Form
 
         this.ActiveTransactionsForm = new ActiveTransactionsForm(activeTransactionsController);
         this.ActiveTransactionsForm.Show();
+    }
+
+    private void clearFurnitureSearchButton_Click(object sender, EventArgs e)
+    {
+        this.furnitureIdTextBox.Text = string.Empty;
+        this.funitureStyleComboBox.SelectedIndex = -1;
+        this.furnitureCategoryComboBox.SelectedIndex = -1;
+    }
+
+    private void ClearMemberSearchButton_Click(object sender, EventArgs e)
+    {
+        this.firstNameTextBox.Text = string.Empty;
+        this.multiSearchBox.Text = string.Empty;
     }
 }

@@ -57,6 +57,8 @@
             StartTransactionButton = new Button();
             AddItemButton = new Button();
             ActiveRentalsButton = new Button();
+            ClearMemberSearchButton = new Button();
+            clearFurnitureSearchButton = new Button();
             SuspendLayout();
             // 
             // LogoutButton
@@ -122,7 +124,7 @@
             // 
             memberSearchComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             memberSearchComboBox.FormattingEnabled = true;
-            memberSearchComboBox.Location = new Point(767, 376);
+            memberSearchComboBox.Location = new Point(767, 350);
             memberSearchComboBox.Name = "memberSearchComboBox";
             memberSearchComboBox.Size = new Size(107, 23);
             memberSearchComboBox.TabIndex = 7;
@@ -130,7 +132,7 @@
             // 
             // memberSearchButton
             // 
-            memberSearchButton.Location = new Point(767, 405);
+            memberSearchButton.Location = new Point(767, 379);
             memberSearchButton.Name = "memberSearchButton";
             memberSearchButton.Size = new Size(107, 23);
             memberSearchButton.TabIndex = 8;
@@ -140,14 +142,14 @@
             // 
             // multiSearchBox
             // 
-            multiSearchBox.Location = new Point(767, 331);
+            multiSearchBox.Location = new Point(767, 305);
             multiSearchBox.Name = "multiSearchBox";
             multiSearchBox.Size = new Size(107, 23);
             multiSearchBox.TabIndex = 9;
             // 
             // firstNameTextBox
             // 
-            firstNameTextBox.Location = new Point(767, 287);
+            firstNameTextBox.Location = new Point(767, 261);
             firstNameTextBox.Name = "firstNameTextBox";
             firstNameTextBox.Size = new Size(107, 23);
             firstNameTextBox.TabIndex = 10;
@@ -155,7 +157,7 @@
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new Point(767, 269);
+            firstNameLabel.Location = new Point(767, 243);
             firstNameLabel.Name = "firstNameLabel";
             firstNameLabel.Size = new Size(65, 15);
             firstNameLabel.TabIndex = 11;
@@ -164,7 +166,7 @@
             // multiSearchLabel
             // 
             multiSearchLabel.AutoSize = true;
-            multiSearchLabel.Location = new Point(767, 313);
+            multiSearchLabel.Location = new Point(767, 287);
             multiSearchLabel.Name = "multiSearchLabel";
             multiSearchLabel.Size = new Size(64, 15);
             multiSearchLabel.TabIndex = 12;
@@ -173,7 +175,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(767, 357);
+            label1.Location = new Point(767, 331);
             label1.Name = "label1";
             label1.Size = new Size(61, 15);
             label1.TabIndex = 13;
@@ -181,7 +183,7 @@
             // 
             // furnitureIdTextBox
             // 
-            furnitureIdTextBox.Location = new Point(12, 288);
+            furnitureIdTextBox.Location = new Point(12, 261);
             furnitureIdTextBox.Name = "furnitureIdTextBox";
             furnitureIdTextBox.Size = new Size(100, 23);
             furnitureIdTextBox.TabIndex = 14;
@@ -189,7 +191,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 270);
+            label2.Location = new Point(12, 243);
             label2.Name = "label2";
             label2.Size = new Size(20, 15);
             label2.TabIndex = 15;
@@ -199,7 +201,7 @@
             // 
             funitureStyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             funitureStyleComboBox.FormattingEnabled = true;
-            funitureStyleComboBox.Location = new Point(12, 332);
+            funitureStyleComboBox.Location = new Point(12, 305);
             funitureStyleComboBox.Name = "funitureStyleComboBox";
             funitureStyleComboBox.Size = new Size(100, 23);
             funitureStyleComboBox.TabIndex = 16;
@@ -208,7 +210,7 @@
             // 
             furnitureCategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             furnitureCategoryComboBox.FormattingEnabled = true;
-            furnitureCategoryComboBox.Location = new Point(12, 376);
+            furnitureCategoryComboBox.Location = new Point(12, 349);
             furnitureCategoryComboBox.Name = "furnitureCategoryComboBox";
             furnitureCategoryComboBox.Size = new Size(100, 23);
             furnitureCategoryComboBox.TabIndex = 17;
@@ -216,7 +218,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 314);
+            label3.Location = new Point(12, 287);
             label3.Name = "label3";
             label3.Size = new Size(35, 15);
             label3.TabIndex = 18;
@@ -225,7 +227,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 358);
+            label4.Location = new Point(12, 331);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 19;
@@ -233,7 +235,7 @@
             // 
             // furnitureIdSeachButton
             // 
-            furnitureIdSeachButton.Location = new Point(12, 405);
+            furnitureIdSeachButton.Location = new Point(12, 378);
             furnitureIdSeachButton.Name = "furnitureIdSeachButton";
             furnitureIdSeachButton.Size = new Size(100, 23);
             furnitureIdSeachButton.TabIndex = 20;
@@ -298,11 +300,33 @@
             ActiveRentalsButton.UseVisualStyleBackColor = true;
             ActiveRentalsButton.Click += ActiveRentalsButton_Click;
             // 
+            // ClearMemberSearchButton
+            // 
+            ClearMemberSearchButton.Location = new Point(767, 408);
+            ClearMemberSearchButton.Name = "ClearMemberSearchButton";
+            ClearMemberSearchButton.Size = new Size(107, 23);
+            ClearMemberSearchButton.TabIndex = 24;
+            ClearMemberSearchButton.Text = "Clear search";
+            ClearMemberSearchButton.UseVisualStyleBackColor = true;
+            ClearMemberSearchButton.Click += ClearMemberSearchButton_Click;
+            // 
+            // clearFurnitureSearchButton
+            // 
+            clearFurnitureSearchButton.Location = new Point(12, 408);
+            clearFurnitureSearchButton.Name = "clearFurnitureSearchButton";
+            clearFurnitureSearchButton.Size = new Size(100, 23);
+            clearFurnitureSearchButton.TabIndex = 25;
+            clearFurnitureSearchButton.Text = "Clear search";
+            clearFurnitureSearchButton.UseVisualStyleBackColor = true;
+            clearFurnitureSearchButton.Click += clearFurnitureSearchButton_Click;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(886, 450);
+            Controls.Add(clearFurnitureSearchButton);
+            Controls.Add(ClearMemberSearchButton);
             Controls.Add(ActiveRentalsButton);
             Controls.Add(AddItemButton);
             Controls.Add(StartTransactionButton);
@@ -362,5 +386,7 @@
         private Button StartTransactionButton;
         private Button AddItemButton;
         private Button ActiveRentalsButton;
+        private Button ClearMemberSearchButton;
+        private Button clearFurnitureSearchButton;
     }
 }
