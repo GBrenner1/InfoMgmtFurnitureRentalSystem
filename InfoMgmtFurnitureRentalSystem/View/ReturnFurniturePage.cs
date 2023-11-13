@@ -91,7 +91,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
                 MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                var transactionId = this.ReturnController.compleateReturnTransaction(this.FeesTextBox.Text);
+                var transactionId = this.ReturnController.CompleteReturnTransaction(this.FeesTextBox.Text);
                 Hide();
 
                 var receiptController = new ReciptController(this.FeesTextBox.Text, transactionId, this.ReturnController.Furniture);

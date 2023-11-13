@@ -45,10 +45,7 @@ public partial class Mainpage : Form
 
         mainpageController.GetStyles().ToList().ForEach(style => this.funitureStyleComboBox.Items.Add(style));
 
-        foreach (var category in MainpageController.GetCategories())
-        {
-            this.furnitureCategoryComboBox.Items.Add(category);
-        }
+        MainpageController.GetCategories().ToList().ForEach(category => this.furnitureCategoryComboBox.Items.Add(category));
 
         this.memberSearchComboBox.SelectedIndex = 0;
     }
