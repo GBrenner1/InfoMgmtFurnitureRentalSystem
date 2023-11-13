@@ -82,18 +82,10 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         /// <returns></returns>
         public int CompleteReturnTransaction(string fees)
         {
-            var doubleFees = double.Parse(fees.Replace("$", String.Empty));
+            var doubleFees = double.Parse(fees.Replace("$", string.Empty));
             var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee, this.Furniture ?? throw new InvalidOperationException(), doubleFees);
-
-            foreach (var curFurniture in Furniture)
-            {
-                var currentQuantity = FurnitureDal.GetRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId));
-                var newQuantity = currentQuantity - curFurniture.Quantity;
-                FurnitureDal.UpdateRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId), newQuantity);
-            }
             
-
-            foreach (var curFurniture in Furniture)
+            foreach (var curFurniture in this.Furniture)
             {
                 var currentQuantity = FurnitureDal.GetFurnitureQuantity(curFurniture.FurnitureId);
                 var newQuantity = currentQuantity + curFurniture.Quantity;
