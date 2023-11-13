@@ -119,6 +119,7 @@ public partial class TransactionForm : Form
             item.SubItems.Add(furniture.Style);
             item.SubItems.Add(furniture.Category);
             item.SubItems.Add(furniture.Quantity.ToString());
+            item.SubItems.Add(furniture.RentalRate.ToString(CultureInfo.CurrentCulture));
             this.CartListView.Items.Add(item);
             this.itemAdded.Invoke(this, EventArgs.Empty);
         }
