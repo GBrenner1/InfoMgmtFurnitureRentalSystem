@@ -45,7 +45,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
 
         private void loadReceipt()
         {
-            this.transactionIdLabel.Text = "Transaction #: " + this.recipteController.transactionId;
+            this.transactionIdLabel.Text = "Transaction # " + this.recipteController.transactionId;
 
             foreach (var curFurniture in this.recipteController.returnedFurniture)
             {
