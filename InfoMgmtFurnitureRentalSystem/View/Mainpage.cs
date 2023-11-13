@@ -1,5 +1,5 @@
-﻿using InfoMgmtFurnitureRentalSystem.Controller;
-using InfoMgmtFurnitureRentalSystem.DAL;
+﻿using System.Globalization;
+using InfoMgmtFurnitureRentalSystem.Controller;
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
@@ -43,10 +43,7 @@ public partial class Mainpage : Form
         this.memberSearchComboBox.Items.Add("Id");
         this.memberSearchComboBox.Items.Add("Phone");
 
-        foreach (var style in mainpageController.GetStyles())
-        {
-            this.funitureStyleComboBox.Items.Add(style);
-        }
+        mainpageController.GetStyles().ToList().ForEach(style => this.funitureStyleComboBox.Items.Add(style));
 
         foreach (var category in MainpageController.GetCategories())
         {
@@ -59,6 +56,7 @@ public partial class Mainpage : Form
     #endregion
 
     #region Methods
+
     private void centerForm()
     {
         StartPosition = FormStartPosition.CenterScreen;
@@ -150,6 +148,8 @@ public partial class Mainpage : Form
             var newItem = new ListViewItem(currFurniture.FurnitureId.ToString());
             newItem.SubItems.Add(currFurniture.Style);
             newItem.SubItems.Add(currFurniture.Category);
+            newItem.SubItems.Add(currFurniture.Quantity.ToString());
+            newItem.SubItems.Add(currFurniture.RentalRate.ToString(CultureInfo.CurrentCulture));
             this.FurnitureListView.Items.Add(newItem);
         }
     }
@@ -161,8 +161,6 @@ public partial class Mainpage : Form
             this.funitureStyleComboBox.Text);
         this.reloadFurnitureList();
     }
-
-    #endregion
 
     private void StartTransactionButton_Click(object sender, EventArgs e)
     {
@@ -183,14 +181,14 @@ public partial class Mainpage : Form
             return;
         }
 
-        var rentalTransactionController = new RentalTransactionController(int.Parse(selectedMemberId), this.mainpageController.CurrentEmployee!.EmployeeId);
+        var rentalTransactionController = new RentalTransactionController(int.Parse(selectedMemberId),
+            this.mainpageController.CurrentEmployee!.EmployeeId);
         this.AddItemButton.Visible = true;
 
         this.transactionForm = new TransactionForm(rentalTransactionController);
         this.transactionForm.Show();
         this.transactionForm.Closed += (s, args) => Close();
         this.transactionForm.VisibleChanged += this.TransactionFormOnVisibleChanged;
-
     }
 
     private void TransactionFormOnVisibleChanged(object? sender, EventArgs e)
@@ -203,7 +201,8 @@ public partial class Mainpage : Form
 
     private void AddItemButton_Click(object sender, EventArgs e)
     {
-        this.transactionForm?.AddItemToCart(this.mainpageController.Furnitures[this.FurnitureListView.SelectedIndices[0]]);
+        this.transactionForm?.AddItemToCart(
+            this.mainpageController.Furnitures[this.FurnitureListView.SelectedIndices[0]]);
     }
 
     private void ActiveRentalsButton_Click(object sender, EventArgs e)
@@ -243,5 +242,32 @@ public partial class Mainpage : Form
     {
         this.firstNameTextBox.Text = string.Empty;
         this.multiSearchBox.Text = string.Empty;
+    #endregion
+
+    private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+        string? selectedMemberId;
+        try
+        {
+            selectedMemberId = this.MembersListView.SelectedItems[0].Text;
+        }
+        catch (Exception)
+        {
+            MessageBox.Show("Please select a member");
+            return;
+        }
+
+        if (selectedMemberId == null)
+        {
+            MessageBox.Show("Please select a member");
+            return;
+        }
+
+        var selectedMember = this.mainpageController.Members.First(member => member.MemberId == selectedMemberId);
+        var memberEditController = new MemberEditController(selectedMember);
+        var memberRegistration = new MemberRegistration(memberEditController);
+        memberRegistration.Show();
+        memberRegistration.Closed += (s, args) => Close();
+        memberRegistration.VisibleChanged += this.MemberRegistrationOnVisibleChanged;
     }
 }

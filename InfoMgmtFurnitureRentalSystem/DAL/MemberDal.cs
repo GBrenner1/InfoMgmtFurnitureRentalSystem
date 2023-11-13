@@ -44,7 +44,6 @@ public class MemberDal
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -60,39 +59,32 @@ public class MemberDal
 
         using var command = new MySqlCommand(query, connection);
 
-        try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        if (reader.HasRows)
         {
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            if (reader.HasRows)
+            IList<Member> membersList = new List<Member>();
+            while (reader.Read())
             {
-                IList<Member> membersList = new List<Member>();
-                while (reader.Read())
-                {
-                    var id = reader.GetString(0);
-                    var fname = reader.GetString(1);
-                    var lname = reader.GetString(2);
-                    var gender = reader.GetString(3);
-                    var phone = reader.GetString(4);
-                    var streetAddr = reader.GetString(5);
-                    var city = reader.GetString(6);
-                    var state = reader.GetString(7);
-                    var zip = reader.GetString(8);
-                    var birthdate = DateTime.Parse(reader.GetString(9));
-                    var registrationDate = DateTime.Parse(reader.GetString(10));
-                    var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
-                        birthdate, registrationDate);
-                    membersList.Add(member);
-                }
-
-                connection.Close();
-                return membersList;
+                var id = reader.GetString(0);
+                var fname = reader.GetString(1);
+                var lname = reader.GetString(2);
+                var gender = reader.GetString(3);
+                var phone = reader.GetString(4);
+                var streetAddr = reader.GetString(5);
+                var city = reader.GetString(6);
+                var state = reader.GetString(7);
+                var zip = reader.GetString(8);
+                var birthdate = DateTime.Parse(reader.GetString(9));
+                var registrationDate = DateTime.Parse(reader.GetString(10));
+                var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
+                    birthdate, registrationDate);
+                membersList.Add(member);
             }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
+
+            connection.Close();
+            return membersList;
         }
 
         return new List<Member>();
@@ -145,7 +137,6 @@ public class MemberDal
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
         }
 
         return new List<Member>();
@@ -164,39 +155,32 @@ public class MemberDal
         using var command = new MySqlCommand(query, connection);
         command.Parameters.Add("@id", MySqlDbType.VarChar).Value = memberId;
 
-        try
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        if (reader.HasRows)
         {
-            connection.Open();
-            command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            if (reader.HasRows)
+            IList<Member> membersList = new List<Member>();
+            while (reader.Read())
             {
-                IList<Member> membersList = new List<Member>();
-                while (reader.Read())
-                {
-                    var id = reader.GetString(0);
-                    var fname = reader.GetString(1);
-                    var lname = reader.GetString(2);
-                    var gender = reader.GetString(3);
-                    var phone = reader.GetString(4);
-                    var streetAddr = reader.GetString(5);
-                    var city = reader.GetString(6);
-                    var state = reader.GetString(7);
-                    var zip = reader.GetString(8);
-                    var birthdate = DateTime.Parse(reader.GetString(9));
-                    var registrationDate = DateTime.Parse(reader.GetString(10));
-                    var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
-                        birthdate, registrationDate);
-                    membersList.Add(member);
-                }
-
-                connection.Close();
-                return membersList;
+                var id = reader.GetString(0);
+                var fname = reader.GetString(1);
+                var lname = reader.GetString(2);
+                var gender = reader.GetString(3);
+                var phone = reader.GetString(4);
+                var streetAddr = reader.GetString(5);
+                var city = reader.GetString(6);
+                var state = reader.GetString(7);
+                var zip = reader.GetString(8);
+                var birthdate = DateTime.Parse(reader.GetString(9));
+                var registrationDate = DateTime.Parse(reader.GetString(10));
+                var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
+                    birthdate, registrationDate);
+                membersList.Add(member);
             }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
+
+            connection.Close();
+            return membersList;
         }
 
         return new List<Member>();
@@ -215,42 +199,78 @@ public class MemberDal
         using var command = new MySqlCommand(query, connection);
         command.Parameters.Add("@phone", MySqlDbType.VarChar).Value = phoneNum;
 
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        if (reader.HasRows)
+        {
+            IList<Member> membersList = new List<Member>();
+            while (reader.Read())
+            {
+                var id = reader.GetString(0);
+                var fname = reader.GetString(1);
+                var lname = reader.GetString(2);
+                var gender = reader.GetString(3);
+                var phone = reader.GetString(4);
+                var streetAddr = reader.GetString(5);
+                var city = reader.GetString(6);
+                var state = reader.GetString(7);
+                var zip = reader.GetString(8);
+                var birthdate = DateTime.Parse(reader.GetString(9));
+                var registrationDate = DateTime.Parse(reader.GetString(10));
+                var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
+                    birthdate, registrationDate);
+                membersList.Add(member);
+            }
+
+            connection.Close();
+            return membersList;
+        }
+
+        return new List<Member>();
+    }
+
+    /// <summary>
+    /// Edits the entry in the DB for the given member.
+    /// </summary>
+    /// <param name="member"></param>
+    /// <returns>True if successful, false otherwise.</returns>
+    public static bool EditMember(Member member)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = editMemberQuery();
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@fname", MySqlDbType.VarChar).Value = member.Fname;
+        command.Parameters.Add("@lname", MySqlDbType.VarChar).Value = member.Lname;
+        command.Parameters.Add("@gender", MySqlDbType.VarChar).Value = member.Gender;
+        command.Parameters.Add("@phone", MySqlDbType.VarChar).Value = member.Phone;
+        command.Parameters.Add("@street_addr", MySqlDbType.VarChar).Value = member.StreetAddr;
+        command.Parameters.Add("@city", MySqlDbType.VarChar).Value = member.City;
+        command.Parameters.Add("@state", MySqlDbType.VarChar).Value = member.State;
+        command.Parameters.Add("@zip", MySqlDbType.VarChar).Value = member.Zip;
+        command.Parameters.Add("@birthday", MySqlDbType.Date).Value = member.Birthday;
+        command.Parameters.Add("@id", MySqlDbType.VarChar).Value = member.MemberId;
+
         try
         {
             connection.Open();
             command.ExecuteNonQuery();
-            var reader = command.ExecuteReader();
-            if (reader.HasRows)
-            {
-                IList<Member> membersList = new List<Member>();
-                while (reader.Read())
-                {
-                    var id = reader.GetString(0);
-                    var fname = reader.GetString(1);
-                    var lname = reader.GetString(2);
-                    var gender = reader.GetString(3);
-                    var phone = reader.GetString(4);
-                    var streetAddr = reader.GetString(5);
-                    var city = reader.GetString(6);
-                    var state = reader.GetString(7);
-                    var zip = reader.GetString(8);
-                    var birthdate = DateTime.Parse(reader.GetString(9));
-                    var registrationDate = DateTime.Parse(reader.GetString(10));
-                    var member = new Member(id, fname, lname, gender, phone, streetAddr, city, state, zip,
-                        birthdate, registrationDate);
-                    membersList.Add(member);
-                }
-
-                connection.Close();
-                return membersList;
-            }
+            connection.Close();
+            return true;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            return false;
         }
+    }
 
-        return new List<Member>();
+    private static string editMemberQuery()
+    {
+        var query =
+            "UPDATE members SET fname = @fname, lname = @lname, gender = @gender, phone = @phone, street_addr = @street_addr, ";
+        query += "city = @city, state = @state, zip = @zip, birthday = @birthday WHERE member_id = @id;";
+        return query;
     }
 
     #endregion

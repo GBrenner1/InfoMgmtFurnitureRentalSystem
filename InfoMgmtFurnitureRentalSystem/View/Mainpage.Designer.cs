@@ -1,4 +1,4 @@
-﻿namespace InfoMgmtFurnitureRentalSystem.View
+namespace InfoMgmtFurnitureRentalSystem.View
 {
     partial class Mainpage
     {
@@ -52,8 +52,10 @@
             furnitureIdSeachButton = new Button();
             funitureId = new ColumnHeader();
             styleColumn = new ColumnHeader();
-            columnHeader1 = new ColumnHeader();
+            categoryColumn = new ColumnHeader();
             FurnitureListView = new ListView();
+            qtyColumn = new ColumnHeader();
+            rateColumn = new ColumnHeader();
             StartTransactionButton = new Button();
             AddItemButton = new Button();
             ActiveRentalsButton = new Button();
@@ -100,6 +102,7 @@
             MembersListView.TabIndex = 6;
             MembersListView.UseCompatibleStateImageBehavior = false;
             MembersListView.View = System.Windows.Forms.View.Details;
+            MembersListView.MouseDoubleClick += MembersListView_MouseDoubleClick;
             // 
             // MemberIdColumn
             // 
@@ -246,21 +249,20 @@
             // funitureId
             // 
             funitureId.Text = "ID";
-            funitureId.Width = 90;
+            funitureId.Width = 45;
             // 
             // styleColumn
             // 
             styleColumn.Text = "Style";
-            styleColumn.Width = 90;
             // 
-            // columnHeader1
+            // categoryColumn
             // 
-            columnHeader1.Text = "Category";
-            columnHeader1.Width = 180;
+            categoryColumn.Text = "Category";
+            categoryColumn.Width = 90;
             // 
             // FurnitureListView
             // 
-            FurnitureListView.Columns.AddRange(new ColumnHeader[] { funitureId, styleColumn, columnHeader1 });
+            FurnitureListView.Columns.AddRange(new ColumnHeader[] { funitureId, styleColumn, categoryColumn, qtyColumn, rateColumn });
             FurnitureListView.FullRowSelect = true;
             FurnitureListView.Location = new Point(123, 34);
             FurnitureListView.Name = "FurnitureListView";
@@ -268,6 +270,16 @@
             FurnitureListView.TabIndex = 5;
             FurnitureListView.UseCompatibleStateImageBehavior = false;
             FurnitureListView.View = System.Windows.Forms.View.Details;
+            // 
+            // qtyColumn
+            // 
+            qtyColumn.Text = "Qty";
+            qtyColumn.Width = 55;
+            // 
+            // rateColumn
+            // 
+            rateColumn.Text = "Rate";
+            rateColumn.Width = 65;
             // 
             // StartTransactionButton
             // 
@@ -381,12 +393,14 @@
         private Button furnitureIdSeachButton;
         private ColumnHeader funitureId;
         private ColumnHeader styleColumn;
-        private ColumnHeader columnHeader1;
+        private ColumnHeader categoryColumn;
         private ListView FurnitureListView;
         private Button StartTransactionButton;
         private Button AddItemButton;
         private Button ActiveRentalsButton;
         private Button ClearMemberSearchButton;
         private Button clearFurnitureSearchButton;
+        private ColumnHeader qtyColumn;
+        private ColumnHeader rateColumn;
     }
 }
