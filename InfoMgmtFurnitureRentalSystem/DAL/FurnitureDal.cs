@@ -368,5 +368,48 @@ public class FurnitureDal
         return new List<Furniture>();
     }
 
+    public static int getRentalFurnitureQuantity(int furnitureId, int rentalId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT quantity FROM rental_item WHERE rental_id = @rental_id AND furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@rental_id", MySqlDbType.VarChar).Value = rentalId;
+        command.Parameters.Add("@furniture_id", MySqlDbType.VarChar).Value = furnitureId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        try
+        {
+            var quantity = reader.GetInt32(2);
+
+            connection.Close();
+            return quantity;
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return 0;
+    }
+
+    public static void updateRentalFurnitureQuantity(int furnitureId, int rentalId, int newQuantity)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "UPDATE rental_item SET quantity = @quantity WHERE @furniture_id = @furniture_id AND rental_id = @rental_id";
+
+        using var command = new MySqlCommand( query, connection);
+        command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = newQuantity;
+        command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furnitureId;
+        command.Parameters.Add("@rental_id", MySqlDbType.Int32).Value = rentalId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+
     #endregion
 }

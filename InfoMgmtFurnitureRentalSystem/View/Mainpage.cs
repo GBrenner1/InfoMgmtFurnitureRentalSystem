@@ -244,24 +244,24 @@ public partial class Mainpage : Form
         this.multiSearchBox.Text = string.Empty;
     }
 
-    private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
-    {
-        string? selectedMemberId;
-        try
+        private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            selectedMemberId = this.MembersListView.SelectedItems[0].Text;
-        }
-        catch (Exception)
-        {
-            MessageBox.Show("Please select a member");
-            return;
-        }
+            string? selectedMemberId;
+            try
+            {
+                selectedMemberId = this.MembersListView.SelectedItems[0].Text;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please select a member");
+                return;
+            }
 
-        if (selectedMemberId == null)
-        {
-            MessageBox.Show("Please select a member");
-            return;
-        }
+            if (selectedMemberId == null)
+            {
+                MessageBox.Show("Please select a member");
+                return;
+            }
 
         var selectedMember = this.mainpageController.Members.First(member => member.MemberId == selectedMemberId);
         var memberEditController = new MemberEditController(selectedMember);

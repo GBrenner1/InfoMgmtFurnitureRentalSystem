@@ -84,5 +84,7 @@ namespace InfoMgmtFurnitureRentalSystem.DAL
             noFkCommand.Dispose();
             connection.Close();
         }
+
+
     }
 }

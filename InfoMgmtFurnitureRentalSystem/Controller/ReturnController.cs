@@ -61,10 +61,23 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
             return returnFees;
         }
 
-        public int compleateReturnTransaction(string fees)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fees"></param>
+        /// <returns></returns>
+        public int CompleteReturnTransaction(string fees)
         {
             var doubleFees = double.Parse(fees.Replace("$", String.Empty));
             var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee, this.Furniture, doubleFees);
+
+            foreach (var curFurniture in Furniture)
+            {
+                var currentQuantity = FurnitureDal.getRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId));
+                var newQuantity = currentQuantity - curFurniture.Quantity;
+                FurnitureDal.updateRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId), newQuantity);
+            }
+
             return returnId;
         }
     }
