@@ -231,8 +231,6 @@ public partial class Mainpage : Form
         this.ActiveTransactionsForm.Show();
     }
 
-<<<<<<< HEAD
-=======
     private void clearFurnitureSearchButton_Click(object sender, EventArgs e)
     {
         this.furnitureIdTextBox.Text = string.Empty;
@@ -244,9 +242,8 @@ public partial class Mainpage : Form
     {
         this.firstNameTextBox.Text = string.Empty;
         this.multiSearchBox.Text = string.Empty;
-    #endregion
+    }
 
->>>>>>> gbrenner_furniture_returns
     private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
     {
         string? selectedMemberId;

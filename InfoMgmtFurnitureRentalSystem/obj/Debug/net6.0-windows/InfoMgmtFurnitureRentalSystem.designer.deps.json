@@ -122,14 +122,6 @@
           }
         }
       },
-      "MySqlConnector/2.2.7": {
-        "runtime": {
-          "lib/net6.0/MySqlConnector.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.2.7.0"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {},
       "System.Configuration.ConfigurationManager/4.4.1": {
         "dependencies": {
@@ -466,13 +458,6 @@
       "sha512": "sha512-p62lWlKvJJ5UnBNvtal3JM9SOyQaaIA4C6E5LO2TOlO8CF5BDX0I8HsihbzP8wOELZhD4I3vpferDRv7uBNkOg==",
       "path": "mysql.data/8.2.0",
       "hashPath": "mysql.data.8.2.0.nupkg.sha512"
-    },
-    "MySqlConnector/2.2.7": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rwFa71MlOJ142S+BXDvtLRdAIn7l6PTNWu+Xehs2qRehK8dckjKqwvK8azEADCMkQyXS1LXgh9HkSvItpTi6WA==",
-      "path": "mysqlconnector/2.2.7",
-      "hashPath": "mysqlconnector.2.2.7.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

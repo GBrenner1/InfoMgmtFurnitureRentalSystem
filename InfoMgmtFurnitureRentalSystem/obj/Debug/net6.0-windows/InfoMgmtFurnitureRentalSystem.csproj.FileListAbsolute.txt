@@ -19,8 +19,6 @@ D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\De
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\MySql.Data.dll
-D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\MySqlConnector.dll
-D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
@@ -84,3 +82,6 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.pdb
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.genruntimeconfig.cache
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\ref\InfoMgmtFurnitureRentalSystem.dll
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.receiptForm.resources
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ReturnFurniturePage.resources
