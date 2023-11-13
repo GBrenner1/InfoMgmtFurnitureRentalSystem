@@ -63,13 +63,8 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
 
         public int compleateReturnTransaction(string fees)
         {
-            var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee);
-            var doubleFees = double.Parse(fees.Replace("$",String.Empty));
-            foreach (var curFurniture in this.Furniture)
-            {
-                RentalReturnsDal.addFurnitureReturn(returnId, curFurniture, doubleFees);
-            }
-
+            var doubleFees = double.Parse(fees.Replace("$", String.Empty));
+            var returnId = RentalReturnsDal.CreateReturnTransaction(this.CurMember, this.CurEmployee, this.Furniture, doubleFees);
             return returnId;
         }
     }
