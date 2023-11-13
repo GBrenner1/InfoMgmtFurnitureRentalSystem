@@ -226,8 +226,6 @@ public partial class Mainpage : Form
         this.ActiveTransactionsForm.Show();
     }
 
-    #endregion
-
     private void MembersListView_MouseDoubleClick(object sender, MouseEventArgs e)
     {
         string? selectedMemberId;
@@ -254,4 +252,6 @@ public partial class Mainpage : Form
         memberRegistration.Closed += (s, args) => Close();
         memberRegistration.VisibleChanged += this.MemberRegistrationOnVisibleChanged;
     }
+
+    #endregion
 }
