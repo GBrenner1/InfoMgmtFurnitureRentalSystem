@@ -77,6 +77,14 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
                 var newQuantity = currentQuantity - curFurniture.Quantity;
                 FurnitureDal.updateRentalFurnitureQuantity(curFurniture.FurnitureId, int.Parse(curFurniture.RentalId), newQuantity);
             }
+            
+
+            foreach (var curFurniture in Furniture)
+            {
+                var currentQuantity = FurnitureDal.getFurnitureQuantity(curFurniture.FurnitureId);
+                var newQuantity = currentQuantity + curFurniture.Quantity;
+                FurnitureDal.updateFurnitureQuantity(curFurniture.FurnitureId, newQuantity);
+            }
 
             return returnId;
         }

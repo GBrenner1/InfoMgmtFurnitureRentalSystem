@@ -49,8 +49,6 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\MySql.Data.dll
-C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\MySqlConnector.dll
-C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
@@ -85,3 +83,4 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.receiptForm.resources
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ReturnFurniturePage.resources
+C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll

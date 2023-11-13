@@ -380,9 +380,10 @@ public class FurnitureDal
         connection.Open();
         command.ExecuteNonQuery();
         var reader = command.ExecuteReader();
+        reader.Read();
         try
         {
-            var quantity = reader.GetInt32(2);
+            var quantity = reader.GetInt32(0);
 
             connection.Close();
             return quantity;
@@ -399,12 +400,54 @@ public class FurnitureDal
     public static void updateRentalFurnitureQuantity(int furnitureId, int rentalId, int newQuantity)
     {
         using var connection = DalConnection.CreateConnection();
-        var query = "UPDATE rental_item SET quantity = @quantity WHERE @furniture_id = @furniture_id AND rental_id = @rental_id";
+        var query = "UPDATE rental_item SET quantity = @quantity WHERE furniture_id = @furniture_id AND rental_id = @rental_id";
 
         using var command = new MySqlCommand( query, connection);
         command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = newQuantity;
         command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furnitureId;
         command.Parameters.Add("@rental_id", MySqlDbType.Int32).Value = rentalId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+
+    public static int getFurnitureQuantity(int furnitureId)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "SELECT quantity FROM furniture WHERE furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@furniture_id", MySqlDbType.VarChar).Value = furnitureId;
+
+        connection.Open();
+        command.ExecuteNonQuery();
+        var reader = command.ExecuteReader();
+        reader.Read();
+        try
+        {
+            var quantity = reader.GetInt32(0);
+
+            connection.Close();
+            return quantity;
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return 0;
+    }
+
+    public static void updateFurnitureQuantity(int furnitureId, int newQuantity)
+    {
+        using var connection = DalConnection.CreateConnection();
+        var query = "UPDATE furniture SET quantity = @quantity WHERE furniture_id = @furniture_id";
+
+        using var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = newQuantity;
+        command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furnitureId;
 
         connection.Open();
         command.ExecuteNonQuery();
