@@ -63,11 +63,19 @@ namespace InfoMgmtFurnitureRentalSystem.View
                 }
             }
 
-            var returnController = new ReturnController(this.ActiveTransactionsController.currMember,
-                this.ActiveTransactionsController.currEmployee, selectedFurnitureList);
+            if (selectedFurnitureList.Count <= 0)
+            {
+                MessageBox.Show("No items selected.");
+            }
+            else
+            {
+                var returnController = new ReturnController(this.ActiveTransactionsController.currMember,
+                    this.ActiveTransactionsController.currEmployee, selectedFurnitureList);
 
-            this.ReturnFurniturePage = new ReturnFurniturePage(returnController);
-            this.ReturnFurniturePage.Show();
+                this.ReturnFurniturePage = new ReturnFurniturePage(returnController);
+                this.ReturnFurniturePage.Show();
+                Hide();
+            }
         }
 
         private void reloadFurnitureList()

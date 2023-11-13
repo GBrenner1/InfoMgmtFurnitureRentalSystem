@@ -17,6 +17,8 @@ namespace InfoMgmtFurnitureRentalSystem.View
     {
         private ReturnController ReturnController { get; }
 
+        private receiptForm receiptForm { get; set; }
+
         private string incurredFees { get; set; }
 
         /// <summary>
@@ -89,14 +91,18 @@ namespace InfoMgmtFurnitureRentalSystem.View
                 MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                this.ReturnController.compleateReturnTransaction(this.FeesTextBox.Text);
+                var transactionId = this.ReturnController.compleateReturnTransaction(this.FeesTextBox.Text);
+                Hide();
+
+                var receiptController = new ReciptController(this.FeesTextBox.Text, transactionId, this.ReturnController.Furniture);
+
+                this.receiptForm = new receiptForm(receiptController);
+                this.receiptForm.Show();
             }
             else
             {
                 return;
             }
-
-            Hide();
         }
     }
 }
