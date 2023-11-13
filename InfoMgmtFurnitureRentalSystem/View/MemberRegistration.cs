@@ -57,6 +57,10 @@ public partial class MemberRegistration : Form
         }
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MemberRegistration"/> class For editing a member.
+    /// </summary>
+    /// <param name="memberEditController"></param>
     public MemberRegistration(MemberEditController memberEditController)
     {
         this.isEdit = true;

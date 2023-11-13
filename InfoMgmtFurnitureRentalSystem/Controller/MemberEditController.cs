@@ -3,16 +3,26 @@ using InfoMgmtFurnitureRentalSystem.Model;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller;
 
+/// <summary>
+/// A controller for MemberEdit functionality in the MemberRegistration form.
+/// </summary>
 public class MemberEditController
 {
     #region Data members
 
+    /// <summary>
+    /// The member
+    /// </summary>
     public Member Member;
 
     #endregion
 
     #region Constructors
 
+    /// <summary>
+    /// Instantiates a new instance of the <see cref="MemberEditController"/> class.
+    /// </summary>
+    /// <param name="member"></param>
     public MemberEditController(Member member)
     {
         this.Member = member;
@@ -22,6 +32,19 @@ public class MemberEditController
 
     #region Methods
 
+    /// <summary>
+    ///     Takes in the member information and edits the member
+    /// </summary>
+    /// <param name="fName"></param>
+    /// <param name="lName"></param>
+    /// <param name="gender"></param>
+    /// <param name="phone"></param>
+    /// <param name="address"></param>
+    /// <param name="city"></param>
+    /// <param name="state"></param>
+    /// <param name="zip"></param>
+    /// <param name="birthdate"></param>
+    /// <returns>True if successful, false otherwise.</returns>
     public bool EditMember(string fName, string lName, string gender, string phone, string address,
         string city, string state, string zip, DateTime birthdate)
     {
@@ -47,10 +70,11 @@ public class MemberEditController
 
         if (MemberDal.EditMember(this.Member))
         {
-            MessageBox.Show("Member added successfully!", "Member added", MessageBoxButtons.OK, MessageBoxIcon.None);
+            MessageBox.Show("Member Edited successfully!", "Member edited", MessageBoxButtons.OK, MessageBoxIcon.None);
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     #endregion

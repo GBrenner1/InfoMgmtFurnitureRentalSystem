@@ -250,6 +250,7 @@ public class MemberDal
         command.Parameters.Add("@state", MySqlDbType.VarChar).Value = member.State;
         command.Parameters.Add("@zip", MySqlDbType.VarChar).Value = member.Zip;
         command.Parameters.Add("@birthday", MySqlDbType.Date).Value = member.Birthday;
+        command.Parameters.Add("@id", MySqlDbType.VarChar).Value = member.MemberId;
 
         try
         {
