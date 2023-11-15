@@ -47,12 +47,13 @@ public class LoginDal
     {
         var md5 = HashAlgorithm.Create("MD5")!;
         md5.ComputeHash(Encoding.ASCII.GetBytes(password));
-        byte[] result = md5.Hash!;
+        var result = md5.Hash!;
         var strBuilder = new StringBuilder();
         foreach (var t in result)
         {
             strBuilder.Append(t.ToString("x2"));
         }
+
         return strBuilder.ToString();
     }
 

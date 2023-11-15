@@ -4,14 +4,14 @@ using InfoMgmtFurnitureRentalSystem.Model;
 namespace InfoMgmtFurnitureRentalSystem.Controller;
 
 /// <summary>
-/// A controller for MemberEdit functionality in the MemberRegistration form.
+///     A controller for MemberEdit functionality in the MemberRegistration form.
 /// </summary>
 public class MemberEditController
 {
     #region Data members
 
     /// <summary>
-    /// The member
+    ///     The member
     /// </summary>
     public Member Member;
 
@@ -20,7 +20,7 @@ public class MemberEditController
     #region Constructors
 
     /// <summary>
-    /// Instantiates a new instance of the <see cref="MemberEditController"/> class.
+    ///     Instantiates a new instance of the <see cref="MemberEditController" /> class.
     /// </summary>
     /// <param name="member"></param>
     public MemberEditController(Member member)
