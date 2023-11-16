@@ -13,9 +13,7 @@ public partial class ReturnFurniturePage : Form
 
     private ReturnController ReturnController { get; }
 
-    private receiptForm? receiptForm { get; set; }
-
-    private string incurredFees { get; set; }
+    private string IncurredFees { get; set; }
 
     #endregion
 
@@ -32,8 +30,8 @@ public partial class ReturnFurniturePage : Form
         this.ReturnController = returnController;
 
         this.reloadFurnitureList();
-        this.incurredFees = this.ReturnController.CalculateFees();
-        this.FeesTextBox.Text = this.incurredFees;
+        this.IncurredFees = this.ReturnController.CalculateFees();
+        this.FeesTextBox.Text = this.IncurredFees;
     }
 
     #endregion
@@ -58,8 +56,8 @@ public partial class ReturnFurniturePage : Form
             furniture.Quantity = quantity;
             item.SubItems[4].Text = quantity.ToString();
 
-            this.incurredFees = this.ReturnController.CalculateFees();
-            this.FeesTextBox.Text = this.incurredFees;
+            this.IncurredFees = this.ReturnController.CalculateFees();
+            this.FeesTextBox.Text = this.IncurredFees;
         }
         catch (Exception)
         {
@@ -98,20 +96,11 @@ public partial class ReturnFurniturePage : Form
             var transactionId = this.ReturnController.CompleteReturnTransaction(this.FeesTextBox.Text);
 
             var receiptController = new ReceiptController(this.FeesTextBox.Text, transactionId,
-                this.ReturnController.Furniture ?? throw new InvalidOperationException());
+                this.ReturnController);
 
-            this.receiptForm = new receiptForm(receiptController);
-            this.receiptForm.Show();
-            this.receiptForm.VisibleChanged += this.receiptFormVisibilityChanged;
+            receiptController.GenerateReceipt();
+            Hide();
         }
-        else
-        {
-        }
-    }
-
-    private void receiptFormVisibilityChanged(object? sender, EventArgs e)
-    {
-        Hide();
     }
 
     #endregion
