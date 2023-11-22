@@ -19,6 +19,8 @@ public class RentalDal
     {
         using var connection = DalConnection.CreateConnection();
         var query = insertRentalTransactionQuery();
+        connection.Open();
+        using var sqlTransaction = connection.BeginTransaction();
 
         using var command = new MySqlCommand(query, connection);
         command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = transaction.MemberId;
@@ -28,22 +30,19 @@ public class RentalDal
 
         try
         {
-            connection.Open();
-            var sqlTransaction = connection.BeginTransaction();
-            connection.Close();
-            connection.Open();
-            command.ExecuteReader();
+            
+            command.Transaction = sqlTransaction;
+            var reader = command.ExecuteReader();
             transaction.RentalId = (int)command.LastInsertedId;
             command.Dispose();
-            connection.Close();
+            reader.Close();
             addRentalItems(transaction, connection, sqlTransaction);
-            connection.Open();
             sqlTransaction.Commit();
-            connection.Close();
             return true;
         }
         catch (Exception e)
         {
+            sqlTransaction.Rollback();
             MessageBox.Show(e.Message);
             return false;
         }
@@ -61,15 +60,13 @@ public class RentalDal
         var query = insertRentalItemQuery();
         foreach (var item in transaction.RentalItems)
         {
-            connection.Open();
             using var command = new MySqlCommand(query, connection);
+            command.Transaction = sqlTransaction;
             command.Parameters.Add("@rentalId", MySqlDbType.Int32).Value = transaction.RentalId;
             command.Parameters.Add("@furniture_Id", MySqlDbType.Int32).Value = item.FurnitureId;
             command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = item.Quantity;
             command.ExecuteNonQuery();
             command.Dispose();
-            connection.Close();
-            
         }
     }
 
