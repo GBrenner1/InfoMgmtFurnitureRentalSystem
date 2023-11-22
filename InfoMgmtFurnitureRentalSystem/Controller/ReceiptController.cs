@@ -1,4 +1,4 @@
-﻿using InfoMgmtFurnitureRentalSystem.Model;
+﻿using System.Text;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller;
 
@@ -9,20 +9,11 @@ public class ReceiptController
 {
     #region Properties
 
-    /// <summary>
-    ///     the total fees for the receipt
-    /// </summary>
-    public string Fees { get; }
+    private string Fees { get; }
 
-    /// <summary>
-    ///     the transaction id for the receipt
-    /// </summary>
-    public int TransactionId { get; }
+    private int TransactionId { get; }
 
-    /// <summary>
-    ///     the returned Furniture
-    /// </summary>
-    public IList<Furniture> ReturnedFurniture { get; }
+    private ReturnController ReturnController { get; }
 
     #endregion
 
@@ -33,12 +24,50 @@ public class ReceiptController
     /// </summary>
     /// <param name="fees"></param>
     /// <param name="transactionId"></param>
-    /// <param name="returnControllerFurniture"></param>
-    public ReceiptController(string fees, int transactionId, IList<Furniture> returnControllerFurniture)
+    /// <param name="returnController"></param>
+    public ReceiptController(string fees, int transactionId, ReturnController returnController)
     {
         this.Fees = fees;
         this.TransactionId = transactionId;
-        this.ReturnedFurniture = returnControllerFurniture;
+        this.ReturnController = returnController;
+    }
+
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Generates the receipt.
+    /// </summary>
+    public void GenerateReceipt()
+    {
+        MessageBox.Show(this.generateReceiptString(), "Receipt");
+    }
+
+    private string generateReceiptString()
+    {
+        var receipt = new StringBuilder();
+        receipt.AppendLine("Transaction ID: " + this.TransactionId);
+        receipt.AppendLine();
+        receipt.AppendLine("Member ID: " + this.ReturnController.CurMember);
+        receipt.AppendLine("Employee ID: " + this.ReturnController.CurEmployee);
+        receipt.AppendLine("Date: " + DateTime.Now);
+        receipt.AppendLine();
+        receipt.AppendLine("Fees: " + this.Fees);
+        receipt.AppendLine();
+        receipt.AppendLine("Furniture:");
+        foreach (var item in this.ReturnController.Furniture!)
+        {
+            receipt.AppendLine();
+            receipt.AppendLine($"Furniture Id: {item.FurnitureId}");
+            receipt.AppendLine($"Quantity: {item.Quantity}");
+            receipt.AppendLine($"Rental Rate: {item.RentalRate}");
+            receipt.AppendLine($"Style: {item.Style}");
+            receipt.AppendLine($"Category: {item.Category}");
+            receipt.AppendLine();
+        }
+
+        return receipt.ToString();
     }
 
     #endregion
