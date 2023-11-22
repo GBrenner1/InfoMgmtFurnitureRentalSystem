@@ -1,50 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using InfoMgmtFurnitureRentalSystem.Model;
+﻿using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
-namespace InfoMgmtFurnitureRentalSystem.DAL
+namespace InfoMgmtFurnitureRentalSystem.DAL;
+
+/// <summary>
+///     the rental returns dal
+/// </summary>
+public class RentalReturnsDal
 {
+    #region Methods
+
     /// <summary>
-    /// the rental returns dal
+    ///     creates a return transaction
     /// </summary>
-    public class RentalReturnsDal
+    /// <param name="member"></param>
+    /// <param name="employee"></param>
+    /// <param name="furniture"></param>
+    /// <param name="fees"></param>
+    /// <returns></returns>
+    public static int CreateReturnTransaction(int member, int employee, IList<Furniture> furniture, double fees)
     {
-        /// <summary>
-        /// creates a return transaction
-        /// </summary>
-        /// <param name="member"></param>
-        /// <param name="employee"></param>
-        /// <param name="furniture"></param>
-        /// <param name="fees"></param>
-        /// <returns></returns>
-        public static int CreateReturnTransaction(int member, int employee, IList<Furniture> furniture, double fees)
+        using var connection = DalConnection.CreateConnection();
+
+        connection.Open();
+        var transaction = connection.BeginTransaction();
+
+        var query = "INSERT INTO rental_returns (member_id, employee_id)" +
+                    "VALUES (@member_id, @employee_id)";
+
+        try
         {
-            using var connection = DalConnection.CreateConnection();
-
-            removeForeignKeyRestraints(connection);
-
-            connection.Open();
-            var transaction = connection.BeginTransaction();
-            connection.Close();
-
-            var query = "INSERT INTO rental_returns (member_id, employee_id)" +
-                        "VALUES (@member_id, @employee_id)";
-
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@member_id", MySqlDbType.Int32).Value = member;
             command.Parameters.Add("@employee_id", MySqlDbType.Int32).Value = employee;
             command.Transaction = transaction;
 
-            connection.Open();
-            command.ExecuteReader();
+            var reader = command.ExecuteReader();
             var returnId = (int)command.LastInsertedId;
+            reader.Close();
             command.Dispose();
-            connection.Close();
 
             foreach (var curFurniture in furniture)
             {
@@ -60,42 +54,43 @@ namespace InfoMgmtFurnitureRentalSystem.DAL
                 secondCommand.Parameters.Add("@rental_id", MySqlDbType.Int32).Value = curFurniture.RentalId;
                 secondCommand.Transaction = transaction;
 
-
-                connection.Open();
-                secondCommand.ExecuteReader();
+                reader = secondCommand.ExecuteReader();
                 secondCommand.Dispose();
-                connection.Close();
+                reader.Close();
             }
 
-            connection.Open();
             transaction.Commit();
             connection.Close();
-
-            enableForeignKeyRestraints(connection);
-
             return returnId;
         }
-
-        private static void enableForeignKeyRestraints(MySqlConnection connection)
+        catch (Exception e)
         {
-            var foreignKeysQuery = "SET FOREIGN_KEY_CHECKS=1";
-            using var fkCommand = new MySqlCommand(foreignKeysQuery, connection);
-            connection.Open();
-            fkCommand.ExecuteReader();
-            fkCommand.Dispose();
+            transaction.Rollback();
             connection.Close();
+            MessageBox.Show(e.Message);
+            return -1;
         }
-
-        private static void removeForeignKeyRestraints(MySqlConnection connection)
-        {
-            var noForeignKeysQuery = "SET FOREIGN_KEY_CHECKS=0";
-            using var noFkCommand = new MySqlCommand(noForeignKeysQuery, connection);
-            connection.Open();
-            noFkCommand.ExecuteReader();
-            noFkCommand.Dispose();
-            connection.Close();
-        }
-
-
     }
+
+    private static void enableForeignKeyRestraints(MySqlConnection connection)
+    {
+        var foreignKeysQuery = "SET FOREIGN_KEY_CHECKS=1";
+        using var fkCommand = new MySqlCommand(foreignKeysQuery, connection);
+        connection.Open();
+        fkCommand.ExecuteReader();
+        fkCommand.Dispose();
+        connection.Close();
+    }
+
+    private static void removeForeignKeyRestraints(MySqlConnection connection)
+    {
+        var noForeignKeysQuery = "SET FOREIGN_KEY_CHECKS=0";
+        using var noFkCommand = new MySqlCommand(noForeignKeysQuery, connection);
+        connection.Open();
+        noFkCommand.ExecuteReader();
+        noFkCommand.Dispose();
+        connection.Close();
+    }
+
+    #endregion
 }

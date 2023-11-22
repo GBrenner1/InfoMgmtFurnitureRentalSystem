@@ -25,7 +25,8 @@ public class FurnitureDal
         {
             var quantitiesRented = furnitureList.Select(f => f.Quantity);
             var quantitiesAvailable = getQuantitiesAvailable(furnitureList);
-            var quantities = quantitiesAvailable.Zip(quantitiesRented, (available, rented) => available - rented).ToArray();
+            var quantities = quantitiesAvailable.Zip(quantitiesRented, (available, rented) => available - rented)
+                .ToArray();
 
             const string query = "UPDATE furniture SET quantity = @qty WHERE furniture_id = @furnitureId";
             var command = connection.CreateCommand();
@@ -39,6 +40,7 @@ public class FurnitureDal
                 command.Parameters["@furnitureId"].Value = furnitureList[i].FurnitureId;
                 command.ExecuteNonQuery();
             }
+
             transaction.Commit();
             connection.Close();
             return true;
@@ -332,7 +334,7 @@ public class FurnitureDal
     }
 
     /// <summary>
-    /// gets all active rentals for a member
+    ///     gets all active rentals for a member
     /// </summary>
     /// <param name="memberId"></param>
     /// <returns></returns>
@@ -357,8 +359,8 @@ public class FurnitureDal
                     var id = reader.GetInt32(0);
                     var category = reader.GetString(1);
                     var style = reader.GetString(2);
-                    var qty = reader.GetInt32(4);
-                    var rentalRate = reader.GetDouble(3);
+                    var qty = reader.GetInt32(3);
+                    var rentalRate = reader.GetDouble(4);
                     var dueDateWithTime = reader.GetDateTime(5).ToString(CultureInfo.CurrentCulture);
                     var dueDate = dueDateWithTime.Split(' ')[0];
                     var rentalId = reader.GetString(6);
@@ -379,63 +381,7 @@ public class FurnitureDal
     }
 
     /// <summary>
-    /// gets the rental furniture quantity
-    /// </summary>
-    /// <param name="furnitureId"></param>
-    /// <param name="rentalId"></param>
-    /// <returns></returns>
-    public static int GetRentalFurnitureQuantity(int furnitureId, int rentalId)
-    {
-        using var connection = DalConnection.CreateConnection();
-        var query = "SELECT quantity FROM rental_item WHERE rental_id = @rental_id AND furniture_id = @furniture_id";
-
-        using var command = new MySqlCommand(query, connection);
-        command.Parameters.Add("@rental_id", MySqlDbType.VarChar).Value = rentalId;
-        command.Parameters.Add("@furniture_id", MySqlDbType.VarChar).Value = furnitureId;
-
-        connection.Open();
-        command.ExecuteNonQuery();
-        var reader = command.ExecuteReader();
-        reader.Read();
-        try
-        {
-            var quantity = reader.GetInt32(0);
-
-            connection.Close();
-            return quantity;
-            
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-
-        return 0;
-    }
-
-    /// <summary>
-    /// updates the rental furniture quantity
-    /// </summary>
-    /// <param name="furnitureId"></param>
-    /// <param name="rentalId"></param>
-    /// <param name="newQuantity"></param>
-    public static void UpdateRentalFurnitureQuantity(int furnitureId, int rentalId, int newQuantity)
-    {
-        using var connection = DalConnection.CreateConnection();
-        var query = "UPDATE rental_item SET quantity = @quantity WHERE furniture_id = @furniture_id AND rental_id = @rental_id";
-
-        using var command = new MySqlCommand( query, connection);
-        command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = newQuantity;
-        command.Parameters.Add("@furniture_id", MySqlDbType.Int32).Value = furnitureId;
-        command.Parameters.Add("@rental_id", MySqlDbType.Int32).Value = rentalId;
-
-        connection.Open();
-        command.ExecuteNonQuery();
-        connection.Close();
-    }
-
-    /// <summary>
-    /// gets furniture quantity
+    ///     gets furniture quantity
     /// </summary>
     /// <param name="furnitureId"></param>
     /// <returns></returns>
@@ -457,7 +403,6 @@ public class FurnitureDal
 
             connection.Close();
             return quantity;
-
         }
         catch (Exception e)
         {
@@ -468,7 +413,7 @@ public class FurnitureDal
     }
 
     /// <summary>
-    /// updates main furniture quantity
+    ///     updates main furniture quantity
     /// </summary>
     /// <param name="furnitureId"></param>
     /// <param name="newQuantity"></param>

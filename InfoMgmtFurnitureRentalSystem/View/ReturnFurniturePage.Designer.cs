@@ -29,64 +29,69 @@
         private void InitializeComponent()
         {
             furnitureList = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
+            idColumn = new ColumnHeader();
+            styleColumn = new ColumnHeader();
+            categoryColumn = new ColumnHeader();
+            rateColumn = new ColumnHeader();
+            qtyColumn = new ColumnHeader();
+            dueDateColumn = new ColumnHeader();
+            transactionIdColumn = new ColumnHeader();
             CancelButton = new Button();
             ReturnButton = new Button();
             qtyChangeButton = new Button();
             FeesTextBox = new TextBox();
             label1 = new Label();
-            columnHeader7 = new ColumnHeader();
             SuspendLayout();
             // 
             // furnitureList
             // 
-            furnitureList.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
+            furnitureList.Columns.AddRange(new ColumnHeader[] { idColumn, styleColumn, categoryColumn, rateColumn, qtyColumn, dueDateColumn, transactionIdColumn });
             furnitureList.FullRowSelect = true;
-            furnitureList.Location = new Point(100, 12);
+            furnitureList.Location = new Point(12, 12);
             furnitureList.Name = "furnitureList";
-            furnitureList.Size = new Size(375, 426);
+            furnitureList.Size = new Size(463, 426);
             furnitureList.TabIndex = 0;
             furnitureList.UseCompatibleStateImageBehavior = false;
             furnitureList.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // idColumn
             // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 45;
+            idColumn.Text = "ID";
+            idColumn.Width = 30;
             // 
-            // columnHeader2
+            // styleColumn
             // 
-            columnHeader2.Text = "Style";
-            columnHeader2.Width = 75;
+            styleColumn.Text = "Style";
+            styleColumn.Width = 75;
             // 
-            // columnHeader3
+            // categoryColumn
             // 
-            columnHeader3.Text = "Category";
-            columnHeader3.Width = 75;
+            categoryColumn.Text = "Category";
+            categoryColumn.Width = 75;
             // 
-            // columnHeader4
+            // rateColumn
             // 
-            columnHeader4.Text = "Rate";
-            columnHeader4.Width = 65;
+            rateColumn.Text = "Rate";
+            rateColumn.Width = 65;
             // 
-            // columnHeader5
+            // qtyColumn
             // 
-            columnHeader5.Text = "Qty";
-            columnHeader5.Width = 40;
+            qtyColumn.Text = "Qty";
+            qtyColumn.Width = 40;
             // 
-            // columnHeader6
+            // dueDateColumn
             // 
-            columnHeader6.Text = "Due Date";
-            columnHeader6.Width = 85;
+            dueDateColumn.Text = "Due Date";
+            dueDateColumn.Width = 85;
+            // 
+            // transactionIdColumn
+            // 
+            transactionIdColumn.Text = "Rental ID";
+            transactionIdColumn.Width = 85;
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(12, 12);
+            CancelButton.Location = new Point(497, 65);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new Size(75, 23);
             CancelButton.TabIndex = 1;
@@ -131,11 +136,6 @@
             label1.TabIndex = 5;
             label1.Text = "Fees:";
             // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "transaction ID";
-            columnHeader7.Width = 0;
-            // 
             // ReturnFurniturePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,12 +161,12 @@
         private Button qtyChangeButton;
         private TextBox FeesTextBox;
         private Label label1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
+        private ColumnHeader idColumn;
+        private ColumnHeader styleColumn;
+        private ColumnHeader categoryColumn;
+        private ColumnHeader rateColumn;
+        private ColumnHeader qtyColumn;
+        private ColumnHeader dueDateColumn;
+        private ColumnHeader transactionIdColumn;
     }
 }

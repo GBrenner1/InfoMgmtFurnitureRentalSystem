@@ -45,7 +45,8 @@ public partial class Mainpage : Form
 
         mainpageController.GetStyles().ToList().ForEach(style => this.funitureStyleComboBox.Items.Add(style));
 
-        MainpageController.GetCategories().ToList().ForEach(category => this.furnitureCategoryComboBox.Items.Add(category));
+        MainpageController.GetCategories().ToList()
+            .ForEach(category => this.furnitureCategoryComboBox.Items.Add(category));
 
         this.memberSearchComboBox.SelectedIndex = 0;
     }
@@ -185,7 +186,7 @@ public partial class Mainpage : Form
 
         this.transactionForm = new TransactionForm(rentalTransactionController);
         this.transactionForm.Show();
-        this.transactionForm.Closed += (s, args) => Close();
+        this.transactionForm.Closed += (_, _) => Close();
         this.transactionForm.VisibleChanged += this.TransactionFormOnVisibleChanged;
     }
 

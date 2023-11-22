@@ -71,7 +71,7 @@ public class MainpageController
     }
 
     /// <summary>
-    /// refreshes all members in list
+    ///     refreshes all members in list
     /// </summary>
     public void RefreshMembers()
     {
@@ -108,7 +108,7 @@ public class MainpageController
     }
 
     /// <summary>
-    /// Refreshes the furnitures.
+    ///     Refreshes the furnitures.
     /// </summary>
     public void RefreshFurnitures()
     {
