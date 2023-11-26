@@ -16,6 +16,8 @@ public partial class Mainpage : Form
 
     private ActiveTransactionsForm? ActiveTransactionsForm;
 
+    private AdminQueryPage? AdminQueryPage;
+
     #endregion
 
     #region Constructors
@@ -36,7 +38,7 @@ public partial class Mainpage : Form
                                       employee.EmployeeId;
         }
 
-        if (mainpageController.CurrentEmployee.IsAdmin == false)
+        if (mainpageController.CurrentEmployee!.IsAdmin == false)
         {
             this.queryButton.Visible = false;
         }
@@ -300,7 +302,9 @@ public partial class Mainpage : Form
 
     private void queryButton_Click(object sender, EventArgs e)
     {
-
+        var AdminQueryController = new AdminQueryController();
+        this.AdminQueryPage = new AdminQueryPage(AdminQueryController);
+        this.AdminQueryPage.Show();
     }
 
     #endregion
