@@ -225,7 +225,7 @@ public class MemberDal
     }
 
     /// <summary>
-    /// Edits the entry in the DB for the given member.
+    ///     Edits the entry in the DB for the given member.
     /// </summary>
     /// <param name="member"></param>
     /// <returns>True if successful, false otherwise.</returns>

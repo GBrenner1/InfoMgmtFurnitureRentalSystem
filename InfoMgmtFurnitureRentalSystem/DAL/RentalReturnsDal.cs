@@ -74,25 +74,5 @@ public class RentalReturnsDal
         }
     }
 
-    private static void enableForeignKeyRestraints(MySqlConnection connection)
-    {
-        var foreignKeysQuery = "SET FOREIGN_KEY_CHECKS=1";
-        using var fkCommand = new MySqlCommand(foreignKeysQuery, connection);
-        connection.Open();
-        fkCommand.ExecuteReader();
-        fkCommand.Dispose();
-        connection.Close();
-    }
-
-    private static void removeForeignKeyRestraints(MySqlConnection connection)
-    {
-        var noForeignKeysQuery = "SET FOREIGN_KEY_CHECKS=0";
-        using var noFkCommand = new MySqlCommand(noForeignKeysQuery, connection);
-        connection.Open();
-        noFkCommand.ExecuteReader();
-        noFkCommand.Dispose();
-        connection.Close();
-    }
-
     #endregion
 }

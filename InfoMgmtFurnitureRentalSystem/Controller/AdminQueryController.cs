@@ -8,9 +8,17 @@ using System.Threading.Tasks;
 
 namespace InfoMgmtFurnitureRentalSystem.Controller
 {
+    /// <summary>
+    ///     The controller for the admin query page
+    /// </summary>
     public class AdminQueryController
     {
-        public List<string> runQuery(string query)
+        /// <summary>
+        ///     Runs a given query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public static List<string> RunQuery(string query)
         {
             if (query.Contains("DELETE") || query.Contains("UPDATE"))
             {

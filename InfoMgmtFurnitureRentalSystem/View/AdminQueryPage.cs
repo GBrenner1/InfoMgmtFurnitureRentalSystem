@@ -1,47 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using InfoMgmtFurnitureRentalSystem.Controller;
+﻿using InfoMgmtFurnitureRentalSystem.Controller;
 
-namespace InfoMgmtFurnitureRentalSystem.View
+namespace InfoMgmtFurnitureRentalSystem.View;
+
+/// <summary>
+///     The admin query page
+/// </summary>
+public partial class AdminQueryPage : Form
 {
-    public partial class AdminQueryPage : Form
+    #region Data members
+
+    private readonly AdminQueryController controller;
+
+    private AdminQueryResultPage? resultPage;
+
+    #endregion
+
+    #region Constructors
+
+    /// <summary>
+    ///     Builds a new admin query page
+    /// </summary>
+    /// <param name="controller"></param>
+    public AdminQueryPage(AdminQueryController controller)
     {
-        private AdminQueryController controller;
+        this.InitializeComponent();
 
-        private AdminQueryResultPage resultPage;
-        public AdminQueryPage(AdminQueryController controller)
-        {
-            this.InitializeComponent();
+        this.centerForm();
 
-            this.centerForm();
-
-            this.controller = controller;
-        }
-
-        private void centerForm()
-        {
-            StartPosition = FormStartPosition.CenterScreen;
-        }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            Hide();
-        }
-
-        private void QueryButton_Click(object sender, EventArgs e)
-        {
-            var queryString = this.QueryTextArea.Text;
-            var result = this.controller.runQuery(queryString);
-
-            this.resultPage = new AdminQueryResultPage(result);
-            this.resultPage.Show();
-        }
+        this.controller = controller;
     }
+
+    #endregion
+
+    #region Methods
+
+    private void centerForm()
+    {
+        StartPosition = FormStartPosition.CenterScreen;
+    }
+
+    private void backButton_Click(object sender, EventArgs e)
+    {
+        Hide();
+    }
+
+    private void QueryButton_Click(object sender, EventArgs e)
+    {
+        var queryString = this.QueryTextArea.Text;
+        var result = this.controller.RunQuery(queryString);
+
+        this.resultPage = new AdminQueryResultPage(result);
+        this.resultPage.Show();
+    }
+
+    #endregion
 }
