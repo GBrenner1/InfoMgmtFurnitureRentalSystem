@@ -36,6 +36,11 @@ public partial class Mainpage : Form
                                       employee.EmployeeId;
         }
 
+        if (mainpageController.CurrentEmployee.IsAdmin == false)
+        {
+            this.queryButton.Visible = false;
+        }
+
         this.reloadMembersList();
         this.reloadFurnitureList();
 
@@ -291,6 +296,11 @@ public partial class Mainpage : Form
         memberRegistration.Show();
         memberRegistration.Closed += (s, args) => Close();
         memberRegistration.VisibleChanged += this.MemberRegistrationOnVisibleChanged;
+    }
+
+    private void queryButton_Click(object sender, EventArgs e)
+    {
+
     }
 
     #endregion

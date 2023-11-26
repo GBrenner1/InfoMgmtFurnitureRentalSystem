@@ -65,7 +65,6 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.LoginScreen.resources
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.Mainpage.resources
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.MemberRegistration.resources
-C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.receiptForm.resources
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ReturnFurniturePage.resources
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.TransactionForm.resources
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.csproj.GenerateResource.cache

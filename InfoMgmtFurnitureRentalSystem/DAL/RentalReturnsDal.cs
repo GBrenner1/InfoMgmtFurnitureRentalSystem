@@ -1,4 +1,5 @@
-﻿using InfoMgmtFurnitureRentalSystem.Model;
+﻿using System.Diagnostics.CodeAnalysis;
+using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
@@ -25,14 +26,15 @@ public class RentalReturnsDal
         connection.Open();
         var transaction = connection.BeginTransaction();
 
-        var query = "INSERT INTO rental_returns (member_id, employee_id)" +
-                    "VALUES (@member_id, @employee_id)";
+        var query = "INSERT INTO rental_returns (member_id, employee_id, return_date)" +
+                    "VALUES (@member_id, @employee_id, @return_date)";
 
         try
         {
             using var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@member_id", MySqlDbType.Int32).Value = member;
             command.Parameters.Add("@employee_id", MySqlDbType.Int32).Value = employee;
+            command.Parameters.Add("@return_date", MySqlDbType.Date).Value = DateTime.Now;
             command.Transaction = transaction;
 
             var reader = command.ExecuteReader();
