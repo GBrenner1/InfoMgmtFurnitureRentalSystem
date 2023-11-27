@@ -7,4 +7,5 @@ NOTE:
 * Reports sometimes have inproper tabbing
 
 TO RUN THE PROGRAM:
-* Load into visual studio and run
+* Load in Nuget package for MySQLData
+* Load into Visual Studio and run
