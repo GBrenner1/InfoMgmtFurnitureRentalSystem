@@ -1,6 +1,9 @@
 # InfoMgmtFurnitureRentalSystem
 Username and password combos to run the program:
-* Testemp   123456
-
+* Testemp    123456
+* Testadmin  123456
 NOTE:
-* Editing existing members has not be implemented. 
+* Reports sometimes have inproper tabbing
+
+TO RUN THE PROGRAM:
+* Load into visual studio and run
