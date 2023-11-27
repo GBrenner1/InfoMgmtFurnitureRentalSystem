@@ -62,6 +62,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
             ClearMemberSearchButton = new Button();
             clearFurnitureSearchButton = new Button();
             queryButton = new Button();
+            reportButton = new Button();
             SuspendLayout();
             // 
             // LogoutButton
@@ -344,11 +345,21 @@ namespace InfoMgmtFurnitureRentalSystem.View
             queryButton.UseVisualStyleBackColor = true;
             queryButton.Click += queryButton_Click;
             // 
+            // reportButton
+            // 
+            reportButton.Location = new Point(277, 5);
+            reportButton.Name = "reportButton";
+            reportButton.Size = new Size(82, 23);
+            reportButton.TabIndex = 27;
+            reportButton.Text = "Run Reports";
+            reportButton.UseVisualStyleBackColor = true;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(886, 450);
+            Controls.Add(reportButton);
             Controls.Add(queryButton);
             Controls.Add(clearFurnitureSearchButton);
             Controls.Add(ClearMemberSearchButton);
@@ -416,5 +427,6 @@ namespace InfoMgmtFurnitureRentalSystem.View
         private ColumnHeader qtyColumn;
         private ColumnHeader rateColumn;
         private Button queryButton;
+        private Button reportButton;
     }
 }

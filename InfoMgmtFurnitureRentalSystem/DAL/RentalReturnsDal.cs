@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
@@ -72,6 +73,42 @@ public class RentalReturnsDal
             MessageBox.Show(e.Message);
             return -1;
         }
+    }
+
+    public static string GetReturnDateReport(DateTime startDate, DateTime endDate)
+    {
+        var query = getReturnDateReportQuery();
+        var report = new StringBuilder();
+        using var connection = DalConnection.CreateConnection();
+        var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@startDate", MySqlDbType.Date).Value = startDate;
+        command.Parameters.Add("@endDate", MySqlDbType.Date).Value = endDate;
+
+        try
+        {
+            connection.Open();
+            var reader = command.ExecuteReader();
+            report.Append("Return ID\tMember ID\tEmployee ID\tReturn Date\tRental ID\tFurniture ID\tQuantity\n");
+            while (reader.Read())
+            {
+                report.Append($"{reader["return_id"]}\t{reader["member_id"]}\t{reader["employee_id"]}\t{reader["return_date"]}\t{reader["rental_id"]}\t{reader["furniture_id"]}\t{reader["quantity"]}\n");
+            }
+
+            reader.Close();
+            connection.Close();
+            return report.ToString();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message, "Return Report Generation Failed");
+            return "Generation Failed";
+        }   
+    }
+
+    private static string getReturnDateReportQuery()
+    {
+        const string query = "call generateReturnDateReport(@startDate, @endDate)";
+        return query;
     }
 
     #endregion

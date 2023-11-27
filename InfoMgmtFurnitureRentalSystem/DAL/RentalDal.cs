@@ -1,4 +1,5 @@
-﻿using InfoMgmtFurnitureRentalSystem.Model;
+﻿using System.Text;
+using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
@@ -74,6 +75,47 @@ public class RentalDal
     {
         var query = "INSERT INTO rental_item (rental_id, furniture_id, quantity) ";
         query += "VALUES (@rentalId, @furniture_Id, @quantity);";
+        return query;
+    }
+
+    public static string GetRentalDateReport(DateTime startDate, DateTime endDate)
+    {
+        var query = getRentalDateReportQuery();
+        var report = new StringBuilder();
+        using var connection = DalConnection.CreateConnection();
+        var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@startDate", MySqlDbType.Date).Value = startDate;
+        command.Parameters.Add("@endDate", MySqlDbType.Date).Value = endDate;
+        try
+        {
+            connection.Open();
+
+            using var reader = command.ExecuteReader();
+
+            report.Append("Rental ID\tMember ID\tEmployee ID\tStart Date\tFurniture ID\tQuantity");
+            report.Append(Environment.NewLine);
+            while (reader.Read())
+            {
+                report.Append($"{reader["rental_id"]}\t");
+                report.Append($"{reader["member_id"]}\t");
+                report.Append($"{reader["employee_id"]}\t");
+                report.Append($"{reader["start_date"]}\t");
+                report.Append($"{reader["furniture_id"]}\t");
+                report.Append($"{reader["quantity"]}");
+                report.Append(Environment.NewLine);
+            }
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message, "Rental Report Generation Failed");
+            return "Generation Failed";
+        }
+        return report.ToString();
+    }
+
+    private static string getRentalDateReportQuery()
+    {
+        const string query = "call generateRentalDateReport(@startDate, @endDate);";
         return query;
     }
 

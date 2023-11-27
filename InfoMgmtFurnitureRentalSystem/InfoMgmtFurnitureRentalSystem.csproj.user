@@ -19,6 +19,9 @@
     <Compile Update="View\MemberRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\ReturnFurniturePage.cs">
       <SubType>Form</SubType>
     </Compile>

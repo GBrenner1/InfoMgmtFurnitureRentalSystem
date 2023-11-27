@@ -1792,23 +1792,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Garrett\\.nuget\\packages\\": {},
+    "C:\\Users\\torch\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Garrett\\source\\repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
+      "projectUniqueName": "D:\\C#Projects\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
       "projectName": "InfoMgmtFurnitureRentalSystem",
-      "projectPath": "C:\\Users\\Garrett\\source\\repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
-      "packagesPath": "C:\\Users\\Garrett\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Garrett\\source\\repos\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\obj\\",
+      "projectPath": "D:\\C#Projects\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem.csproj",
+      "packagesPath": "C:\\Users\\torch\\.nuget\\packages\\",
+      "outputPath": "D:\\C#Projects\\InfoMgmtFurnitureRentalSystem\\InfoMgmtFurnitureRentalSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Garrett\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\torch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1859,7 +1859,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

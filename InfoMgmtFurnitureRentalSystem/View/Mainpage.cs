@@ -41,6 +41,7 @@ public partial class Mainpage : Form
         if (mainpageController.CurrentEmployee!.IsAdmin == false)
         {
             this.queryButton.Visible = false;
+            this.reportButton.Visible = false;
         }
 
         this.reloadMembersList();
