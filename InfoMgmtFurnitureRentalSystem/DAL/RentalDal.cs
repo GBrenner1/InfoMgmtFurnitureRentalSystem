@@ -31,7 +31,6 @@ public class RentalDal
 
         try
         {
-            
             command.Transaction = sqlTransaction;
             var reader = command.ExecuteReader();
             transaction.RentalId = (int)command.LastInsertedId;
@@ -56,7 +55,8 @@ public class RentalDal
         return query;
     }
 
-    private static void addRentalItems(RentalTransaction transaction, MySqlConnection connection, MySqlTransaction sqlTransaction)
+    private static void addRentalItems(RentalTransaction transaction, MySqlConnection connection,
+        MySqlTransaction sqlTransaction)
     {
         var query = insertRentalItemQuery();
         foreach (var item in transaction.RentalItems)
@@ -78,6 +78,12 @@ public class RentalDal
         return query;
     }
 
+    /// <summary>
+    ///     Calls the stored procedure to generate the return report
+    /// </summary>
+    /// <param name="startDate">The start date for the report</param>
+    /// <param name="endDate">The end date for the report</param>
+    /// <returns>A string formatted with all the information for the report.</returns>
     public static string GetRentalDateReport(DateTime startDate, DateTime endDate)
     {
         var query = getRentalDateReportQuery();
@@ -111,6 +117,7 @@ public class RentalDal
             MessageBox.Show(e.Message, "Rental Report Generation Failed");
             return "Generation Failed";
         }
+
         return report.ToString();
     }
 

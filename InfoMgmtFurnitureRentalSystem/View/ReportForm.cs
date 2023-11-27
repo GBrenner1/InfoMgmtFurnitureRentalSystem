@@ -2,10 +2,16 @@
 
 namespace InfoMgmtFurnitureRentalSystem.View;
 
+/// <summary>
+///     A form that displays reports for the rental service.
+/// </summary>
 public partial class ReportForm : Form
 {
     #region Constructors
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ReportForm" /> class.
+    /// </summary>
     public ReportForm()
     {
         this.InitializeComponent();

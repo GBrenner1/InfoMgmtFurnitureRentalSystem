@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text;
+﻿using System.Text;
 using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
@@ -75,6 +74,12 @@ public class RentalReturnsDal
         }
     }
 
+    /// <summary>
+    ///     Calls the stored procedure to generate the return date report
+    /// </summary>
+    /// <param name="startDate">The start date for the report</param>
+    /// <param name="endDate">The end date for the report</param>
+    /// <returns>A string formatted with all the information for the report.</returns>
     public static string GetReturnDateReport(DateTime startDate, DateTime endDate)
     {
         var query = getReturnDateReportQuery();
@@ -109,7 +114,7 @@ public class RentalReturnsDal
         {
             MessageBox.Show(e.Message, "Return Report Generation Failed");
             return "Generation Failed";
-        }   
+        }
     }
 
     private static string getReturnDateReportQuery()
