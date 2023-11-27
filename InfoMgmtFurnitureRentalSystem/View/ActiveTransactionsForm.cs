@@ -80,8 +80,8 @@ public partial class ActiveTransactionsForm : Form
         }
         else
         {
-            var returnController = new ReturnController(this.ActiveTransactionsController.currMember,
-                this.ActiveTransactionsController.currEmployee, selectedFurnitureList);
+            var returnController = new ReturnController(this.ActiveTransactionsController.CurMember,
+                this.ActiveTransactionsController.CurEmployee, selectedFurnitureList);
 
             this.ReturnFurniturePage = new ReturnFurniturePage(returnController);
             this.ReturnFurniturePage.Show();

@@ -13,12 +13,12 @@ public class ActiveTransactionsController
     /// <summary>
     ///     The member who's current rentals will be shown
     /// </summary>
-    public int CurrMember { get; }
+    public int CurMember { get; }
 
     /// <summary>
     ///     The employee looking at past customer transactions
     /// </summary>
-    public int CurrEmployee { get; }
+    public int CurEmployee { get; }
 
     /// <summary>
     ///     all furniture that can be rented
@@ -36,8 +36,8 @@ public class ActiveTransactionsController
     /// <param name="employeeId"></param>
     public ActiveTransactionsController(int memberId, int employeeId)
     {
-        this.CurrMember = memberId;
-        this.CurrEmployee = employeeId;
+        this.CurMember = memberId;
+        this.CurEmployee = employeeId;
         this.Furniture = FurnitureDal.GetMembersCurrentRentedFurniture(memberId);
     }
 

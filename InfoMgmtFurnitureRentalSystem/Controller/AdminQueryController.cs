@@ -18,14 +18,14 @@ namespace InfoMgmtFurnitureRentalSystem.Controller
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public static List<string> RunQuery(string query)
+        public List<string> RunQuery(string query)
         {
             if (query.Contains("DELETE") || query.Contains("UPDATE"))
             {
                 return new List<string>();
             }
 
-            return QueryDal.runAdminQuery(query);
+            return QueryDal.RunAdminQuery(query);
         }
     }
 }
