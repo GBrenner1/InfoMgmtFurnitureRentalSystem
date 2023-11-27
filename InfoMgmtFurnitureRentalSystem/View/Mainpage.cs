@@ -14,9 +14,9 @@ public partial class Mainpage : Form
 
     private TransactionForm? transactionForm;
 
-    private ActiveTransactionsForm? ActiveTransactionsForm;
+    private ActiveTransactionsForm? activeTransactionsForm;
 
-    private AdminQueryPage? AdminQueryPage;
+    private AdminQueryPage? adminQueryPage;
 
     #endregion
 
@@ -41,6 +41,7 @@ public partial class Mainpage : Form
         if (mainpageController.CurrentEmployee!.IsAdmin == false)
         {
             this.queryButton.Visible = false;
+            this.reportButton.Visible = false;
         }
 
         this.reloadMembersList();
@@ -71,7 +72,7 @@ public partial class Mainpage : Form
     {
         var loginScreen = new LoginScreen();
         loginScreen.Show();
-        loginScreen.Closed += (s, args) => Close();
+        loginScreen.Closed += (_, _) => Close();
         Hide();
     }
 
@@ -80,7 +81,7 @@ public partial class Mainpage : Form
         var memberRegistrationController = new MemberRegistrationController();
         var memberRegistration = new MemberRegistration(memberRegistrationController);
         memberRegistration.Show();
-        memberRegistration.Closed += (s, args) => Close();
+        memberRegistration.Closed += (_, _) => Close();
         memberRegistration.VisibleChanged += this.MemberRegistrationOnVisibleChanged;
     }
 
@@ -233,9 +234,9 @@ public partial class Mainpage : Form
         var activeTransactionsController = new ActiveTransactionsController(int.Parse(selectedMemberId),
             this.mainpageController.CurrentEmployee!.EmployeeId);
 
-        this.ActiveTransactionsForm = new ActiveTransactionsForm(activeTransactionsController);
-        this.ActiveTransactionsForm.Show();
-        this.ActiveTransactionsForm.VisibleChanged += this.activeTransactionsFormVisibilityChanged;
+        this.activeTransactionsForm = new ActiveTransactionsForm(activeTransactionsController);
+        this.activeTransactionsForm.Show();
+        this.activeTransactionsForm.VisibleChanged += this.activeTransactionsFormVisibilityChanged;
     }
 
     private void activeTransactionsFormVisibilityChanged(object? sender, EventArgs e)
@@ -296,16 +297,23 @@ public partial class Mainpage : Form
         var memberEditController = new MemberEditController(selectedMember);
         var memberRegistration = new MemberRegistration(memberEditController);
         memberRegistration.Show();
-        memberRegistration.Closed += (s, args) => Close();
+        memberRegistration.Closed += (_, _) => Close();
         memberRegistration.VisibleChanged += this.MemberRegistrationOnVisibleChanged;
     }
 
     private void queryButton_Click(object sender, EventArgs e)
     {
-        var AdminQueryController = new AdminQueryController();
-        this.AdminQueryPage = new AdminQueryPage(AdminQueryController);
-        this.AdminQueryPage.Show();
+        var adminQueryController = new AdminQueryController();
+        this.adminQueryPage = new AdminQueryPage(adminQueryController);
+        this.adminQueryPage.Show();
     }
 
     #endregion
+
+    private void reportButton_Click(object sender, EventArgs e)
+    {
+        var reportForm = new ReportForm();
+        reportForm.Show();
+        reportForm.Closed += (_, _) => Close();
+    }
 }

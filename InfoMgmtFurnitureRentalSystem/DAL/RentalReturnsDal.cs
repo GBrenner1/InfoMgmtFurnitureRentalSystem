@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Text;
 using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
@@ -72,6 +72,55 @@ public class RentalReturnsDal
             MessageBox.Show(e.Message);
             return -1;
         }
+    }
+
+    /// <summary>
+    ///     Calls the stored procedure to generate the return date report
+    /// </summary>
+    /// <param name="startDate">The start date for the report</param>
+    /// <param name="endDate">The end date for the report</param>
+    /// <returns>A string formatted with all the information for the report.</returns>
+    public static string GetReturnDateReport(DateTime startDate, DateTime endDate)
+    {
+        var query = getReturnDateReportQuery();
+        var report = new StringBuilder();
+        using var connection = DalConnection.CreateConnection();
+        var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@startDate", MySqlDbType.Date).Value = startDate;
+        command.Parameters.Add("@endDate", MySqlDbType.Date).Value = endDate;
+
+        try
+        {
+            connection.Open();
+            var reader = command.ExecuteReader();
+            report.Append("Return ID\tMember ID\tEmployee ID\tReturn Date\tRental ID\tFurniture ID\tQuantity\n");
+            while (reader.Read())
+            {
+                report.Append($"{reader["return_id"]}\t");
+                report.Append($"{reader["member_id"]}\t");
+                report.Append($"{reader["employee_id"]}\t");
+                var date = (DateTime)reader["return_date"];
+                report.Append($"{date:yyyy-MM-dd}\t");
+                report.Append($"{reader["rental_id"]}\t");
+                report.Append($"{reader["furniture_id"]}\t");
+                report.Append($"{reader["quantity"]}\n");
+            }
+
+            reader.Close();
+            connection.Close();
+            return report.ToString();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message, "Return Report Generation Failed");
+            return "Generation Failed";
+        }
+    }
+
+    private static string getReturnDateReportQuery()
+    {
+        const string query = "call generateReturnDateReport(@startDate, @endDate)";
+        return query;
     }
 
     #endregion

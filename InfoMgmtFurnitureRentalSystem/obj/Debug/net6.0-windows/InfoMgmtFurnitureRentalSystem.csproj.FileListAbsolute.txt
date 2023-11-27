@@ -39,7 +39,6 @@ D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\De
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\ref\InfoMgmtFurnitureRentalSystem.dll
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ActiveTransactionsForm.resources
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
-D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.receiptForm.resources
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ReturnFurniturePage.resources
 C:\Users\torch\OneDrive\Documents\Info Management\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.exe
 C:\Users\torch\OneDrive\Documents\Info Management\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\bin\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.deps.json
@@ -127,3 +126,7 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.pdb
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.genruntimeconfig.cache
 C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\ref\InfoMgmtFurnitureRentalSystem.dll
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.AdminQueryPage.resources
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.AdminQueryResultPage.resources
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.sourcelink.json
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ReportForm.resources

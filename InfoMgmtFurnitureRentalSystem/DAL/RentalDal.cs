@@ -1,4 +1,5 @@
-﻿using InfoMgmtFurnitureRentalSystem.Model;
+﻿using System.Text;
+using InfoMgmtFurnitureRentalSystem.Model;
 using MySql.Data.MySqlClient;
 
 namespace InfoMgmtFurnitureRentalSystem.DAL;
@@ -30,7 +31,6 @@ public class RentalDal
 
         try
         {
-            
             command.Transaction = sqlTransaction;
             var reader = command.ExecuteReader();
             transaction.RentalId = (int)command.LastInsertedId;
@@ -55,7 +55,8 @@ public class RentalDal
         return query;
     }
 
-    private static void addRentalItems(RentalTransaction transaction, MySqlConnection connection, MySqlTransaction sqlTransaction)
+    private static void addRentalItems(RentalTransaction transaction, MySqlConnection connection,
+        MySqlTransaction sqlTransaction)
     {
         var query = insertRentalItemQuery();
         foreach (var item in transaction.RentalItems)
@@ -74,6 +75,55 @@ public class RentalDal
     {
         var query = "INSERT INTO rental_item (rental_id, furniture_id, quantity) ";
         query += "VALUES (@rentalId, @furniture_Id, @quantity);";
+        return query;
+    }
+
+    /// <summary>
+    ///     Calls the stored procedure to generate the return report
+    /// </summary>
+    /// <param name="startDate">The start date for the report</param>
+    /// <param name="endDate">The end date for the report</param>
+    /// <returns>A string formatted with all the information for the report.</returns>
+    public static string GetRentalDateReport(DateTime startDate, DateTime endDate)
+    {
+        var query = getRentalDateReportQuery();
+        var report = new StringBuilder();
+        using var connection = DalConnection.CreateConnection();
+        var command = new MySqlCommand(query, connection);
+        command.Parameters.Add("@startDate", MySqlDbType.Date).Value = startDate;
+        command.Parameters.Add("@endDate", MySqlDbType.Date).Value = endDate;
+        try
+        {
+            connection.Open();
+
+            using var reader = command.ExecuteReader();
+
+            report.Append("Rental ID\tMember ID\tEmployee ID\tStart Date\tFurniture ID\tQuantity");
+            report.Append(Environment.NewLine);
+            while (reader.Read())
+            {
+                report.Append($"{reader["rental_id"]}\t");
+                report.Append($"{reader["member_id"]}\t");
+                report.Append($"{reader["employee_id"]}\t");
+                var date = ((DateTime)reader["start_date"]).ToString("yyyy-MM-dd");
+                report.Append($"{date}\t");
+                report.Append($"{reader["furniture_id"]}\t");
+                report.Append($"{reader["quantity"]}");
+                report.Append(Environment.NewLine);
+            }
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message, "Rental Report Generation Failed");
+            return "Generation Failed";
+        }
+
+        return report.ToString();
+    }
+
+    private static string getRentalDateReportQuery()
+    {
+        const string query = "call generateRentalDateReport(@startDate, @endDate);";
         return query;
     }
 
