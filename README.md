@@ -7,5 +7,7 @@ NOTE:
 * Reports sometimes have inproper tabbing
 
 TO RUN THE PROGRAM:
+* Connect to VPN if not on UWG computer
+* Load into Visual Studio
 * Load in Nuget package for MySQLData
-* Load into Visual Studio and run
+* Run Application
