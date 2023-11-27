@@ -91,7 +91,14 @@ public class RentalReturnsDal
             report.Append("Return ID\tMember ID\tEmployee ID\tReturn Date\tRental ID\tFurniture ID\tQuantity\n");
             while (reader.Read())
             {
-                report.Append($"{reader["return_id"]}\t{reader["member_id"]}\t{reader["employee_id"]}\t{reader["return_date"]}\t{reader["rental_id"]}\t{reader["furniture_id"]}\t{reader["quantity"]}\n");
+                report.Append($"{reader["return_id"]}\t");
+                report.Append($"{reader["member_id"]}\t");
+                report.Append($"{reader["employee_id"]}\t");
+                var date = (DateTime)reader["return_date"];
+                report.Append($"{date:yyyy-MM-dd}\t");
+                report.Append($"{reader["rental_id"]}\t");
+                report.Append($"{reader["furniture_id"]}\t");
+                report.Append($"{reader["quantity"]}\n");
             }
 
             reader.Close();

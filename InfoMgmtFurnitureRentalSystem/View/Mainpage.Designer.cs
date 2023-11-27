@@ -353,6 +353,7 @@ namespace InfoMgmtFurnitureRentalSystem.View
             reportButton.TabIndex = 27;
             reportButton.Text = "Run Reports";
             reportButton.UseVisualStyleBackColor = true;
+            reportButton.Click += reportButton_Click;
             // 
             // Mainpage
             // 

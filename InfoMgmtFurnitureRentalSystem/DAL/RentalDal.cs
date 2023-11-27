@@ -99,7 +99,8 @@ public class RentalDal
                 report.Append($"{reader["rental_id"]}\t");
                 report.Append($"{reader["member_id"]}\t");
                 report.Append($"{reader["employee_id"]}\t");
-                report.Append($"{reader["start_date"]}\t");
+                var date = ((DateTime)reader["start_date"]).ToString("yyyy-MM-dd");
+                report.Append($"{date}\t");
                 report.Append($"{reader["furniture_id"]}\t");
                 report.Append($"{reader["quantity"]}");
                 report.Append(Environment.NewLine);

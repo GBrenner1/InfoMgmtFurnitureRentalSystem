@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfoMgmtFurnitureRentalSystem.DAL;
+﻿using InfoMgmtFurnitureRentalSystem.DAL;
 
-namespace InfoMgmtFurnitureRentalSystem.Controller
+namespace InfoMgmtFurnitureRentalSystem.Controller;
+
+public class ReportController
 {
-    public class ReportController
+    #region Methods
+
+    public static string GenerateRentalReport(DateTime startDate, DateTime endDate)
     {
-        public static string GenerateRentalReport(DateTime startDate, DateTime endDate)
-        {
-            return RentalDal.GetRentalDateReport(startDate, endDate);
-        }
+        return RentalDal.GetRentalDateReport(startDate, endDate);
     }
+
+    public static string GenerateReturnReport(DateTime startDate, DateTime endDate)
+    {
+        return RentalReturnsDal.GetReturnDateReport(startDate, endDate);
+    }
+
+    #endregion
 }

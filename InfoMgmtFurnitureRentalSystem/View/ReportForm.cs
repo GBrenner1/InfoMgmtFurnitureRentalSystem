@@ -1,20 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using InfoMgmtFurnitureRentalSystem.Controller;
 
-namespace InfoMgmtFurnitureRentalSystem.View
+namespace InfoMgmtFurnitureRentalSystem.View;
+
+public partial class ReportForm : Form
 {
-    public partial class ReportForm : Form
+    #region Constructors
+
+    public ReportForm()
     {
-        public ReportForm()
-        {
-            InitializeComponent();
-        }
+        this.InitializeComponent();
+        this.centerForm();
     }
+
+    #endregion
+
+    #region Methods
+
+    private void centerForm()
+    {
+        CenterToScreen();
+    }
+
+    private void generateReturnReportButton_Click(object sender, EventArgs e)
+    {
+        if (this.startDatePicker.Value > this.endDatePicker.Value)
+        {
+            MessageBox.Show("Start date must be before end date");
+            return;
+        }
+
+        this.reportBox.Text =
+            ReportController.GenerateReturnReport(this.startDatePicker.Value, this.endDatePicker.Value);
+    }
+
+    private void generateRentalReportButton_Click(object sender, EventArgs e)
+    {
+        if (this.startDatePicker.Value > this.endDatePicker.Value)
+        {
+            MessageBox.Show("Start date must be before end date");
+            return;
+        }
+
+        this.reportBox.Text =
+            ReportController.GenerateRentalReport(this.startDatePicker.Value, this.endDatePicker.Value);
+    }
+
+    #endregion
 }

@@ -86,6 +86,7 @@
             generateRentalReportButton.TabIndex = 5;
             generateRentalReportButton.Text = "Generate Rental Report";
             generateRentalReportButton.UseVisualStyleBackColor = true;
+            generateRentalReportButton.Click += generateRentalReportButton_Click;
             // 
             // generateReturnReportButton
             // 

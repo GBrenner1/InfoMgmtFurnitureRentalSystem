@@ -129,3 +129,4 @@ C:\Users\Garrett\source\repos\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRen
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.AdminQueryPage.resources
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.AdminQueryResultPage.resources
 D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.sourcelink.json
+D:\C#Projects\InfoMgmtFurnitureRentalSystem\InfoMgmtFurnitureRentalSystem\obj\Debug\net6.0-windows\InfoMgmtFurnitureRentalSystem.View.ReportForm.resources
