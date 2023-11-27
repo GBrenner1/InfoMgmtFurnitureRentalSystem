@@ -78,7 +78,7 @@ public partial class TransactionForm : Form
                 return;
             }
 
-            if (!this.confirmCheckout())
+            if (!confirmCheckout())
             {
                 return;
             }
@@ -93,7 +93,7 @@ public partial class TransactionForm : Form
         Hide();
     }
 
-    private bool confirmCheckout()
+    private static bool confirmCheckout()
     {
         var dialogResult = MessageBox.Show("Are you sure you want to checkout?", "Checkout",
             MessageBoxButtons.YesNo);

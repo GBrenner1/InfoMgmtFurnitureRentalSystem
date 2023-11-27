@@ -11,7 +11,7 @@ public partial class MemberRegistration : Form
 
     private readonly bool isEdit;
 
-    private MemberEditController? memberEditController;
+    private readonly MemberEditController? memberEditController;
 
     #endregion
 

@@ -78,10 +78,10 @@ public class RentalTransactionController
             throw new Exception("Failed to update furniture quantities");
         }
 
-        MessageBox.Show(this.generateReceipt(), "Receipt");
+        MessageBox.Show(this.GenerateReceipt(), "Receipt");
     }
 
-    private string generateReceipt()
+    private string GenerateReceipt()
     {
         var receipt = new StringBuilder();
         receipt.AppendLine("Receipt:");

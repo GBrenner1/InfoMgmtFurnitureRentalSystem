@@ -4,6 +4,12 @@
     <Compile Update="View\ActiveTransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\AdminQueryPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\AdminQueryResultPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>

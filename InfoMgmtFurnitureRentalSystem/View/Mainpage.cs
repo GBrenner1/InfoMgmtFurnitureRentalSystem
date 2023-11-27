@@ -16,6 +16,8 @@ public partial class Mainpage : Form
 
     private ActiveTransactionsForm? ActiveTransactionsForm;
 
+    private AdminQueryPage? AdminQueryPage;
+
     #endregion
 
     #region Constructors
@@ -34,6 +36,11 @@ public partial class Mainpage : Form
             var employee = mainpageController.CurrentEmployee;
             this.EmployeeLabel.Text = employee.EmployeeName + Environment.NewLine + employee.Username + " " +
                                       employee.EmployeeId;
+        }
+
+        if (mainpageController.CurrentEmployee!.IsAdmin == false)
+        {
+            this.queryButton.Visible = false;
         }
 
         this.reloadMembersList();
@@ -291,6 +298,13 @@ public partial class Mainpage : Form
         memberRegistration.Show();
         memberRegistration.Closed += (s, args) => Close();
         memberRegistration.VisibleChanged += this.MemberRegistrationOnVisibleChanged;
+    }
+
+    private void queryButton_Click(object sender, EventArgs e)
+    {
+        var AdminQueryController = new AdminQueryController();
+        this.AdminQueryPage = new AdminQueryPage(AdminQueryController);
+        this.AdminQueryPage.Show();
     }
 
     #endregion
